@@ -1,0 +1,342 @@
+body {
+  position: relative;
+  padding: 0;
+  margin: auto;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+h2 {
+  font-size: 12px;
+  line-height: 9.6px;
+}
+h3 {
+  font-size: 8px;
+  line-height: 5px;
+  color: #808080;
+  font-style: italic;
+}
+.container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  justify-content: center;
+  background-color: #f5f5f5;
+  font-family: 'Montserrat';
+  min-width: 1120px;
+  max-width: 1120px;
+}
+
+/* DIV QUE ENGLOBA A TABLE */
+.wrapper {
+  justify-content: space-between;
+  align-self: center;
+  height: fit-content;
+  max-width: 1032px;
+  display: flex;
+  overflow-x: scroll;
+  padding: 63px 78px 63px 78px;
+}
+
+/* DIVISÃO EM COLUNAS */
+.wrapper .column {
+  margin-left: 4px;
+}
+
+/* LINHAS FULL SIZE | 342x50 px */
+.wrapper .rowFull {
+  line-height: 9.6px;
+  letter-spacing: -2%;
+  text-align: center;
+  border: 1px solid #e2e2e2;
+  background-color: white;
+  min-width: 345.99px;
+  height: 50px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.rowFull:hover {
+  border-color: #e32328;
+  cursor: pointer;
+}
+
+/* LINHAS DIVIDIDAS EM MAIS DE UM ITEM */
+.wrapper .brokenRow {
+  display: flex;
+  width: 348px;
+  color: black;
+  height: 59;
+  margin-bottom: 1px;
+}
+
+/* PRIMEIRA E ÚLTIMA COLUNA */
+.wrapper .rowThin {
+  line-height: 50px;
+  text-align: center;
+  background-color: #e2e2e2;
+  min-width: 96px;
+  height: 50px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* CÉLULAS DA LINHA DE HEADS COM 1/3 e 1/2 DA LARGURA FULL */
+.wrapper .rowHeadThird {
+  position: relative;
+  text-align: center;
+  background-color: white;
+  min-width: 111.13px;
+  height: 80px;
+  margin-left: 4px;
+  margin-bottom: 8px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.wrapper .rowHeadThird .text {
+  position: absolute;
+  top: 15px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.wrapper .rowHeadThird:hover {
+  border-color: #e32328;
+  cursor: default;
+}
+
+.rowHeadHalf {
+  position: relative;
+  text-align: center;
+  min-width: 172px;
+  height: 80px;
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  margin-left: 4px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s;
+}
+.rowHeadHalf .text {
+  position: absolute;
+  top: 15px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* PRIMEIRA LINHA DA TABLE | TRIBOS */
+#title {
+  border: 1px solid #e32328;
+  color: #e32328;
+  background-color: transparent;
+
+  transition: 0.3s;
+}
+#title h2 {
+  font-size: 12px;
+  line-height: 10px;
+}
+
+#title h3 {
+  color: #e32328;
+  font-size: 8px;
+  line-height: 5px;
+}
+
+.wrapper #title:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+/* PRIMEIRA COLUNA DA TABLE */
+.wrapper .space {
+  background-color: transparent;
+}
+.wrapper .space h2 {
+  color: black;
+}
+.wrapper .space:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.wrapper .column .rowThinFirstColumn {
+  border: 1px solid #e32328;
+  color: red;
+  line-height: 80px;
+  text-align: center;
+  background-color: transparent;
+  min-width: 96px;
+  height: 50px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.rowThinFirstColumn h3 {
+  color: #e32328;
+}
+.wrapper .column .rowThinFirstColumn:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+/* SQUADS */
+.wrapper .squadRow {
+  position: relative;
+  line-height: 28px;
+  text-align: center;
+  background-color: #e32328;
+  min-width: 111.33px;
+  height: 28px;
+  margin-left: 4px;
+  margin-bottom: 8px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  color: white;
+  transition: 0.3s;
+  font-size: 11px;
+  letter-spacing: -100%;
+}
+
+.wrapper .squadRow:hover {
+  background-color: rgb(255, 71, 71);
+  cursor: pointer;
+}
+
+/* PRIMEIRA COLUNA DA TABLE */
+.wrapper .space {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.wrapper .space:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/*ROW DE 1 TERÇO DA LARGURA */
+.thirdRow {
+  min-width: 111.33px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  margin-left: 4px;
+  margin-bottom: 7px;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.thirdRow:hover {
+  border-color: #e32328;
+  cursor: pointer;
+}
+/* ELEMENTO DE ESPAÇO NA PRIMEIRA COLUNA */
+#rowThinSpace {
+  min-height: 52px;
+  margin-bottom: 8px;
+}
+
+/* CÉLULA DE DOIS TERÇOS DE LARGURA */
+
+.twoThirdRow {
+  min-width: 226.67px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  margin-left: 4px;
+  margin-bottom: 7px;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.twoThirdRow:hover {
+  border-color: #e32328;
+  cursor: pointer;
+}
+
+/* CÉLULA DE METADE DA LARGURA */
+
+.rowHeadHalf {
+  min-width: 169ppx;
+  height: 80px;
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  margin-left: 4px;
+  margin-bottom: 7px;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.rowHeadHalf:hover {
+  border-color: #e32328;
+  cursor: pointer;
+}
+
+.lastRows {
+  min-width: 100px;
+  min-height: 50px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  text-align: center;
+}
+.modalContainer.hidden {
+  display: none;
+}
+.modalContainer.show {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 100vw;
+  height: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: relative;
+  top: 20%;
+  display: flex;
+  width: 725px;
+  max-height: 544px;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+.modalHeader {
+  text-align: start;
+  line-height: 0px;
+  background-color: red;
+  font-size: 10px;
+  color: white;
+  max-width: 725px;
+  min-height: fit-content;
+  border-radius: 5px;
+}
+
+.modalWrapper {
+  margin: auto;
+  max-width: 653px;
+  max-height: 282px;
+  border: 1px solid #e2e2e2;
+}

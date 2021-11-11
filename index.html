@@ -1,0 +1,2086 @@
+<html>
+    <header>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- styles -->
+        <link rel="stylesheet" href="styles.css" />
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet"
+        />
+        <title>Brivia | Tribos e Squads</title>
+        <style>
+            h1{
+                font-size:40px;
+            }
+            .align-select{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+               
+            }
+            
+            .modal {
+                position: fixed;
+                top: 10%;
+                right: 60%;
+                bottom: 20%;
+                left: 30%;
+                display: block;
+                font-family: Arial, Helvetica, sans-serif;
+                background: rgba(255, 254, 254, 0.993);
+                z-index: 99999;
+                opacity:0;
+                -webkit-transition: opacity 400ms ease-in;
+                -moz-transition: opacity 400ms ease-in;
+                transition: opacity 400ms ease-in;
+                pointer-events: none;
+            }
+            .modal:target {
+                opacity: 1;
+                pointer-events: auto;
+                
+            }
+            .modal > div {
+                width: 400px;
+                position: relative;
+                margin: 2% auto;
+                padding: 5px 20px;
+                background: #fff;
+            }
+            .modal-header{
+                width: 91% !important;
+                background: #E32328 !important;
+                padding: 32px 32px;
+               
+         
+
+            }
+            #fechar{
+                position: absolute;
+                bottom: 10px;
+                right: 5px;
+                text-align: center;
+                line-height: 30px;
+                margin-top: 5px;
+                background: #ffffff;
+                border: 1px solid #E2E2E2;
+                border-radius: 10px;
+                font-size: 16px;
+                color: black;
+                font-size: 14px;
+                font-weight: 800;
+                padding: 5px 30px;
+
+            }
+            
+            #title-modal{
+                font-family: Montserrat;
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 28px;
+                letter-spacing: -0.02em;
+                text-align: left;
+                color: #ffffff;
+
+            }
+            .content-result{
+                width: 90% !important;
+                margin-top: 10px;
+                display: flex;
+                
+                margin: 10px auto;
+                padding: 30px 0px 0px 0px;
+                background-color: #ffffff;
+                justify-content: space-evenly;
+                border: 1px solid #E2E2E2;
+                border-radius: 10px;
+                height: 220px;
+                overflow-y: auto;
+              
+                
+            }
+            
+            #sub-title-modal{
+                font-family: Montserrat;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                letter-spacing: 0px;
+                text-align: left;
+                color: #ffffff;
+
+            }
+            .div-select {    
+                width:282px;  /* Tamanho final do select */    
+                overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
+            .div-select select {      
+                /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
+                /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
+                /* background-position: 200px center;  Posição da imagem do background */
+                width: 240px; 
+                height:48px; 
+                font-family:Arial, Helvetica, sans-serif; 
+                font-size:14px; 
+                padding:13px 20px 13px 12px; 
+                color:#8F8F8F; 
+                border-radius: 10px; 
+                border-color: #E2E2E2;   
+                text-indent: 0.01px; 
+                text-overflow: "";  }
+            .div-select select option{
+                font-size: 14px;
+                border-color: #E2E2E2;   
+            }
+            #tribo-result{
+                color: #808080;
+            }
+            
+            .button-tribo{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 110px;
+                font-size: 14px;
+                padding: 12px;
+                border-bottom: 1px solid #e6e6e6;
+                border-top: 1px solid #e6e6e6;
+                border-right: 1px solid #e6e6e6;
+                border-left: 1px solid #e6e6e6;
+                border-radius: 10px;
+                border-color: #E2E2E2;
+                box-shadow: none;
+                outline: none;
+                cursor: pointer;
+            }
+            .button-tribo:focus{
+                outline:0;
+            }
+            @media only screen and (max-width: 1024px) {
+              
+              .content-result >  div > p{
+                font-size: 10px;
+             
+              }
+              .align-select{
+                display: block;
+                align-items: center;
+                justify-content: space-between;
+              }
+              .div-select {    
+                /* width: 80%;  Tamanho final do select     */
+                overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
+              .div-select select {      
+                  /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
+                  /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
+                  /* background-position: 200px center;  Posição da imagem do background */
+                  margin-top: 5px;
+                  width: 100%; 
+                  height:48px; 
+                  font-family:Arial, Helvetica, sans-serif; 
+                  font-size:14px; 
+                  padding:13px 20px 13px 12px; 
+                  color:#8F8F8F; 
+                  border-radius: 10px; 
+                  border-color: #E2E2E2;   
+                  text-indent: 0.01px; 
+                  text-overflow: "";  
+              }
+              .div-select select option{
+                  
+                  font-size: 12px;
+                  border-color: #E2E2E2;   
+              }
+              .button-tribo{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 80%;
+                margin-top: 5px;
+                font-size: 14px;
+                padding: 12px;
+                border-bottom: 1px solid #e6e6e6;
+                border-top: 1px solid #e6e6e6;
+                border-right: 1px solid #e6e6e6;
+                border-left: 1px solid #e6e6e6;
+                border-radius: 10px;
+                border-color: #E2E2E2;
+                box-shadow: none;
+                outline: none;
+                cursor: pointer;
+                
+            }
+            .button-tribo>img{
+                  padding: 0px 30px 0px 0px;
+                  
+            }
+            .modal {
+                position: fixed;
+                top: 5%;
+                right: 0%;
+                bottom: 0%;
+                left: 0%;
+                width: 26%;
+                height: 400px;
+                display: block;
+                
+                font-family: Arial, Helvetica, sans-serif;
+                background: rgba(255, 254, 254, 0.993);
+                z-index: 99999;
+                opacity:0;
+                -webkit-transition: opacity 400ms ease-in;
+                -moz-transition: opacity 400ms ease-in;
+                transition: opacity 400ms ease-in;
+                pointer-events: none;
+            }
+            .modal > div {
+                width: 70% !important;
+                position: relative;
+                margin: 5% auto;
+                padding: 5px 30px;
+                background: #fff;
+            }
+            #fechar{
+                position: absolute;
+                bottom: 10px;
+                right: 5px;
+                text-align: center;
+                line-height: 30px;
+                margin-top: 30px;
+                background: #ffffff;
+                border: 1px solid #E2E2E2;
+                border-radius: 10px;
+                font-size: 16px;
+                color: black;
+                font-size: 14px;
+                font-weight: 800;
+                padding: 5px 30px;
+
+            }
+           
+           
+           
+            
+
+            }
+        </style>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+        
+            var resultadoAqui = document.getElementById('nome-result')
+            var tribo = '';
+            var squad = '';
+            var chapter = '';
+           
+            
+            $(function(){
+              
+                $('.fechar').click(function(){
+                    document.getElementById('nome-result-tribo').innerHTML = "";
+                    document.getElementById('chapter-result-tribo').innerHTML = "";
+                    document.getElementById("chapter-result").innerHTML = "";
+                    document.getElementById("tribo-result").innerHTML = "";
+                    document.getElementById("nome-result").innerHTML = "";
+                    document.getElementById('nome-result-funcionarios').innerHTML = "";
+                    document.getElementById('chapter-result-funcionarios').innerHTML = "";
+
+                });
+                $('.rowFull').click(function(){
+                    var valor = $(this).val();
+                    var test2 = document.getElementById('info-claudia').getAttribute("value");
+                    var info = valor;
+
+                    console.log(info);
+                    var data =
+                        [ 
+                        {name: 'Carrefour Atacadão', tribo: 'Lilian Chwartzmann',squad:'Vostok',chapter:'Clientes'},
+                        {name: 'Rafaela Corner',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Client Service'},
+                        {name: 'Camila Trevisan',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Strategy'},
+                        {name: 'Thayane Cavalcante',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Strategy'},
+                        {name: 'Fernando Ebeling',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'André Matos Deolindo',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'Arthur Strecker',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'Ricel de Mello',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Technology'},
+                        {name: 'André Pontes',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Gabriel Michaels',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Lucas Blanco',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Paulo Cezar Guimarães',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Caroline Magalhães',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Lucas Campelo',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Bruno Camilo Saragossa',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Experience Design'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Platform'},
+                    
+                        {name: 'Vivo',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Vibra',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Hermes Pardini',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Rafaela Garcia',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Client Service'},
+                        {name: 'Carolina Ribeiro',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Client Service'},
+                        {name: 'Breno Azevedo',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Strategy'},
+                        {name: 'Gabriele Possebon',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Bruno Linhares',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Tiessa Staudt',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Marjore Muller',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Benedito',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Technology'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Experience Design'},
+                        {name: 'Guilherme Nascimento',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Growth'},
+                        {name: 'Leonardo Uler',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Content'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Platform'},
+                        {name: 'Grupo Rendimento',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'KPMG/BMG',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Porto Seguro',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'BLK',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Portal de Documentos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Ariane Herro',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Carina Gonçalves',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Iury Davidowicz',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Bianca Ramirez',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Camila Trevisan',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Strategy'},
+                        {name: 'Carolina Porcher',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Strategy'},
+                        {name: 'Gabriele Possebon',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Bruno Linhares',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Tiessa Staudt',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Marjore Muller',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Benedito',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Technology'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Experience Design'},
+                        {name: 'Joviano Quatrin',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Alexandre Tremarim',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Emily Ramos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Marton dos Santos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Lucas Kafer',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Leonardo Norato',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Luiz Eduardo Cardoso',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Vitória Fonseca',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Israel Fermow',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Luna Flávia Costa',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Marco Emídio Borges',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Claudia Mayara',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Content'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Platform'},
+                    
+                        {name: 'Fundacred',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'Previsul',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'La moda',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'Graziela Sbardelotto',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Client Service'},
+                        {name: 'Paula Montezzo',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Growth'},
+                        {name: 'Cecilia Marques',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Andressa Oleques',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Jessica Borges',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Fernanda Haubert',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Agile Master'},
+                    
+                        {name: 'Governo RS',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Corsan',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Cyrela',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'FS Bioenergia',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'AGCO',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Sandra Calçada',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Lucas Garcia',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Natalia Barone',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Bruna Simião',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Growth'},
+                        {name: 'Matheus Carvalho',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Mariana Ruschel',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Rafael Duarte',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Vitoria Rosa de Oliveira',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Eduardo Harthmann',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Agile Master'},
+                    
+                    
+                        {name: 'Abradif',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Clientes'},
+                        {name: 'OI',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Clientes'},
+                        {name: 'Caroline Felipetto',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Growth'},
+                        {name: 'Eduarda Figueiredo',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Creativity'},
+                        {name: 'Karina Garcia',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Media'},
+                        {name: 'Thays Fernandes',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Media'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Agile Master'},
+                    
+                        {name: 'Tecnisa',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Unipar',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Portal da Maria',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Clube de Autores',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Bunge',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Juliana Magalhães',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Juliana Magalhães',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Mariana Apeazzatto',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Strategy'},
+                        {name: 'Rodolfo Zattar',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Technology'},
+                        {name: 'Marcelo Pianesso',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Growth'},
+                        {name: 'Bruno Moreira',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Breno Monteiro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Thâmara Ribeiro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Rafael Castro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Media'},
+                        {name: 'César de Brito',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Media'},
+                        {name: 'Ciser',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Embraco',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Votorantim',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Inspiramais',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'BriviaDez (MKT)',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Tamara Gonçalves',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Eduarda Soares',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Mariane Lauer',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Mahira Stecconi',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Joice Martins',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Strategy'},
+                        {name: 'Gustavo Merling',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Technology'},
+                        {name: 'Fagner Ernesto (terceiro)',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Growth'},
+                        {name: 'Edson Hayashi',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Helen Moissa',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Marco Borges',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Renata Rocha',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Romulo Perim',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Leticia Cassel',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Andre Lima',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Vivian Andrade',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Feliphe Amaral',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Rafael Lemos Camolez',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Larissa Niehues',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Media'},
+
+                        {name: 'Aios',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Viacredi',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Senior',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Univile',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Aline Duarte',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Client Service'},
+                        {name: 'Bruna Ronchi',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Strategy'},
+                        {name: 'Gustavo Merling',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Growth'},
+                        {name: 'César Favero',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Vitor Ludwing',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Rafael Zimmer',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Rafael Castro',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Media'},
+                        {name: 'Larissa Nichues',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Media'},
+                        {name: "Banco do Brasil", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Cliente"},
+                        //SQUAD JUPITER - CLIENT SERVICE
+                        {name: "Francisco Gil",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "João Lucas Brito Dos Santos", tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Client Service"},
+                        {name: "Aline Macedo",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "Thais Bertoldo", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Client Service"},
+                        {name: "Mariana Venturim",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "Rafaela Reposse",tribo: "Eliel Allebrandt",squad: "Júpiter",chapter: "Client Service"},
+                        //SQUAD JUPITER - PROJECT MANAGEMENT
+                        {name: "Filipe Canto", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Project Management"},
+                        {name: "Clayton",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Project Management"},
+                        //SQUAD JUPITER - STRATEGY
+                        {name: "Maria Thais Brussi",tribo: "Eliel Allebrandt", squad:"Júpiter",chapter: "Strategy"},
+                        {name: "Patricia Lemos Correa", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Strategy"},
+                        {name: "Caio Ribeiro", tribo:"Eliel Allebrandt",squad: "Júpiter", chapter:"Strategy"},
+                        //SQUAD JUPITER - DATA INTELLIGENCE
+                        {name: "Marcos Cunha",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Data Intelligence"},
+                        //SQUAD JUPITER - EXPERIENCE DESIGN
+                        {name: " Marcelo Moreies Arevalos",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Experience Design"},
+                        //SQUAD JUPITER - GROWTH
+                        {name: "Daniel Cardoso Pinho", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Growth"},
+                        {name: "Patricia Fender", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Growth"},
+                        //SQUAD JUPITER - CREATIVITY
+                        {name: "Luis Campiello", tribo:"Eliel Allebrandt",squad: "Júpiter", chapter:"Creativity"},
+                        {name: "Felipe Alves",tribo: "Eliel Allebrandt", squad:"Júpiter",chapter: "Creativity"},
+                        {name: "Jefferson Damasceno", tribo:"Eliel Allebrandt",squad: "Júpiter",chapter: "Creativity"},
+                        {name: "Victor Lavenere",tribo: "Eliel Allebrandt",squad: "Júpiter", chapter:"Creativity"},
+                        {name: "Linconl Castelar Lucas Mansur",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Creativity"},
+                        {name: "Josane Muriel", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Creativity"},
+                        {name: "Rafael Driedric}",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "João Ricardo de Mello", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "Victor Lavenere",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "Maria Eduarda de Lima Freitas",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Creativity"},
+                        //SQUAD JUPITER - CONTENT
+                        {name: "Soraya Coelho", tribo:"Eliel Allebrandt",squad: "Júpiter",chapter: "Content"},
+                        {name: "Francisco Douver de SA Barros",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Content"},
+                        //SQUAD JUPITER - OPERATION
+                        {name: "João Lucas", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Operation"},
+                        {name: "Janaina Viana",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Operation"},
+                        //SQUAD JUPITER - AGILE MASTER
+                        {name: "Clayton Palva", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Agile Master"},
+
+
+                        {name: 'AES',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Clientes'},
+                        {name: 'Felipe Ferrazzi',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Schontag',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Data Intelligence'},
+                        {name: 'Davi Bauer',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+                        {name: 'Márcio Konrad',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+                        {name: 'Diego Silva',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+
+                        {name: 'Floripa Airport',tribo:'',squad:'Pool',chapter:'Clientes'},
+                        {name: 'Fabiana Alburquerque',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Douglas Peres',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Felipe Sperb',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Laura Yoko',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Aletha da Silva',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Antônio Bauer',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Edison Tâmara',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Gustavo Morais',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Lucas Amélio',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Maria José Peralta',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Tiago Boher',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Paz',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Alexandre Veack',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Arthur Monteiro',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Caio Caires',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Cristian Holz',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Diesica Xavier',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Ermeson Santiago',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Henrique Santana',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Jonas Vieira',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Johny Krauss',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Luis Ricardo Hass',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Marco Antônio Grecca',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Pablo Junior Jaeger',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Paulo Marques',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Rai Goulart Netto',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Ingrid Bonello',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Orquídea Azevedo',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Vanessa Carrasco',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Wagner Gomes',tribo:'',squad:'Pool',chapter:'Creativity'},
+                        {name: 'Ines Johnson',tribo:'',squad:'Pool',chapter:'Creativity'},
+                        {name: 'Aline Feijó',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Monique Coutinho',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Rayssa Natale',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Aline Klein',tribo:'',squad:'Pool',chapter:'Production'},
+                        {name: 'Bernardo Silva',tribo:'',squad:'Pool',chapter:'Production'},
+                        {name: 'Andreia Araújo',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Samid Borinelli',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Erica Carneiro',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Janaina Spohr',tribo:'',squad:'Pool',chapter:'Operation'},
+                        {name: 'Ana Neves',tribo:'',squad:'Pool',chapter:'Operation'},
+                        
+                    ];
+                    var result = '';
+                    var result = data.filter((funcionario) => {
+                        return funcionario.tribo === info;
+                    });
+                    
+                    
+                    let lista = document.getElementById('nome-result-tribo');
+                    for(var i = 0; i < result.length; i++){
+                        let item = document.createElement('p');
+                        item.appendChild(document.createTextNode(result[i]['name']));
+                        lista.appendChild(item);
+                    }
+                    let lista2 = document.getElementById('chapter-result-tribo');
+                    for(var i = 0; i < result.length; i++){
+                        let item2 = document.createElement('p');
+                        item2.appendChild(document.createTextNode(result[i]['chapter']));
+                        lista2.appendChild(item2);
+                    }
+
+
+                });
+                $('.content-func').click(function(){
+                    var valor = $(this).val();
+                    var fat = valor.split('/');
+                    
+
+                    console.log(fat);
+                    var data =
+                        [ 
+                        {name: 'Carrefour Atacadão', tribo: 'Lilian Chwartzmann',squad:'Vostok',chapter:'Clientes'},
+                        {name: 'Rafaela Corner',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Client Service'},
+                        {name: 'Camila Trevisan',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Strategy'},
+                        {name: 'Thayane Cavalcante',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Strategy'},
+                        {name: 'Fernando Ebeling',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'André Matos Deolindo',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'Arthur Strecker',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'Ricel de Mello',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Technology'},
+                        {name: 'André Pontes',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Gabriel Michaels',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Lucas Blanco',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Paulo Cezar Guimarães',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Caroline Magalhães',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Lucas Campelo',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Bruno Camilo Saragossa',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Experience Design'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Platform'},
+                    
+                        {name: 'Vivo',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Vibra',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Hermes Pardini',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Rafaela Garcia',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Client Service'},
+                        {name: 'Carolina Ribeiro',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Client Service'},
+                        {name: 'Breno Azevedo',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Strategy'},
+                        {name: 'Gabriele Possebon',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Bruno Linhares',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Tiessa Staudt',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Marjore Muller',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Benedito',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Technology'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Experience Design'},
+                        {name: 'Guilherme Nascimento',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Growth'},
+                        {name: 'Leonardo Uler',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Content'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Platform'},
+                        {name: 'Grupo Rendimento',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'KPMG/BMG',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Porto Seguro',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'BLK',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Portal de Documentos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Ariane Herro',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Carina Gonçalves',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Iury Davidowicz',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Bianca Ramirez',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Camila Trevisan',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Strategy'},
+                        {name: 'Carolina Porcher',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Strategy'},
+                        {name: 'Gabriele Possebon',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Bruno Linhares',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Tiessa Staudt',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Marjore Muller',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Benedito',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Technology'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Experience Design'},
+                        {name: 'Joviano Quatrin',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Alexandre Tremarim',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Emily Ramos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Marton dos Santos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Lucas Kafer',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Leonardo Norato',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Luiz Eduardo Cardoso',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Vitória Fonseca',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Israel Fermow',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Luna Flávia Costa',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Marco Emídio Borges',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Claudia Mayara',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Content'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Platform'},
+                    
+                        {name: 'Fundacred',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'Previsul',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'La moda',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'Graziela Sbardelotto',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Client Service'},
+                        {name: 'Paula Montezzo',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Growth'},
+                        {name: 'Cecilia Marques',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Andressa Oleques',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Jessica Borges',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Fernanda Haubert',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Agile Master'},
+                    
+                        {name: 'Governo RS',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Corsan',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Cyrela',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'FS Bioenergia',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'AGCO',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Sandra Calçada',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Lucas Garcia',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Natalia Barone',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Bruna Simião',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Growth'},
+                        {name: 'Matheus Carvalho',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Mariana Ruschel',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Rafael Duarte',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Vitoria Rosa de Oliveira',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Eduardo Harthmann',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Agile Master'},
+                    
+                    
+                        {name: 'Abradif',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Clientes'},
+                        {name: 'OI',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Clientes'},
+                        {name: 'Caroline Felipetto',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Growth'},
+                        {name: 'Eduarda Figueiredo',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Creativity'},
+                        {name: 'Karina Garcia',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Media'},
+                        {name: 'Thays Fernandes',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Media'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Agile Master'},
+                    
+                        {name: 'Tecnisa',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Unipar',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Portal da Maria',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Clube de Autores',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Bunge',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Juliana Magalhães',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Juliana Magalhães',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Mariana Apeazzatto',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Strategy'},
+                        {name: 'Rodolfo Zattar',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Technology'},
+                        {name: 'Marcelo Pianesso',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Growth'},
+                        {name: 'Bruno Moreira',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Breno Monteiro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Thâmara Ribeiro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Rafael Castro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Media'},
+                        {name: 'César de Brito',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Media'},
+                        {name: 'Ciser',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Embraco',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Votorantim',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Inspiramais',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'BriviaDez (MKT)',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Tamara Gonçalves',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Eduarda Soares',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Mariane Lauer',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Mahira Stecconi',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Joice Martins',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Strategy'},
+                        {name: 'Gustavo Merling',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Technology'},
+                        {name: 'Fagner Ernesto (terceiro)',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Growth'},
+                        {name: 'Edson Hayashi',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Helen Moissa',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Marco Borges',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Renata Rocha',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Romulo Perim',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Leticia Cassel',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Andre Lima',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Vivian Andrade',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Feliphe Amaral',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Rafael Lemos Camolez',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Larissa Niehues',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Media'},
+
+                        {name: 'Aios',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Viacredi',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Senior',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Univile',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Aline Duarte',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Client Service'},
+                        {name: 'Bruna Ronchi',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Strategy'},
+                        {name: 'Gustavo Merling',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Growth'},
+                        {name: 'César Favero',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Vitor Ludwing',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Rafael Zimmer',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Rafael Castro',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Media'},
+                        {name: 'Larissa Nichues',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Media'},
+                        {name: "Banco do Brasil", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Cliente"},
+                        //SQUAD JUPITER - CLIENT SERVICE
+                        {name: "Francisco Gil",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "João Lucas Brito Dos Santos", tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Client Service"},
+                        {name: "Aline Macedo",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "Thais Bertoldo", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Client Service"},
+                        {name: "Mariana Venturim",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "Rafaela Reposse",tribo: "Eliel Allebrandt",squad: "Júpiter",chapter: "Client Service"},
+                        //SQUAD JUPITER - PROJECT MANAGEMENT
+                        {name: "Filipe Canto", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Project Management"},
+                        {name: "Clayton",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Project Management"},
+                        //SQUAD JUPITER - STRATEGY
+                        {name: "Maria Thais Brussi",tribo: "Eliel Allebrandt", squad:"Júpiter",chapter: "Strategy"},
+                        {name: "Patricia Lemos Correa", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Strategy"},
+                        {name: "Caio Ribeiro", tribo:"Eliel Allebrandt",squad: "Júpiter", chapter:"Strategy"},
+                        //SQUAD JUPITER - DATA INTELLIGENCE
+                        {name: "Marcos Cunha",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Data Intelligence"},
+                        //SQUAD JUPITER - EXPERIENCE DESIGN
+                        {name: " Marcelo Moreies Arevalos",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Experience Design"},
+                        //SQUAD JUPITER - GROWTH
+                        {name: "Daniel Cardoso Pinho", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Growth"},
+                        {name: "Patricia Fender", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Growth"},
+                        //SQUAD JUPITER - CREATIVITY
+                        {name: "Luis Campiello", tribo:"Eliel Allebrandt",squad: "Júpiter", chapter:"Creativity"},
+                        {name: "Felipe Alves",tribo: "Eliel Allebrandt", squad:"Júpiter",chapter: "Creativity"},
+                        {name: "Jefferson Damasceno", tribo:"Eliel Allebrandt",squad: "Júpiter",chapter: "Creativity"},
+                        {name: "Victor Lavenere",tribo: "Eliel Allebrandt",squad: "Júpiter", chapter:"Creativity"},
+                        {name: "Linconl Castelar Lucas Mansur",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Creativity"},
+                        {name: "Josane Muriel", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Creativity"},
+                        {name: "Rafael Driedric}",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "João Ricardo de Mello", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "Victor Lavenere",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "Maria Eduarda de Lima Freitas",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Creativity"},
+                        //SQUAD JUPITER - CONTENT
+                        {name: "Soraya Coelho", tribo:"Eliel Allebrandt",squad: "Júpiter",chapter: "Content"},
+                        {name: "Francisco Douver de SA Barros",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Content"},
+                        //SQUAD JUPITER - OPERATION
+                        {name: "João Lucas", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Operation"},
+                        {name: "Janaina Viana",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Operation"},
+                        //SQUAD JUPITER - AGILE MASTER
+                        {name: "Clayton Palva", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Agile Master"},
+
+
+                        {name: 'AES',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Clientes'},
+                        {name: 'Felipe Ferrazzi',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Schontag',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Data Intelligence'},
+                        {name: 'Davi Bauer',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+                        {name: 'Márcio Konrad',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+                        {name: 'Diego Silva',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+
+                        {name: 'Floripa Airport',tribo:'',squad:'Pool',chapter:'Clientes'},
+                        {name: 'Fabiana Alburquerque',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Douglas Peres',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Felipe Sperb',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Laura Yoko',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Aletha da Silva',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Antônio Bauer',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Edison Tâmara',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Gustavo Morais',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Lucas Amélio',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Maria José Peralta',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Tiago Boher',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Paz',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Alexandre Veack',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Arthur Monteiro',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Caio Caires',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Cristian Holz',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Diesica Xavier',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Ermeson Santiago',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Henrique Santana',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Jonas Vieira',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Johny Krauss',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Luis Ricardo Hass',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Marco Antônio Grecca',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Pablo Junior Jaeger',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Paulo Marques',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Rai Goulart Netto',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Ingrid Bonello',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Orquídea Azevedo',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Vanessa Carrasco',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Wagner Gomes',tribo:'',squad:'Pool',chapter:'Creativity'},
+                        {name: 'Ines Johnson',tribo:'',squad:'Pool',chapter:'Creativity'},
+                        {name: 'Aline Feijó',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Monique Coutinho',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Rayssa Natale',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Aline Klein',tribo:'',squad:'Pool',chapter:'Production'},
+                        {name: 'Bernardo Silva',tribo:'',squad:'Pool',chapter:'Production'},
+                        {name: 'Andreia Araújo',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Samid Borinelli',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Erica Carneiro',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Janaina Spohr',tribo:'',squad:'Pool',chapter:'Operation'},
+                        {name: 'Ana Neves',tribo:'',squad:'Pool',chapter:'Operation'},
+
+
+                        
+                    ];
+                    var result = '';
+                    var result = data.filter((funcionario) => {
+                        return funcionario.tribo === fat[0] & funcionario.squad === fat[1] & funcionario.chapter === fat[2];
+                    });
+                    
+                    
+                    let lista = document.getElementById('nome-result-funcionarios');
+                    for(var i = 0; i < result.length; i++){
+                        let item = document.createElement('p');
+                        item.appendChild(document.createTextNode(result[i]['name']));
+                        lista.appendChild(item);
+                    }
+                    let lista2 = document.getElementById('chapter-result-funcionarios');
+                    for(var i = 0; i < result.length; i++){
+                        let item2 = document.createElement('p');
+                        item2.appendChild(document.createTextNode(result[i]['chapter']));
+                        lista2.appendChild(item2);
+                    }
+
+
+                });
+
+                $('#buscar').click(function(){
+                    var tribo = $('#sel_tribo').val();
+                    var squad = $('#sel_squad').val();
+                    var chapter = $('#sel_chapter').val();
+                    
+                    var data =
+                        [ 
+                        {name: 'Carrefour Atacadão', tribo: 'Lilian Chwartzmann',squad:'Vostok',chapter:'Clientes'},
+                        {name: 'Rafaela Corner',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Client Service'},
+                        {name: 'Camila Trevisan',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Strategy'},
+                        {name: 'Thayane Cavalcante',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Strategy'},
+                        {name: 'Fernando Ebeling',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'André Matos Deolindo',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'Arthur Strecker',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Data Intelligence'},
+                        {name: 'Ricel de Mello',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Technology'},
+                        {name: 'André Pontes',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Gabriel Michaels',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Lucas Blanco',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Paulo Cezar Guimarães',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Caroline Magalhães',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Lucas Campelo',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Bruno Camilo Saragossa',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Creativity'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Experience Design'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Vostok',chapter:'Platform'},
+                    
+                        {name: 'Vivo',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Vibra',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Hermes Pardini',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Clientes'},
+                        {name: 'Rafaela Garcia',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Client Service'},
+                        {name: 'Carolina Ribeiro',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Client Service'},
+                        {name: 'Breno Azevedo',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Strategy'},
+                        {name: 'Gabriele Possebon',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Bruno Linhares',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Tiessa Staudt',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Marjore Muller',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Benedito',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Technology'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Experience Design'},
+                        {name: 'Guilherme Nascimento',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Growth'},
+                        {name: 'Leonardo Uler',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Content'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Discovery',chapter:'Platform'},
+                        {name: 'Grupo Rendimento',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'KPMG/BMG',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Porto Seguro',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'BLK',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Portal de Documentos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Clientes'},
+                        {name: 'Ariane Herro',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Carina Gonçalves',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Iury Davidowicz',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Bianca Ramirez',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Client Service'},
+                        {name: 'Camila Trevisan',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Strategy'},
+                        {name: 'Carolina Porcher',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Strategy'},
+                        {name: 'Gabriele Possebon',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Bruno Linhares',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Tiessa Staudt',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Marjore Muller',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Benedito',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Technology'},
+                        {name: 'Giuliana Galvão',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Experience Design'},
+                        {name: 'Leonardo Rech',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Experience Design'},
+                        {name: 'Joviano Quatrin',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Alexandre Tremarim',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Emily Ramos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Marton dos Santos',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Lucas Kafer',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Leonardo Norato',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Luiz Eduardo Cardoso',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Vitória Fonseca',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Israel Fermow',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Luna Flávia Costa',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Marco Emídio Borges',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Creativity'},
+                        {name: 'Claudia Mayara',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Content'},
+                        {name: 'Akemy Aguiar',tribo:'Lilian Chwartzmann',squad:'Andrômeda',chapter:'Platform'},
+                    
+                        {name: 'Fundacred',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'Previsul',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'La moda',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Clientes'},
+                        {name: 'Graziela Sbardelotto',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Client Service'},
+                        {name: 'Paula Montezzo',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Growth'},
+                        {name: 'Cecilia Marques',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Andressa Oleques',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Jessica Borges',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Fernanda Haubert',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Creativity'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'Columbia',chapter:'Agile Master'},
+                    
+                        {name: 'Governo RS',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Corsan',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Cyrela',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'FS Bioenergia',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'AGCO',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Clientes'},
+                        {name: 'Sandra Calçada',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Lucas Garcia',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Natalia Barone',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Bruna Simião',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Growth'},
+                        {name: 'Matheus Carvalho',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Mariana Ruschel',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Rafael Duarte',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Vitoria Rosa de Oliveira',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Eduardo Harthmann',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Creativity'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'Laika',chapter:'Agile Master'},
+                    
+                    
+                        {name: 'Abradif',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Clientes'},
+                        {name: 'OI',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Clientes'},
+                        {name: 'Caroline Felipetto',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Client Service'},
+                        {name: 'Christiaan Van Hattem',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Strategy'},
+                        {name: 'Raphaela Menezes',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Strategy'},
+                        {name: 'Bruno Markus',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Experience Design'},
+                        {name: 'Bernardo Andrade da Costa',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Growth'},
+                        {name: 'Eduarda Figueiredo',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Creativity'},
+                        {name: 'Karina Garcia',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Media'},
+                        {name: 'Thays Fernandes',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Media'},
+                        {name: 'Ramine Baigorra',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Production'},
+                        {name: 'Tomaz Macedo',tribo:'Claudia Gonçalves',squad:'SuperNova',chapter:'Agile Master'},
+                    
+                        {name: 'Tecnisa',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Unipar',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Portal da Maria',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Clube de Autores',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Bunge',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Clientes'},
+                        {name: 'Juliana Magalhães',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Juliana Magalhães',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Mariana Apeazzatto',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Strategy'},
+                        {name: 'Rodolfo Zattar',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Technology'},
+                        {name: 'Marcelo Pianesso',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Growth'},
+                        {name: 'Bruno Moreira',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Breno Monteiro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Thâmara Ribeiro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Creativity'},
+                        {name: 'Rafael Castro',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Media'},
+                        {name: 'César de Brito',tribo:'Ricardo Almeida',squad:'Sirius',chapter:'Media'},
+                        {name: 'Ciser',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Embraco',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Votorantim',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Inspiramais',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'BriviaDez (MKT)',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Clientes'},
+                        {name: 'Tamara Gonçalves',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Eduarda Soares',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Mariane Lauer',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Mahira Stecconi',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Joice Martins',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Strategy'},
+                        {name: 'Gustavo Merling',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Technology'},
+                        {name: 'Fagner Ernesto (terceiro)',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Growth'},
+                        {name: 'Edson Hayashi',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Helen Moissa',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Marco Borges',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Renata Rocha',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Romulo Perim',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Leticia Cassel',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Andre Lima',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Vivian Andrade',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Feliphe Amaral',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Rafael Lemos Camolez',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Creativity'},
+                        {name: 'Larissa Niehues',tribo:'Ricardo Almeida',squad:'Gaia',chapter:'Media'},
+
+                        {name: 'Aios',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Viacredi',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Senior',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Univile',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Clientes'},
+                        {name: 'Aline Duarte',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Client Service'},
+                        {name: 'Bruna Ronchi',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Client Service'},
+                        {name: 'Nathalia Andrade',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Strategy'},
+                        {name: 'Gustavo Merling',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Technology'},
+                        {name: 'André Lázaro',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Experience Design'},
+                        {name: 'Bruno Pacini Hensel',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Experience Design'},
+                        {name: 'Ludimila Borderes',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Growth'},
+                        {name: 'Vitor Coutinho',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Growth'},
+                        {name: 'César Favero',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Vitor Ludwing',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Rafael Zimmer',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Creativity'},
+                        {name: 'Rafael Castro',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Media'},
+                        {name: 'Larissa Nichues',tribo:'Ricardo Almeida',squad:'Apolo',chapter:'Media'},
+                        {name: "Banco do Brasil", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Cliente"},
+                        //SQUAD JUPITER - CLIENT SERVICE
+                        {name: "Francisco Gil",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "João Lucas Brito Dos Santos", tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Client Service"},
+                        {name: "Aline Macedo",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "Thais Bertoldo", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Client Service"},
+                        {name: "Mariana Venturim",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Client Service"},
+                        {name: "Rafaela Reposse",tribo: "Eliel Allebrandt",squad: "Júpiter",chapter: "Client Service"},
+                        //SQUAD JUPITER - PROJECT MANAGEMENT
+                        {name: "Filipe Canto", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Project Management"},
+                        {name: "Clayton",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Project Management"},
+                        //SQUAD JUPITER - STRATEGY
+                        {name: "Maria Thais Brussi",tribo: "Eliel Allebrandt", squad:"Júpiter",chapter: "Strategy"},
+                        {name: "Patricia Lemos Correa", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Strategy"},
+                        {name: "Caio Ribeiro", tribo:"Eliel Allebrandt",squad: "Júpiter", chapter:"Strategy"},
+                        //SQUAD JUPITER - DATA INTELLIGENCE
+                        {name: "Marcos Cunha",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Data Intelligence"},
+                        //SQUAD JUPITER - EXPERIENCE DESIGN
+                        {name: " Marcelo Moreies Arevalos",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Experience Design"},
+                        //SQUAD JUPITER - GROWTH
+                        {name: "Daniel Cardoso Pinho", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Growth"},
+                        {name: "Patricia Fender", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Growth"},
+                        //SQUAD JUPITER - CREATIVITY
+                        {name: "Luis Campiello", tribo:"Eliel Allebrandt",squad: "Júpiter", chapter:"Creativity"},
+                        {name: "Felipe Alves",tribo: "Eliel Allebrandt", squad:"Júpiter",chapter: "Creativity"},
+                        {name: "Jefferson Damasceno", tribo:"Eliel Allebrandt",squad: "Júpiter",chapter: "Creativity"},
+                        {name: "Victor Lavenere",tribo: "Eliel Allebrandt",squad: "Júpiter", chapter:"Creativity"},
+                        {name: "Linconl Castelar Lucas Mansur",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Creativity"},
+                        {name: "Josane Muriel", tribo:"Eliel Allebrandt", squad:"Júpiter",chapter: "Creativity"},
+                        {name: "Rafael Driedric}",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "João Ricardo de Mello", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "Victor Lavenere",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Creativity"},
+                        {name: "Maria Eduarda de Lima Freitas",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Creativity"},
+                        //SQUAD JUPITER - CONTENT
+                        {name: "Soraya Coelho", tribo:"Eliel Allebrandt",squad: "Júpiter",chapter: "Content"},
+                        {name: "Francisco Douver de SA Barros",tribo:"Eliel Allebrandt",squad:"Júpiter",chapter:"Content"},
+                        //SQUAD JUPITER - OPERATION
+                        {name: "João Lucas", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Operation"},
+                        {name: "Janaina Viana",tribo: "Eliel Allebrandt", squad:"Júpiter", chapter:"Operation"},
+                        //SQUAD JUPITER - AGILE MASTER
+                        {name: "Clayton Palva", tribo:"Eliel Allebrandt", squad:"Júpiter", chapter:"Agile Master"},
+
+
+                        {name: 'AES',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Clientes'},
+                        {name: 'Felipe Ferrazzi',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Schontag',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Data Intelligence'},
+                        {name: 'Davi Bauer',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+                        {name: 'Márcio Konrad',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+                        {name: 'Diego Silva',tribo:'Ernane Pinheiro',squad:'Squad',chapter:'Technology'},
+
+
+                        {name: 'Floripa Airport',tribo:'',squad:'Pool',chapter:'Clientes'},
+                        {name: 'Fabiana Alburquerque',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Douglas Peres',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Felipe Sperb',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Laura Yoko',tribo:'',squad:'Pool',chapter:'Project Management'},
+                        {name: 'Aletha da Silva',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Antônio Bauer',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Edison Tâmara',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Gustavo Morais',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Lucas Amélio',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Maria José Peralta',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Tiago Boher',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Vinicius Paz',tribo:'',squad:'Pool',chapter:'Data Intelligence'},
+                        {name: 'Alexandre Veack',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Arthur Monteiro',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Caio Caires',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Cristian Holz',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Diesica Xavier',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Ermeson Santiago',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Henrique Santana',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Jonas Vieira',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Johny Krauss',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Luis Ricardo Hass',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Marco Antônio Grecca',tribo:'',squad:'Pool',chapter:'Technology'},
+                        {name: 'Pablo Junior Jaeger',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Paulo Marques',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Rai Goulart Netto',tribo:'',squad:'Pool',chapter:'Experience Design'},
+                        {name: 'Ingrid Bonello',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Orquídea Azevedo',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Vanessa Carrasco',tribo:'',squad:'Pool',chapter:'Growth'},
+                        {name: 'Wagner Gomes',tribo:'',squad:'Pool',chapter:'Creativity'},
+                        {name: 'Ines Johnson',tribo:'',squad:'Pool',chapter:'Creativity'},
+                        {name: 'Aline Feijó',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Monique Coutinho',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Rayssa Natale',tribo:'',squad:'Pool',chapter:'Media'},
+                        {name: 'Aline Klein',tribo:'',squad:'Pool',chapter:'Production'},
+                        {name: 'Bernardo Silva',tribo:'',squad:'Pool',chapter:'Production'},
+                        {name: 'Andreia Araújo',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Samid Borinelli',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Erica Carneiro',tribo:'',squad:'Pool',chapter:'Platform'},
+                        {name: 'Janaina Spohr',tribo:'',squad:'Pool',chapter:'Operation'},
+                        {name: 'Ana Neves',tribo:'',squad:'Pool',chapter:'Operation'},
+
+
+                        
+                    ];
+                    var result = data.filter((funcionario) => {
+                        return funcionario.tribo === tribo & funcionario.squad === squad & funcionario.chapter === chapter;
+                    })
+                    
+                    let lista = document.getElementById('nome-result');
+                    for(var i = 0; i < result.length; i++){
+                        let item = document.createElement('p');
+                        item.appendChild(document.createTextNode(result[i]['name']));
+                        lista.appendChild(item);
+                    }
+                    let lista2 = document.getElementById('tribo-result');
+                    for(var i = 0; i < result.length; i++){
+                        let item2 = document.createElement('p');
+                        item2.appendChild(document.createTextNode(result[i]['tribo']));
+                        lista2.appendChild(item2);
+                    }
+                    let lista3 = document.getElementById('chapter-result');
+                    for(var i = 0; i < result.length; i++){
+                        let item3 = document.createElement('p');
+                        item3.appendChild(document.createTextNode(result[i]['chapter']));
+                        lista3.appendChild(item3);
+                    }
+
+                });
+                
+                
+            });
+            
+            
+            
+            
+        </script>
+
+    </header>
+    <body>
+        <h1>Oiii</h1>
+        <div class="align-select">
+            <div class="div-select">
+                <select  name="Tribo" id="sel_tribo">
+                    <option value="Lilian Chwartzmann">Lilian Chwartzmann</option>
+                    <option value="Claudia Gonçalves">Claudia Gonçalves</option>
+                    <option value="Ricardo Almeida">Ricardo Almeida</option>
+                    <option value="Eliel Allebrandt">Eliel Allebrandt</option>
+                    <option value="Ernane Pinheiro">Ernane Pinheiro</option>
+                    <option value="Pool">Pool</option>
+                </select>
+            </div>
+            <div class="div-select">
+                <select name="Squard" id="sel_squad">
+                    <option value="Vostok">Vostok</option>
+                    <option value="Discovery">Discovery</option>
+                    <option value="Andromeda">Andromeda</option>
+                    <option value="Columbia">Columbia</option>
+                    <option value="Laika">Laika</option>
+                    <option value="Supernova">Supernova</option>
+                    <option value="Sirius">Sirius</option>
+                    <option value="Gaia">Gaia</option>
+                    <option value="Apolo">Apolo</option>
+                    <option value="Jupiter">Jupiter</option>
+                    <option value="Squad">Squad</option>
+                    <option value="Pool">Pool</option>
+                </select>
+            </div>
+            <div class="div-select">
+                <select name="Chapter" id="sel_chapter">
+                    <option value="Clientes">Cliente</option>
+                    <option value="Client Service" selected>Client Service</option>
+                    <option value="Project Magnecgt">Project Magnecgt</option>
+                    <option value="Strategy">Strategy</option>
+                    <option value="Data Intelligence">Data Intelligence</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Experience Design">Experience Design</option>
+                    <option value="Growth">Growth</option>
+                    <option value="Creativity">Creativity</option>
+                    <option value="Media">Media</option>
+                    <option value="Production">Production</option>
+                    <option value="Content">Content</option>
+                    <option value="Platform">Platform</option>
+                    <option value="Operation">Operation</option>
+                    <option value="Agile Master">Agile Master</option>
+                </select>
+            </div>
+            <div>
+                <a id="buscar" style="text-decoration: none;" href="#abrirModal"><button class="button-tribo"><img src="search.png"/>Buscar</button></a>
+
+            </div>
+            <div>
+                <a id="buscar" style="text-decoration: none;"><button class="button-tribo"><img src="clear.png" alt=""> Limpar</button></a>
+            </div>
+
+        </div>
+        <div id="abrirModal" class="modal">
+            <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
+            <div class="modal-header">
+                <span id="title-modal">Chapter aq</span><br/>
+                <span id="sub-title-modal">Chapter</span>
+
+            </div>
+            
+            <div  class="content-result">
+                <div id="nome-result">
+                    <p></p>
+                </div>
+                <div id="tribo-result">
+                    <p></p>
+                </div>
+                <div id="chapter-result">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- TABELA COM SIDESCROLL -->
+            <div class="wrapper">
+              <!--PRIMEIRA COLUNA-->
+              <div class="column">
+                <div id="rowThinSpace"></div>
+                <div class="rowHeadThird , space"></div>
+                <div class="squadRow , space">
+                  <h2>Chapters</h2>
+                  <h3>Heads</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2 style="line-height: 30px">Clientes</h2>
+                  <h3></h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2 style="line-height: 30px">Client Service</h2>
+                  <h3></h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2>Project Management</h2>
+                  <h3>Felipe Seibert</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2>Strategy</h2>
+                  <h3>Guilherme Bello</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2>Data Intelligence</h2>
+                  <h3>Wagner Cambruzzi</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2>Technology</h2>
+                  <h3>Jonathas Coelho</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2 style="line-height: 12px">Experience Design</h2>
+                  <h3 style="line-height: 0px">Fabiano Nodler</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2 style="line-height: 30px">Creativity</h2>
+                  <h3></h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2>Media</h2>
+                  <h3>Marlise Nunes</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2>Production</h2>
+                  <h3>Josiane Toniolo</h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2 style="line-height: 30px">Content</h2>
+                  <h3></h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2 style="line-height: 30px">Operation</h2>
+                  <h3></h3>
+                </div>
+                <div class="rowThinFirstColumn">
+                  <h2 style="line-height: 30px">Agile Master</h2>
+                  <h3></h3>
+                </div>
+              </div>
+      
+              <!-- SEGUNDA COLUNA -->
+              <div class="column">
+                <!-- Tribe -->
+                <a href="#modal-tribo" id="info" value="Lilian Chwartzmann"><button value="Lilian Chwartzmann" class="rowFull"  id="title"><div >
+                  <h2>Lilian Chwartzmann</h2> 
+                  <h3>Key Account Director</h3>
+                </div></button></a>
+                <!-- Heads -->
+                <div class="brokenRow">
+                  <div class="rowHeadThird">
+                    <div class="text">
+                      <h2>Paola Muller</h2>
+                      <h3>Strategy Head</h3>
+                    </div>
+                  </div>
+                  <div class="rowHeadThird">
+                    <div class="text">
+                      <h2>Luciana Martins</h2>
+                      <h3>Head of Client Service</h3>
+                    </div>
+                  </div>
+                  <div class="rowHeadThird">
+                    <div class="text">
+                      <h2>David Levy</h2>
+                      <h3>Head of Creativity</h3>
+                    </div>
+                  </div>
+                </div>
+                <!-- Squads -->
+                <div class="brokenRow">
+                  <div class="squadRow">Squad Vostok</div>
+                  <div class="squadRow">Squad Discovery</div>
+                  <div class="squadRow">Squad Andrômeda</div>
+                </div>
+      
+                <!--Clientes-->
+                <div class="brokenRow">
+                  <div class="thirdRow">
+                    <h2 style="line-height: 12px">Carrefour</h2>
+                    <h2 style="line-height: 6px">Atacadão</h2>
+                  </div>
+                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Vivo</h2>
+                    <h2 style="line-height: 6px">Vibra</h2>
+                    <h3 style="line-height: 4px">mais 1</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">KPMG</h2>
+                    <h2 style="line-height: 6px">BMG</h2>
+                    <h3 style="line-height: 4px">mais 4</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Client Service-->
+                <div class="brokenRow">
+                  <div class="thirdRow">
+                    <h2 style="line-height: 30px">Rafaela Corner</h2>
+                    <h3></h3>
+                  </div>
+                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <h2>Rafaella Garcia</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <h2>Ariane Herrero</h2>
+                    <h3>mais 3</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Project Management-->
+                <div class="rowFull"></div>
+      
+                <!--Strategy-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Vostok/Strategy"  id="content-func" class="thirdRow content-func"><div >
+                    <h2>Camila Trevisan</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                  <div class="thirdRow">
+                    <h2 style="line-height: 30px">Breno Azevedo</h2>
+                    <h3></h3>
+                  </div>
+                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Strategy"  id="content-func" class="thirdRow content-func"><div >
+                    <h2>Carolina Porcher</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Data Inteligence-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Vostok/Data Intelligence"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Fernando</h2>
+                    <h2 style="line-height: 6px">Ebeling</h2>
+                    <h3 style="line-height: 2px">mais 2</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Data Intelligence"  id="content-func" class="twoThirdRow content-func"><div >
+                    <h2>Gabriele Possebon</h2>
+                    <h3>mais 3</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Technology-->
+                <div class="brokenRow">
+                  <div class="thirdRow">
+                    <h2 style="line-height: 30px">Riciel de Melo</h2>
+                    <h3></h3>
+                  </div>
+                  <div class="twoThirdRow">
+                    <h2 style="line-height: 30px">Vinicius Benedito</h2>
+                    <h3></h3>
+                  </div>
+                </div>
+      
+                <!--Experience Design-->
+                <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Experience Design"  id="content-func" class="rowFull content-func"><div >
+                  <h2>Giuliana Galvão</h2>
+                  <h3>mais 1</h3>
+                </div></button></a>
+      
+                <!--Creativity-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Vostok/Creativity"  id="content-func" class="thirdRow content-func"><div>
+                    <h2>Lucas Blanco</h2>
+                    <h3>mais 8</h3>
+                  </div></button></a>
+                  <div class="thirdRow"></div>
+                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Creativity"  id="content-func" class="thirdRow content-func"><div>
+                    <h2>Joviano Quatrin</h2>
+                    <h3>mais 10</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Media-->
+                <div class="rowFull"></div>
+      
+                <!--Production-->
+                <div class="rowFull"></div>
+      
+                <!--Content-->
+                <div class="brokenRow">
+                  <div class="thirdRow"></div>
+                  <div class="thirdRow"></div>
+                  <div class="thirdRow">
+                    <h2 style="line-height: 30px">Claudia Mayara</h2>
+                  </div>
+                </div>
+      
+                <!--Operation-->
+                <div class="rowFull"></div>
+      
+                <!--Agile Master-->
+                <div class="rowFull"></div>
+              </div>
+      
+              <!--TERCEIRA COLUNA-->
+      
+              <!--Tribe-->
+              <div class="column">
+                <a href="#modal-tribo" id="info-claudia" value="Claudia Gonçalves"><button value="Claudia Gonçalves" class="rowFull" id="title"><div >
+                  <h2>Claudia Gonçalves</h2>
+                  <h3>Key Account Director</h3>
+                </div></button></a>
+                <!-- Heads -->
+                <div class="brokenRow">
+                  <div class="rowHeadHalf">
+                    <div class="text">
+                      <h2>Magali Moraes</h2>
+                      <h3>Creative Head</h3>
+                    </div>
+                  </div>
+                  <div class="rowHeadHalf">
+                    <div class="text">
+                      <h2>Luana Mello</h2>
+                      <h3>Head of Client Service</h3>
+                    </div>
+                  </div>
+                </div>
+                <!-- Squads -->
+                <div class="brokenRow">
+                  <div class="squadRow">Squad Columbia</div>
+                  <div class="squadRow">Squad Laika</div>
+                  <div class="squadRow">Squad Supernova</div>
+                </div>
+      
+                <!--Clientes-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Columbia/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Fundacred</h2>
+                    <h2 style="line-height: 6px">Previsul</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Governo RS</h2>
+                    <h2 style="line-height: 6px">Corsan</h2>
+                    <h3 style="line-height: 4px">mais 2</h3>
+                  </div></button></a>
+                  <div class="thirdRow">
+                    <h2 style="line-height: 12px">Abradif</h2>
+                    <h2 style="line-height: 0px">Oi</h2>
+                  </div>
+                </div>
+      
+                <!--Client Service-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Columbia/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 4px">Graziela</h2>
+                    <h2 style="line-height: opx">Shardelotto</h2>
+                    <h3 style="line-height: 0px">mais 1</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <h2>Sandra Calçada</h2>
+                    <h3>mais 3</h3>
+                  </div></button></a>
+                  <div class="thirdRow">
+                    <h2 style="line-height: 30px">Caroline Felipetto</h2>
+                    <h3></h3>
+                  </div>
+                </div>
+      
+                <!--Project Management-->
+                <div class="rowFull"></div>
+      
+                <!--Strategy-->
+                <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Strategy" id="content-func" class="rowFull content-func"><div >
+                  <h2 style="line-height: 15px">Christiaan Van Hattem</h2>
+                  <h3>mais 1</h3>
+                </div></button></a>
+      
+                <!--Data Inteligence-->
+                <div class="rowFull"></div>
+      
+                <!--Technology-->
+                <div class="rowFull"></div>
+      
+                <!--Experience Design-->
+                <div class="rowFull"></div>
+      
+                <!--Creativity-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Columbia/Creativity" id="content-func" class="thirdRow content-func"><div >
+                    <h2>Cecília Marques</h2>
+                    <h3>mais 3</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Creativity" id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Matheus</h2>
+                    <h2 style="line-height: 6px">Carvalho</h2>
+                    <h3 style="line-height: 0px">mais 4</h3>
+                  </div></button></a>
+                  <div class="thirdRow">
+                    <h2 style="line-height: 15px">Eduarda Figueiredo</h2>
+                    <h3></h3>
+                  </div>
+                </div>
+      
+                <!--Media-->
+                <div class="brokenRow">
+                  <div class="thirdRow"></div>
+                  <div class="thirdRow"></div>
+                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/SuperNova/Media" id="content-func" class="thirdRow content-func"><div >
+                    <h2>Karina Garcia</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Production-->
+                <div class="rowFull">
+                  <h2 style="line-height: 30px">Ramine Baigorra</h2>
+                </div>
+      
+                <!--Content-->
+                <div class="rowFull"></div>
+      
+                <!--Operation-->
+                <div class="rowFull"></div>
+      
+                <!--Agile Master-->
+                <div class="rowFull">
+                  <h2 style="line-height: 30px">Tomaz Macedo</h2>
+                </div>
+              </div>
+      
+              <!--QUARTA COLUNA-->
+              <div class="column">
+                <a href="#modal-tribo" id="info"><button value="Ricardo Almeida" class="rowFull" id="title"><div >
+                  <h2>Ricardo Almeida</h2>
+                  <h3>Key Account Director</h3>
+                </div></button></a>
+                <!-- Heads -->
+                <div class="brokenRow">
+                  <div class="rowHeadHalf">
+                    <div class="text">
+                      <h2>Cintia Galvan</h2>
+                      <h3>Head of Client Service</h3>
+                    </div>
+                  </div>
+                  <div class="rowHeadHalf">
+                    <div class="text">
+                      <h2>Rodrigo Telles</h2>
+                      <h3>Creative Head</h3>
+                    </div>
+                  </div>
+                </div>
+                <!-- Squads -->
+                <div class="brokenRow">
+                  <div class="squadRow">Squad Sirius</div>
+                  <div class="squadRow">Squad Gaia</div>
+                  <div class="squadRow">Squad Apolo</div>
+                </div>
+      
+                <!--Clientes-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Tecnisa</h2>
+                    <h2 style="line-height: 6px">Unipar</h2>
+                    <h3 style="line-height: 4px">mais 3</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Ciser</h2>
+                    <h2 style="line-height: 6px">Embraco</h2>
+                    <h3 style="line-height: 4px">mais 4</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 6px">Ailos</h2>
+                    <h2 style="line-height: 6px">Viacredi</h2>
+                    <h3 style="line-height: 4px">mais 2</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Client Service-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 12px">Juliana Magalhães</h2>
+                    <h3 style="line-height: 0px">mais 2</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <h2 style="line-height: 12px">Tamara Gonçalves</h2>
+                    <h3 style="line-height: 0px">mais 4</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <h2>Aline Duarte</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Project Management-->
+                <div class="rowFull"></div>
+      
+                <!--Strategy-->
+                <div class="rowFull">
+                  <h2 style="line-height: 26px">Nathalia Andrade</h2>
+                </div>
+      
+                <!--Data Inteligence-->
+                <div class="rowFull"></div>
+      
+                <!--Technology-->
+                <div class="brokenRow">
+                    
+                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Technology"  id="content-func" class="thirdRow content-func"><div >
+                    <h2>Rodolfo Zattar</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Technology"  id="content-func" class="twoThirdRow content-func"><div >
+                    <h2>Gustavo Merling</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Experience Design-->
+                <div class="rowFull">
+                  <h2 style="line-height: 30px">André Lázaro</h2>
+                  <h3></h3>
+                </div>
+      
+                <!--Creativity-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Creativity" id="content-func" class="thirdRow content-func"><div >
+                    <h2>Thâmara Ribeiro</h2>
+                    <h3>mais 2</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Creativity" id="content-func" class="thirdRow content-func"><div >
+                    <h2>Edson Hayashi</h2>
+                    <h3>mais 9</h3>
+                  </div></button></a>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Creativity" id="content-func" class="thirdRow content-func"><div >
+                    <h2>César Favero</h2>
+                    <h3>mais 2</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Media-->
+                <div class="brokenRow">
+                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Media" id="content-func" class="thirdRow content-func"><div >
+                    <h2>César de Brito</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                  <div class="thirdRow">
+                    <h2 style="line-height: 30px">Larissa Niehues</h2>
+                    <h3></h3>
+                  </div>
+                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Media" id="content-func" class="thirdRow content-func"><div >
+                    <h2>Rafael Castro</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                </div>
+      
+                <!--Production-->
+                <div class="rowFull"></div>
+      
+                <!--Content-->
+                <div class="rowFull"></div>
+      
+                <!--Operation-->
+                <div class="rowFull"></div>
+      
+                <!--Agile Master-->
+                <div class="rowFull"></div>
+              </div>
+      
+              <!--QUARTA COLUNA-->
+              <div class="column">
+                <a href="#modal-tribo" id="info"><button value="Eliel Allebrandt" class="rowFull" id="title"><div >
+                  <h2>Eliel Allebrandt</h2>
+                  <h3>Key Account Director</h3>
+                </div></button></a>
+      
+                <!-- Heads -->
+                <div style="display: block" class="brokenRow">
+                  <div class="brokenRow">
+                    <div style="height: 36px; margin-bottom: 4px" class="thirdRow">
+                      <h2 style="line-height: 6px">Alex Coelho</h2>
+                      <h3 style="line-height: 0px">Head of Creativity</h3>
+                    </div>
+                    <div style="height: 36px; margin-bottom: 4px" class="thirdRow">
+                      <h2 style="line-height: 6px">Daniel Gizo</h2>
+                      <h3 style="line-height: 0px">Head of Strategy</h3>
+                    </div>
+                    <div style="height: 36px; margin-bottom: 4px" class="thirdRow">
+                      <h2 style="line-height: 6px">Luiz Paulo</h2>
+                      <h3 style="line-height: 0px">Head of Operation</h3>
+                    </div>
+                  </div>
+                  <div class="brokenRow">
+                    <div
+                      style="height: 37px; max-width: 226, 67px"
+                      class="rowHeadHalf"
+                    >
+                      <h2 style="line-height: 6px">Tatiana Lobão</h2>
+                      <h3 style="line-height: 0px">Head of Data Intelligence</h3>
+                    </div>
+                    <div style="height: 37px" class="rowHeadHalf">
+                      <h2 style="line-height: 6px">Thiago Furtado</h2>
+                      <h3 style="line-height: 0px">Head of Client Service</h3>
+                    </div>
+                  </div>
+                </div>
+      
+                <!-- Squads -->
+                <div class="brokenRow">
+                  <div style="min-width: 346px" class="squadRow">Squad Jupiter</div>
+                </div>
+      
+                <!--Clientes-->
+                <div class="rowFull">
+                  <h2 style="line-height: 26px">Banco do Brasil</h2>
+                </div>
+      
+                <!--Client Service-->
+                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Client Service"  id="content-func" class="rowFull content-func"><div >
+                  <h2 style="line-height: 15px">Francisco Gill</h2>
+                  <h3>mais 5</h3>
+                </div></button></a>
+      
+                <!--Project Management-->
+                <div class="rowFull">
+                  <h2 style="line-height: 15px">Felipe Canto</h2>
+                  <h3>mais 1</h3>
+                </div>
+      
+                <!--Strategy-->
+                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Strategy" id="content-func" class="rowFull content-func"><div >
+                  <h2 style="line-height: 15px">Maria Thais Brussi</h2>
+                  <h3>mais 2</h3>
+                </div></button></a>
+      
+                <!--Data Inteligence-->
+                <div class="rowFull">
+                  <h2 style="line-height: 26px">Marcos Cunha</h2>
+                </div>
+      
+                <!--Technology-->
+                <div class="rowFull"></div>
+      
+                <!--Experience Design-->
+                <div class="rowFull">
+                  <h2 style="line-height: 26px">Marcelo Morales Arevalos</h2>
+                  <h3></h3>
+                </div>
+      
+                <!--Creativity-->
+                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Creativity" id="content-func" class="rowFull content-func"><div >
+                  <h2 style="line-height: 15px">Jefferson Damasceno</h2>
+                  <h3>mais 9</h3>
+                </div></button></a>
+      
+                <!--Media-->
+                <div class="rowFull"></div>
+      
+                <!--Production-->
+                <div class="rowFull"></div>
+      
+                <!--Content-->
+                <div class="rowFull">
+                  <h2 style="line-height: 26px">Soraya Coelho</h2>
+                  <h3></h3>
+                </div>
+      
+                <!--Operation-->
+                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Operation" id="content-func" class="rowFull content-func"><div >
+                  <h2>João Lucas</h2>
+                  <h3>mais 1</h3>
+                </div></button></a>
+      
+                <!--Agile Master-->
+                <div class="rowFull">
+                  <h2 style="line-height: 26px">Clayton Paiva</h2>
+                </div>
+              </div>
+      
+              <!--QUINTA COLUNA-->
+              <div class="column">
+                <a href="#modal-tribo" id="info"><button value="Ernane Pinheiro" class="rowFull" id="title"><div >
+                  <h2>Ernane Pinheiro</h2>
+                  <h3>Key Account Director</h3>
+                </div></button></a>
+                <div
+                  style="margin-bottom: 7px; min-height: 81px"
+                  class="rowHeadThird"
+                ></div>
+                <div style="margin-bottom: 9px" class="squadRow">
+                  <h2>Squad</h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2>AES</h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <a href="#modal-funcionarios" id="info"><button value="Ernane Pinheiro/Squad/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
+                    <h2>Felipe Ferazzi</h2>
+                    <h3>mais 1</h3>
+                  </div></button></a>
+                <a href="#modal-funcionarios" id="info"><button value="Ernane Pinheiro/Squad/Technology"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Davi Bauer</h2>
+                  <h3>mais 2</h3>
+                </div></button></a>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+              </div>
+      
+              <!--SEXTA COLUNA-->
+              <div class="column">
+                <a href="#modal-tribo" id="info"><button value="" class="rowFull" id="title"><div >
+                  <h2>Pool</h2>
+                  <h3></h3>
+                </div></button></a>
+                <div
+                  style="margin-bottom: 7px; min-height: 81px"
+                  class="rowHeadThird"
+                ></div>
+                <div style="margin-bottom: 9px" class="squadRow">
+                  <h2>Pool</h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2>Floripa Airport</h2>
+                  <h3></h3>
+                </div>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <a href="#modal-funcionarios" id="info"><button value="/Pool/Project Management"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Fabiana Albuquerque</h2>
+                  <h3>mais 3</h3>
+                </div></button></a>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <a href="#modal-funcionarios" id="info"><button value="/Pool/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Aletha da Silva</h2>
+                  <h3>mais 8</h3>
+                </div></button></a>
+                <a href="#modal-funcionarios" id="info"><button value="/Pool/Technology"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Alexandre Veeck</h2>
+                  <h3>mais 10</h3>
+                </div></button></a>
+                <a href="#modal-funcionarios" id="info"><button value="/Pool/Experience Design"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Pablo Jaeger</h2>
+                  <h3>mais 2</h3>
+                </div></button></a>
+                <div class="lastRows">
+                  <h2>Wagner Gomes</h2>
+                  <h3></h3>
+                </div>
+                <a href="#modal-funcionarios" id="info"><button value="/Pool/Media"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Aline Feijó</h2>
+                  <h3>mais 2</h3>
+                </div></button></a>
+                <a href="#modal-funcionarios" id="info"><button value="/Pool/Production"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Bernardo Silva</h2>
+                  <h3>mais 1</h3>
+                </div></button></a>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+                <a href="#modal-funcionarios" id="info"><button value="/Pool/Operation"  id="content-func" class="lastRows content-func"><div >
+                  <h2>Janaina Spohr</h2>
+                  <h3>mais 1</h3>
+                </div></button></a>
+                <div class="lastRows">
+                  <h2></h2>
+                  <h3></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Modais-->
+          <div id="modal-tribo" class="modal">
+            <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
+            <div class="modal-header">
+                <span id="title-modal">Chapter aq</span><br/>
+                <span id="sub-title-modal">Chapter</span>
+
+            </div>
+            
+        
+
+            <div  class="content-result">
+                <div id="nome-result-tribo">
+                  
+                    <p></p>
+                </div>
+                
+                <div id="chapter-result-tribo">
+                    <p></p>
+                </div>
+            </div>
+         
+        </div>
+        <div id="modal-funcionarios" class="modal">
+            <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
+            <div class="modal-header">
+                <span id="title-modal">Chapter aq</span><br/>
+                <span id="sub-title-modal">Chapter</span>
+            </div>
+            <div  class="content-result">
+                <div id="nome-result-funcionarios">
+                    <p></p>
+                </div>
+                
+                <div id="chapter-result-funcionarios">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        
+        
+
+    </body>
+</html>
