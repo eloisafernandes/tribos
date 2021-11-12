@@ -30,8 +30,6 @@ h3 {
 /* DIV QUE ENGLOBA A TABLE */
 .wrapper {
   background-color: #f5f5f5;
-  justify-content: center;
-  align-self: center;
   height: fit-content;
   width: 1120px;
   display: flex;
@@ -43,7 +41,8 @@ h3 {
 .wrapper .column {
   display: block;
   margin-left: 4px;
-  max-width: fit-content
+  max-width: fit-content;
+  justify-content: space-around;
 }
 
 /* LINHAS FULL SIZE | 342x50 px */
@@ -228,7 +227,7 @@ h3 {
 /*ROW DE 1 TERÇO DA LARGURA */
 .thirdRow {
   padding:0px;
-  min-width: 111.33px;
+  min-width: 109.33px;
   height: 50px;
   background-color: white;
   border: 1px solid #e2e2e2;
@@ -340,259 +339,7 @@ h3 {
   border: 1px solid #e2e2e2;
 }
 
-
-            h1{
-                font-size:40px;
-            }
-            .align-select{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-               
-            }
-            
-            .modal {
-                position: fixed;
-                top: 10%;
-                right: 60%;
-                bottom: 20%;
-                left: 30%;
-                display: block;
-                font-family: Arial, Helvetica, sans-serif;
-                background: rgba(255, 254, 254, 0.993);
-                z-index: 99999;
-                opacity:0;
-                -webkit-transition: opacity 400ms ease-in;
-                -moz-transition: opacity 400ms ease-in;
-                transition: opacity 400ms ease-in;
-                pointer-events: none;
-            }
-            .modal:target {
-                opacity: 1;
-                pointer-events: auto;
-                
-            }
-            .modal > div {
-                width: 400px;
-                position: relative;
-                margin: 2% auto;
-                padding: 5px 20px;
-                background: #fff;
-            }
-            .modal-header{
-                width: 91% !important;
-                background: #E32328 !important;
-                padding: 32px 32px;
-               
-         
-
-            }
-            #fechar{
-                position: absolute;
-                bottom: 10px;
-                right: 5px;
-                text-align: center;
-                line-height: 30px;
-                margin-top: 5px;
-                background: #ffffff;
-                border: 1px solid #E2E2E2;
-                border-radius: 10px;
-                font-size: 16px;
-                color: black;
-                font-size: 14px;
-                font-weight: 800;
-                padding: 5px 30px;
-
-            }
-            
-            #title-modal{
-                font-family: Montserrat;
-                font-size: 28px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 28px;
-                letter-spacing: -0.02em;
-                text-align: left;
-                color: #ffffff;
-
-            }
-            .content-result{
-                width: 90% !important;
-                margin-top: 10px;
-                display: flex;
-                
-                margin: 10px auto;
-                padding: 30px 0px 0px 0px;
-                background-color: #ffffff;
-                justify-content: space-evenly;
-                border: 1px solid #E2E2E2;
-                border-radius: 10px;
-                height: 220px;
-                overflow-y: auto;
-              
-                
-            }
-            
-            #sub-title-modal{
-                font-family: Montserrat;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 20px;
-                letter-spacing: 0px;
-                text-align: left;
-                color: #ffffff;
-
-            }
-            .div-select {    
-                width:282px;  /* Tamanho final do select */    
-                overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
-            .div-select select {      
-                /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
-                /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
-                /* background-position: 200px center;  Posição da imagem do background */
-                width: 240px; 
-                height:48px; 
-                font-family:Arial, Helvetica, sans-serif; 
-                font-size:14px; 
-                padding:13px 20px 13px 12px; 
-                color:#8F8F8F; 
-                border-radius: 10px; 
-                border-color: #E2E2E2;   
-                text-indent: 0.01px; 
-                text-overflow: "";  }
-            .div-select select option{
-                font-size: 14px;
-                border-color: #E2E2E2;   
-            }
-            #tribo-result{
-                color: #808080;
-            }
-            
-            .button-tribo{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 110px;
-                font-size: 14px;
-                padding: 12px;
-                border-bottom: 1px solid #e6e6e6;
-                border-top: 1px solid #e6e6e6;
-                border-right: 1px solid #e6e6e6;
-                border-left: 1px solid #e6e6e6;
-                border-radius: 10px;
-                border-color: #E2E2E2;
-                box-shadow: none;
-                outline: none;
-                cursor: pointer;
-            }
-            .button-tribo:focus{
-                outline:0;
-            }
-            @media only screen and (max-width: 1024px) {
-              
-              .content-result >  div > p{
-                font-size: 10px;
-             
-              }
-              .align-select{
-                display: block;
-                align-items: center;
-                justify-content: space-between;
-              }
-              .div-select {    
-                /* width: 80%;  Tamanho final do select     */
-                overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
-              .div-select select {      
-                  /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
-                  /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
-                  /* background-position: 200px center;  Posição da imagem do background */
-                  margin-top: 5px;
-                  width: 100%; 
-                  height:48px; 
-                  font-family:Arial, Helvetica, sans-serif; 
-                  font-size:14px; 
-                  padding:13px 20px 13px 12px; 
-                  color:#8F8F8F; 
-                  border-radius: 10px; 
-                  border-color: #E2E2E2;   
-                  text-indent: 0.01px; 
-                  text-overflow: "";  
-              }
-              .div-select select option{
-                  
-                  font-size: 12px;
-                  border-color: #E2E2E2;   
-              }
-              .button-tribo{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 80%;
-                margin-top: 5px;
-                font-size: 14px;
-                padding: 12px;
-                border-bottom: 1px solid #e6e6e6;
-                border-top: 1px solid #e6e6e6;
-                border-right: 1px solid #e6e6e6;
-                border-left: 1px solid #e6e6e6;
-                border-radius: 10px;
-                border-color: #E2E2E2;
-                box-shadow: none;
-                outline: none;
-                cursor: pointer;
-                
-            }
-            .button-tribo>img{
-                  padding: 0px 30px 0px 0px;
-                  
-            }
-            .modal {
-                position: fixed;
-                top: 5%;
-                right: 0%;
-                bottom: 0%;
-                left: 0%;
-                width: 26%;
-                height: 400px;
-                display: block;
-                
-                font-family: Arial, Helvetica, sans-serif;
-                background: rgba(255, 254, 254, 0.993);
-                z-index: 99999;
-                opacity:0;
-                -webkit-transition: opacity 400ms ease-in;
-                -moz-transition: opacity 400ms ease-in;
-                transition: opacity 400ms ease-in;
-                pointer-events: none;
-            }
-            .modal > div {
-                width: 70% !important;
-                position: relative;
-                margin: 5% auto;
-                padding: 5px 30px;
-                background: #fff;
-            }
-            #fechar{
-                position: absolute;
-                bottom: 10px;
-                right: 5px;
-                text-align: center;
-                line-height: 30px;
-                margin-top: 30px;
-                background: #ffffff;
-                border: 1px solid #E2E2E2;
-                border-radius: 10px;
-                font-size: 16px;
-                color: black;
-                font-size: 14px;
-                font-weight: 800;
-                padding: 5px 30px;
-
-            }
-           
-           
-           
-            
-
-            }
+a {
+  text-decoration: none;
+  color: inherit;
+}
