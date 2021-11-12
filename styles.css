@@ -295,6 +295,10 @@ h3 {
   border: 1px solid #e2e2e2;
   border-radius: 5px;
   text-align: center;
+  transition: 0.3s;
+}
+.lastRows:hover {
+  border-color:rgb(255, 71, 71);
 }
 .modalContainer.hidden {
   display: none;
