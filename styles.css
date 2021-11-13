@@ -89,6 +89,7 @@ h3 {
 
 /* CÉLULAS DA LINHA DE HEADS COM 1/3 e 1/2 DA LARGURA FULL */
 .wrapper .rowHeadThird {
+  position: relative;
   text-align: center;
   background-color: white;
   min-width: 111.13px;
@@ -98,11 +99,6 @@ h3 {
   border: 1px solid #e2e2e2;
   border-radius: 5px;
   transition: 0.3s;
-}
-
-.wrapper .rowHeadThird .text {
-  
-  margin: auto;
 }
 
 .wrapper .rowHeadThird:hover {
@@ -123,7 +119,7 @@ h3 {
   text-align: center;
   transition: 0.3s;
 }
-.rowHeadHalf .text {
+.text {
   position: absolute;
   top: 15px;
   bottom: 0;
