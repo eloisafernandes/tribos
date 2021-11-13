@@ -14,18 +14,18 @@
         />
         <title>Brivia | Tribos e Squads</title>
         <style>
-            h1{
-                font-size:40px;
-            }
+            
             .align-select{
+            
+              margin-top: 20px;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-               
+                justify-content: center;
             }
             
             .modal {
                 position: fixed;
+                
                 top: 10%;
                 right: 60%;
                 bottom: 20%;
@@ -46,16 +46,19 @@
                 
             }
             .modal > div {
-                width: 400px;
+              
+                width: 420px;
                 position: relative;
-                margin: 2% auto;
-                padding: 5px 20px;
+                /* margin: 2% auto; */
+                /* padding: 30px 20px; */
                 background: #fff;
             }
             .modal-header{
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
                 width: 91% !important;
                 background: #E32328 !important;
-                padding: 32px 32px;
+                padding: 30px 32px;
                
          
 
@@ -66,7 +69,7 @@
                 right: 5px;
                 text-align: center;
                 line-height: 30px;
-                margin-top: 5px;
+                margin-top: 0px;
                 background: #ffffff;
                 border: 1px solid #E2E2E2;
                 border-radius: 10px;
@@ -78,7 +81,7 @@
 
             }
             
-            #title-modal{
+            #title-modal, #title-modal-tribo, #title-modal-funcionaros{
                 font-family: Montserrat;
                 font-size: 28px;
                 font-style: normal;
@@ -93,11 +96,10 @@
                 width: 90% !important;
                 margin-top: 10px;
                 display: flex;
-                
                 margin: 10px auto;
-                padding: 30px 0px 0px 0px;
+                
                 background-color: #ffffff;
-                justify-content: space-evenly;
+                justify-content: space-between;
                 border: 1px solid #E2E2E2;
                 border-radius: 10px;
                 height: 220px;
@@ -106,11 +108,12 @@
                 
             }
             
-            #sub-title-modal{
-                font-family: Montserrat;
+            #sub-title-modal, #sub-title-modal-tribo, #sub-title-modal-funcionarios{
+                font-family: Arial, Helvetica, sans-serif;
                 font-size: 16px;
+                
                 font-style: normal;
-                font-weight: 400;
+                font-weight: 300;
                 line-height: 20px;
                 letter-spacing: 0px;
                 text-align: left;
@@ -118,16 +121,20 @@
 
             }
             .div-select {    
-                width:282px;  /* Tamanho final do select */    
+                width:304px;/* Tamanho final do select */  
+                margin: 5px;
+               
+           
                 overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
             .div-select select {      
                 /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
                 /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
                 /* background-position: 200px center;  Posição da imagem do background */
-                width: 240px; 
+                width: 304px; 
                 height:48px; 
                 font-family:Arial, Helvetica, sans-serif; 
                 font-size:14px; 
+                background-color: white;
                 padding:13px 20px 13px 12px; 
                 color:#8F8F8F; 
                 border-radius: 10px; 
@@ -138,6 +145,27 @@
                 font-size: 14px;
                 border-color: #E2E2E2;   
             }
+            #nome-result, #nome-result-tribo, #nome-result-funcionarios{
+              font-size: 14px !important;
+              font-weight: bold;
+              padding-left: 20px;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            #tribo-result {
+              font-size: 14px;
+              color: #808080;
+              font-weight: 400;
+              font-family: Arial, Helvetica, sans-serif;
+
+            }
+            #chapter-result, #chapter-result-tribo, #chapter-result-funcionarios{
+              font-size: 14px;
+              padding-right: 20px;
+              color: black;
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+
+            }
             #tribo-result{
                 color: #808080;
             }
@@ -146,9 +174,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                width: 110px;
+                width: 200px;
                 font-size: 14px;
                 padding: 12px;
+                margin: 0px 5px;
                 border-bottom: 1px solid #e6e6e6;
                 border-top: 1px solid #e6e6e6;
                 border-right: 1px solid #e6e6e6;
@@ -182,6 +211,7 @@
                   /* background-position: 200px center;  Posição da imagem do background */
                   margin-top: 5px;
                   width: 100%; 
+                  background-color: white;
                   height:48px; 
                   font-family:Arial, Helvetica, sans-serif; 
                   font-size:14px; 
@@ -193,7 +223,6 @@
                   text-overflow: "";  
               }
               .div-select select option{
-                  
                   font-size: 12px;
                   border-color: #E2E2E2;   
               }
@@ -201,10 +230,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 80%;
                 margin-top: 5px;
                 font-size: 14px;
-                padding: 12px;
+                padding: 0px 150px;
                 border-bottom: 1px solid #e6e6e6;
                 border-top: 1px solid #e6e6e6;
                 border-right: 1px solid #e6e6e6;
@@ -222,14 +250,13 @@
             }
             .modal {
                 position: fixed;
-                top: 5%;
+                top: 8%;
                 right: 0%;
                 bottom: 0%;
                 left: 0%;
                 width: 26%;
-                height: 400px;
+                height: 420px;
                 display: block;
-                
                 font-family: Arial, Helvetica, sans-serif;
                 background: rgba(255, 254, 254, 0.993);
                 z-index: 99999;
@@ -240,19 +267,38 @@
                 pointer-events: none;
             }
             .modal > div {
-                width: 70% !important;
+                width: 90% !important;
                 position: relative;
-                margin: 5% auto;
-                padding: 5px 30px;
+                /* margin: 5% auto;
+                padding: 5px 30px; */
                 background: #fff;
+            }
+            .modal-header{
+              width: 100%;
+              border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+            #nome-result{
+              font-size: 13px !important;
+              font-weight: bold;
+              padding-left: 2px !important;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            #tribo-result{
+              font-size: 14px;
+              color: #808080;
+              font-weight: 300;
+              padding-right: 2px !important;
+              font-family: Arial, Helvetica, sans-serif;
+
             }
             #fechar{
                 position: absolute;
                 bottom: 10px;
-                right: 5px;
+                right: 30px;
                 text-align: center;
                 line-height: 30px;
-                margin-top: 30px;
+                margin-top: 50px;
                 background: #ffffff;
                 border: 1px solid #E2E2E2;
                 border-radius: 10px;
@@ -281,7 +327,10 @@
            
             
             $(function(){
-              
+              $( "#target" ).click(function() {
+                  alert( "Handler for .click() called." );
+                });
+                      
                 $('.fechar').click(function(){
                     document.getElementById('nome-result-tribo').innerHTML = "";
                     document.getElementById('chapter-result-tribo').innerHTML = "";
@@ -292,12 +341,11 @@
                     document.getElementById('chapter-result-funcionarios').innerHTML = "";
 
                 });
-                $('.rowFull').click(function(){
-                    var valor = $(this).val();
-                    var test2 = document.getElementById('info-claudia').getAttribute("value");
-                    var info = valor;
-
-                    console.log(info);
+                $('.info-tribo').click(function(){
+                    var info = $(this).attr("value");
+                    var primeiro = info.split(' ');
+                    let oi = document.getElementById("title-modal-tribo").innerHTML = 'Tribo '+primeiro[0];
+                   
                     var data =
                         [ 
                         {name: 'Carrefour Atacadão', tribo: 'Lilian Chwartzmann',squad:'Vostok',chapter:'Clientes'},
@@ -600,7 +648,7 @@
 
                 });
                 $('.content-func').click(function(){
-                    var valor = $(this).val();
+                    var valor = $(this).attr("value");
                     var fat = valor.split('/');
                     
 
@@ -889,9 +937,15 @@
                     ];
                     var result = '';
                     var result = data.filter((funcionario) => {
-                        return funcionario.tribo === fat[0] & funcionario.squad === fat[1] & funcionario.chapter === fat[2];
+                        return funcionario.squad === fat[1] & funcionario.chapter === fat[2];
                     });
+                    let tribo = result[0]['tribo'].split(" ");
+                    let str = "Tribo "+tribo[0];
+                    let str2 = "Squad "+fat[1];
                     
+                    let exibir = str+" / "+str2;
+                    document.getElementById('title-modal-funcionaros').innerHTML = fat[2];
+                    document.getElementById('sub-title-modal-funcionarios').innerHTML = exibir;
                     
                     let lista = document.getElementById('nome-result-funcionarios');
                     for(var i = 0; i < result.length; i++){
@@ -908,12 +962,16 @@
 
 
                 });
-
+               
                 $('#buscar').click(function(){
                     var tribo = $('#sel_tribo').val();
                     var squad = $('#sel_squad').val();
-                    var chapter = $('#sel_chapter').val();
                     
+                    var chapter = $('#sel_chapter').val();
+                    // let exibirtribo = document.getElementById("title-modal-tribo").innerHTML = chapter;
+                    let oi = document.getElementById("title-modal").innerHTML = chapter;
+                    
+
                     var data =
                         [ 
                         {name: 'Carrefour Atacadão', tribo: 'Lilian Chwartzmann',squad:'Vostok',chapter:'Clientes'},
@@ -1198,7 +1256,7 @@
                         
                     ];
                     var result = data.filter((funcionario) => {
-                        return funcionario.tribo === tribo & funcionario.squad === squad & funcionario.chapter === chapter;
+                        return  funcionario.chapter === chapter;
                     })
                     
                     let lista = document.getElementById('nome-result');
@@ -1209,8 +1267,12 @@
                     }
                     let lista2 = document.getElementById('tribo-result');
                     for(var i = 0; i < result.length; i++){
+                        let atual = result[i]['tribo'];
+                        let valor = atual.split(" ");
+                        console.log(valor);
+                        let exibir = 'Tribo '+valor[0];
                         let item2 = document.createElement('p');
-                        item2.appendChild(document.createTextNode(result[i]['tribo']));
+                        item2.appendChild(document.createTextNode(exibir));
                         lista2.appendChild(item2);
                     }
                     let lista3 = document.getElementById('chapter-result');
@@ -1232,10 +1294,12 @@
 
     </header>
     <body>
-        <h1>Oiii</h1>
+        
         <div class="align-select">
             <div class="div-select">
-                <select  name="Tribo" id="sel_tribo">
+              
+                <select  name="Tribo" id="sel_tribo" >
+                    <option disabled selected style="display: none">Tribo</option>
                     <option value="Lilian Chwartzmann">Lilian Chwartzmann</option>
                     <option value="Claudia Gonçalves">Claudia Gonçalves</option>
                     <option value="Ricardo Almeida">Ricardo Almeida</option>
@@ -1246,6 +1310,7 @@
             </div>
             <div class="div-select">
                 <select name="Squard" id="sel_squad">
+                    <option disabled selected style="display: none">Squad</option>
                     <option value="Vostok">Vostok</option>
                     <option value="Discovery">Discovery</option>
                     <option value="Andromeda">Andromeda</option>
@@ -1262,8 +1327,9 @@
             </div>
             <div class="div-select">
                 <select name="Chapter" id="sel_chapter">
+                    <option disabled selected style="display: none">Chapter</option>
                     <option value="Clientes">Cliente</option>
-                    <option value="Client Service" selected>Client Service</option>
+                    <option value="Client Service">Client Service</option>
                     <option value="Project Magnecgt">Project Magnecgt</option>
                     <option value="Strategy">Strategy</option>
                     <option value="Data Intelligence">Data Intelligence</option>
@@ -1284,14 +1350,14 @@
 
             </div>
             <div>
-                <a id="buscar" style="text-decoration: none;"><button class="button-tribo"><img src="clear.png" alt=""> Limpar</button></a>
+                <a id="limpar" style="text-decoration: none;" ><button class="button-tribo"><img src="clear.png" alt="">Limpar</button></a>
             </div>
 
         </div>
         <div id="abrirModal" class="modal">
             <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
             <div class="modal-header">
-                <span id="title-modal">Chapter aq</span><br/>
+                <span id="title-modal">Undefined</span><br/>
                 <span id="sub-title-modal">Chapter</span>
 
             </div>
@@ -1376,7 +1442,7 @@
               <!-- SEGUNDA COLUNA -->
               <div class="column">
                 <!-- Tribe -->
-                <a href="#modal-tribo" id="info" value="Lilian Chwartzmann"><div value="Lilian Chwartzmann" class="rowFull"  id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value="Lilian Chwartzmann"><div value="Lilian Chwartzmann" class="rowFull"  id="title"><div>
                   <h2>Lilian Chwartzmann</h2> 
                   <h3>Key Account Director</h3>
                 </div></div></a>
@@ -1531,7 +1597,7 @@
       
               <!--Tribe-->
               <div class="column">
-                <a href="#modal-tribo" id="info-claudia" value="Claudia Gonçalves"><div value="Claudia Gonçalves" class="rowFull" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" id="info" value="Claudia Gonçalves"><div value="Claudia Gonçalves" class="rowFull"  id="title"><div>
                   <h2>Claudia Gonçalves</h2>
                   <h3>Key Account Director</h3>
                 </div></div></a>
@@ -1656,7 +1722,7 @@
       
               <!--QUARTA COLUNA-->
               <div class="column">
-                <a href="#modal-tribo" id="info"><div value="Ricardo Almeida" class="rowFull" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value="Ricardo Almeida"><div value="Ricardo Almeida" class="rowFull" id="title"><div >
                   <h2>Ricardo Almeida</h2>
                   <h3>Key Account Director</h3>
                 </div></div></a>
@@ -1794,7 +1860,7 @@
       
               <!--QUARTA COLUNA-->
               <div class="column">
-                <a href="#modal-tribo" id="info"><div value="Eliel Allebrandt" class="rowFull" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value="Eliel Allebrandt"><div value="Eliel Allebrandt" class="rowFull" id="title"><div >
                   <h2>Eliel Allebrandt</h2>
                   <h3>Key Account Director</h3>
                 </div></div></a>
@@ -1903,8 +1969,8 @@
               </div>
       
               <!--QUINTA COLUNA-->
-              <div style="width;" class="column">
-                <a href="#modal-tribo" id="info"><div value="Ernane Pinheiro" class="lastRows" id="title"><div >
+              <div  class="column">
+                <a href="#modal-tribo" class="info-tribo" value="Ernane Pinheiro"><div value="Ernane Pinheiro" class="lastRows" id="title"><div >
                   <h2>Ernane Pinheiro</h2>
                   <h3>Key Account Director</h3>
                 </div></div></a>
@@ -1972,7 +2038,7 @@
       
               <!--SEXTA COLUNA-->
               <div class="column">
-                <a href="#modal-tribo" id="info"><div value="" class="lastRows" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value=""><div value="" class="lastRows" id="title"><div >
                   <h2>Pool</h2>
                   <h3></h3>
                 </div></div></a>
@@ -2044,8 +2110,8 @@
           <div id="modal-tribo" class="modal">
             <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
             <div class="modal-header">
-                <span id="title-modal">Chapter aq</span><br/>
-                <span id="sub-title-modal">Chapter</span>
+                <span id="title-modal-tribo"></span><br/>
+                
 
             </div>
             
@@ -2066,8 +2132,8 @@
         <div id="modal-funcionarios" class="modal">
             <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
             <div class="modal-header">
-                <span id="title-modal">Chapter aq</span><br/>
-                <span id="sub-title-modal">Chapter</span>
+                <span id="title-modal-funcionaros">Chapter aq</span><br/>
+                <span id="sub-title-modal-funcionarios">Chapter</span>
             </div>
             <div  class="content-result">
                 <div id="nome-result-funcionarios">
@@ -2079,6 +2145,7 @@
                 </div>
             </div>
         </div>
+      
         
         
         <style>
