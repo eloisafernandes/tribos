@@ -14,24 +14,24 @@
         />
         <title>Brivia | Tribos e Squads</title>
         <style>
-            h1{
-                font-size:40px;
-            }
+            
             .align-select{
+            
+              margin-top: 20px;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-               
+                justify-content: center;
             }
             
             .modal {
                 position: fixed;
+                
                 top: 10%;
                 right: 60%;
                 bottom: 20%;
                 left: 30%;
                 display: block;
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: 'Montserrat', sans-serif;
                 background: rgba(255, 254, 254, 0.993);
                 z-index: 99999;
                 opacity:0;
@@ -46,16 +46,19 @@
                 
             }
             .modal > div {
-                width: 400px;
+              
+                width: 420px;
                 position: relative;
-                margin: 2% auto;
-                padding: 5px 20px;
+                /* margin: 2% auto; */
+                /* padding: 30px 20px; */
                 background: #fff;
             }
             .modal-header{
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
                 width: 91% !important;
                 background: #E32328 !important;
-                padding: 32px 32px;
+                padding: 30px 32px;
                
          
 
@@ -66,7 +69,7 @@
                 right: 5px;
                 text-align: center;
                 line-height: 30px;
-                margin-top: 5px;
+                margin-top: 0px;
                 background: #ffffff;
                 border: 1px solid #E2E2E2;
                 border-radius: 10px;
@@ -78,7 +81,7 @@
 
             }
             
-            #title-modal{
+            #title-modal, #title-modal-tribo, #title-modal-funcionaros{
                 font-family: Montserrat;
                 font-size: 28px;
                 font-style: normal;
@@ -93,11 +96,10 @@
                 width: 90% !important;
                 margin-top: 10px;
                 display: flex;
-                
                 margin: 10px auto;
-                padding: 30px 0px 0px 0px;
+                
                 background-color: #ffffff;
-                justify-content: space-evenly;
+                justify-content: space-between;
                 border: 1px solid #E2E2E2;
                 border-radius: 10px;
                 height: 220px;
@@ -106,11 +108,12 @@
                 
             }
             
-            #sub-title-modal{
-                font-family: Montserrat;
+            #sub-title-modal, #sub-title-modal-tribo, #sub-title-modal-funcionarios{
+                font-family: Arial, Helvetica, sans-serif;
                 font-size: 16px;
+                
                 font-style: normal;
-                font-weight: 400;
+                font-weight: 300;
                 line-height: 20px;
                 letter-spacing: 0px;
                 text-align: left;
@@ -118,16 +121,20 @@
 
             }
             .div-select {    
-                width:282px;  /* Tamanho final do select */    
+                width:304px;/* Tamanho final do select */  
+                margin: 5px;
+               
+           
                 overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
             .div-select select {      
                 /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
                 /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
                 /* background-position: 200px center;  Posição da imagem do background */
-                width: 240px; 
+                width: 304px; 
                 height:48px; 
                 font-family:Arial, Helvetica, sans-serif; 
                 font-size:14px; 
+                background-color: white;
                 padding:13px 20px 13px 12px; 
                 color:#8F8F8F; 
                 border-radius: 10px; 
@@ -138,6 +145,27 @@
                 font-size: 14px;
                 border-color: #E2E2E2;   
             }
+            #nome-result, #nome-result-tribo, #nome-result-funcionarios{
+              font-size: 14px !important;
+              font-weight: bold;
+              padding-left: 20px;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            #tribo-result {
+              font-size: 14px;
+              color: #808080;
+              font-weight: 400;
+              font-family: Arial, Helvetica, sans-serif;
+
+            }
+            #chapter-result, #chapter-result-tribo, #chapter-result-funcionarios{
+              font-size: 14px;
+              padding-right: 20px;
+              color: black;
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+
+            }
             #tribo-result{
                 color: #808080;
             }
@@ -146,9 +174,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                width: 110px;
+                width: 200px;
                 font-size: 14px;
                 padding: 12px;
+                margin: 0px 5px;
                 border-bottom: 1px solid #e6e6e6;
                 border-top: 1px solid #e6e6e6;
                 border-right: 1px solid #e6e6e6;
@@ -182,6 +211,7 @@
                   /* background-position: 200px center;  Posição da imagem do background */
                   margin-top: 5px;
                   width: 100%; 
+                  background-color: white;
                   height:48px; 
                   font-family:Arial, Helvetica, sans-serif; 
                   font-size:14px; 
@@ -194,7 +224,6 @@
               }
               
               .div-select select option{
-                  
                   font-size: 12px;
                   border-color: #E2E2E2;   
               }
@@ -202,10 +231,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 80%;
                 margin-top: 5px;
                 font-size: 14px;
-                padding: 12px;
+                padding: 0px 150px;
                 border-bottom: 1px solid #e6e6e6;
                 border-top: 1px solid #e6e6e6;
                 border-right: 1px solid #e6e6e6;
@@ -223,14 +251,13 @@
             }
             .modal {
                 position: fixed;
-                top: 5%;
+                top: 8%;
                 right: 0%;
                 bottom: 0%;
                 left: 0%;
                 width: 26%;
-                height: 400px;
+                height: 420px;
                 display: block;
-                
                 font-family: Arial, Helvetica, sans-serif;
                 background: rgba(255, 254, 254, 0.993);
                 z-index: 99999;
@@ -241,19 +268,38 @@
                 pointer-events: none;
             }
             .modal > div {
-                width: 70% !important;
+                width: 90% !important;
                 position: relative;
-                margin: 5% auto;
-                padding: 5px 30px;
+                /* margin: 5% auto;
+                padding: 5px 30px; */
                 background: #fff;
+            }
+            .modal-header{
+              width: 100%;
+              border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+            #nome-result{
+              font-size: 13px !important;
+              font-weight: bold;
+              padding-left: 2px !important;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            #tribo-result{
+              font-size: 14px;
+              color: #808080;
+              font-weight: 300;
+              padding-right: 2px !important;
+              font-family: Arial, Helvetica, sans-serif;
+
             }
             #fechar{
                 position: absolute;
                 bottom: 10px;
-                right: 5px;
+                right: 30px;
                 text-align: center;
                 line-height: 30px;
-                margin-top: 30px;
+                margin-top: 50px;
                 background: #ffffff;
                 border: 1px solid #E2E2E2;
                 border-radius: 10px;
@@ -282,8 +328,6 @@
            
             
             $(function(){
-             
-              
                 $('.fechar').click(function(){
                     document.getElementById('nome-result-tribo').innerHTML = "";
                     document.getElementById('chapter-result-tribo').innerHTML = "";
@@ -294,12 +338,11 @@
                     document.getElementById('chapter-result-funcionarios').innerHTML = "";
 
                 });
-                $('.rowFull').click(function(){
-                    var valor = $(this).val();
-                    var test2 = document.getElementById('info-claudia').getAttribute("value");
-                    var info = valor;
-
-                    console.log(info);
+                $('.info-tribo').click(function(){
+                    var info = $(this).attr("value");
+                    var primeiro = info.split(' ');
+                    let oi = document.getElementById("title-modal-tribo").innerHTML = 'Tribo '+primeiro[0];
+                   
                     var data =
                         [ 
                         {name: 'Carrefour Atacadão', tribo: 'Lilian Chwartzmann',squad:'Vostok',chapter:'Clientes'},
@@ -602,7 +645,7 @@
 
                 });
                 $('.content-func').click(function(){
-                    var valor = $(this).val();
+                    var valor = $(this).attr("value");
                     var fat = valor.split('/');
                     
 
@@ -891,9 +934,15 @@
                     ];
                     var result = '';
                     var result = data.filter((funcionario) => {
-                        return funcionario.tribo === fat[0] & funcionario.squad === fat[1] & funcionario.chapter === fat[2];
+                        return funcionario.squad === fat[1] & funcionario.chapter === fat[2];
                     });
+                    let tribo = result[0]['tribo'].split(" ");
+                    let str = "Tribo "+tribo[0];
+                    let str2 = "Squad "+fat[1];
                     
+                    let exibir = str+" / "+str2;
+                    document.getElementById('title-modal-funcionaros').innerHTML = fat[2];
+                    document.getElementById('sub-title-modal-funcionarios').innerHTML = exibir;
                     
                     let lista = document.getElementById('nome-result-funcionarios');
                     for(var i = 0; i < result.length; i++){
@@ -910,12 +959,16 @@
 
 
                 });
-
+               
                 $('#buscar').click(function(){
                     var tribo = $('#sel_tribo').val();
                     var squad = $('#sel_squad').val();
-                    var chapter = $('#sel_chapter').val();
                     
+                    var chapter = $('#sel_chapter').val();
+                    // let exibirtribo = document.getElementById("title-modal-tribo").innerHTML = chapter;
+                    let oi = document.getElementById("title-modal").innerHTML = chapter;
+                    
+
                     var data =
                         [ 
                         {name: 'Carrefour Atacadão', tribo: 'Lilian Chwartzmann',squad:'Vostok',chapter:'Clientes'},
@@ -1200,7 +1253,7 @@
                         
                     ];
                     var result = data.filter((funcionario) => {
-                        return funcionario.tribo === tribo & funcionario.squad === squad & funcionario.chapter === chapter;
+                        return  funcionario.chapter === chapter;
                     })
                     
                     let lista = document.getElementById('nome-result');
@@ -1211,8 +1264,12 @@
                     }
                     let lista2 = document.getElementById('tribo-result');
                     for(var i = 0; i < result.length; i++){
+                        let atual = result[i]['tribo'];
+                        let valor = atual.split(" ");
+                        console.log(valor);
+                        let exibir = 'Tribo '+valor[0];
                         let item2 = document.createElement('p');
-                        item2.appendChild(document.createTextNode(result[i]['tribo']));
+                        item2.appendChild(document.createTextNode(exibir));
                         lista2.appendChild(item2);
                     }
                     let lista3 = document.getElementById('chapter-result');
@@ -1234,10 +1291,12 @@
 
     </header>
     <body>
-        <h1>Oiii</h1>
+        
         <div class="align-select">
             <div class="div-select">
-                <select  name="Tribo" id="sel_tribo">
+              
+                <select  name="Tribo" id="sel_tribo" >
+                    <option disabled selected style="display: none">Tribo</option>
                     <option value="Lilian Chwartzmann">Lilian Chwartzmann</option>
                     <option value="Claudia Gonçalves">Claudia Gonçalves</option>
                     <option value="Ricardo Almeida">Ricardo Almeida</option>
@@ -1248,6 +1307,7 @@
             </div>
             <div class="div-select">
                 <select name="Squard" id="sel_squad">
+                    <option disabled selected style="display: none">Squad</option>
                     <option value="Vostok">Vostok</option>
                     <option value="Discovery">Discovery</option>
                     <option value="Andromeda">Andromeda</option>
@@ -1263,9 +1323,14 @@
                 </select>
             </div>
             <div class="div-select">
+<<<<<<< HEAD
                 <select name="Chapter" class="sel" id="sel_chapter">
+=======
+                <select name="Chapter" id="sel_chapter">
+                    <option disabled selected style="display: none">Chapter</option>
+>>>>>>> a60217a2ec0883a83f02ce85c58248f530e2a960
                     <option value="Clientes">Cliente</option>
-                    <option value="Client Service" selected>Client Service</option>
+                    <option value="Client Service">Client Service</option>
                     <option value="Project Magnecgt">Project Magnecgt</option>
                     <option value="Strategy">Strategy</option>
                     <option value="Data Intelligence">Data Intelligence</option>
@@ -1286,14 +1351,14 @@
 
             </div>
             <div>
-                <a id="buscar" style="text-decoration: none;"><button class="button-tribo"><img src="clear.png" alt=""> Limpar</button></a>
+                <a id="limpar" style="text-decoration: none;" ><button class="button-tribo"><img src="clear.png" alt="">Limpar</button></a>
             </div>
 
         </div>
         <div id="abrirModal" class="modal">
             <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
             <div class="modal-header">
-                <span id="title-modal">Chapter aq</span><br/>
+                <span id="title-modal">Undefined</span><br/>
                 <span id="sub-title-modal">Chapter</span>
 
             </div>
@@ -1378,10 +1443,10 @@
               <!-- SEGUNDA COLUNA -->
               <div class="column">
                 <!-- Tribe -->
-                <a href="#modal-tribo" id="info" value="Lilian Chwartzmann"><button value="Lilian Chwartzmann" class="rowFull"  id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value="Lilian Chwartzmann"><div value="Lilian Chwartzmann" class="rowFull"  id="title"><div>
                   <h2>Lilian Chwartzmann</h2> 
                   <h3>Key Account Director</h3>
-                </div></button></a>
+                </div></div></a>
                 <!-- Heads -->
                 <div class="brokenRow">
                   <div class="rowHeadThird">
@@ -1416,16 +1481,16 @@
                     <h2 style="line-height: 12px">Carrefour</h2>
                     <h2 style="line-height: 6px">Atacadão</h2>
                   </div>
-                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Clientes"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Vivo</h2>
                     <h2 style="line-height: 6px">Vibra</h2>
                     <h3 style="line-height: 4px">mais 1</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Clientes"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">KPMG</h2>
                     <h2 style="line-height: 6px">BMG</h2>
                     <h3 style="line-height: 4px">mais 4</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Client Service-->
@@ -1434,14 +1499,14 @@
                     <h2 style="line-height: 30px">Rafaela Corner</h2>
                     <h3></h3>
                   </div>
-                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Client Service"  id="content-func" class="thirdRow content-func"><div >
                     <h2>Rafaella Garcia</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Client Service"  id="content-func" class="thirdRow content-func"><div >
                     <h2>Ariane Herrero</h2>
                     <h3>mais 3</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Project Management-->
@@ -1449,31 +1514,31 @@
       
                 <!--Strategy-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Vostok/Strategy"  id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Strategy"  id="content-func" class="thirdRow content-func"><div >
                     <h2>Camila Trevisan</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
+                  </div></div></a>
                   <div class="thirdRow">
                     <h2 style="line-height: 30px">Breno Azevedo</h2>
                     <h3></h3>
                   </div>
-                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Strategy"  id="content-func" class="thirdRow content-func"><div >
+                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Strategy"  id="content-func" class="thirdRow content-func"><div >
                     <h2>Carolina Porcher</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Data Inteligence-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Vostok/Data Intelligence"  id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Data Intelligence"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Fernando</h2>
                     <h2 style="line-height: 6px">Ebeling</h2>
                     <h3 style="line-height: 2px">mais 2</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Data Intelligence"  id="content-func" class="twoThirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Data Intelligence"  id="content-func" class="twoThirdRow content-func"><div >
                     <h2>Gabriele Possebon</h2>
                     <h3>mais 3</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Technology-->
@@ -1489,22 +1554,22 @@
                 </div>
       
                 <!--Experience Design-->
-                <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Discovery/Experience Design"  id="content-func" class="rowFull content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Experience Design"  id="content-func" class="rowFull content-func"><div >
                   <h2>Giuliana Galvão</h2>
                   <h3>mais 1</h3>
-                </div></button></a>
+                </div></div></a>
       
                 <!--Creativity-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Vostok/Creativity"  id="content-func" class="thirdRow content-func"><div>
+                    <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Creativity"  id="content-func" class="thirdRow content-func"><div>
                     <h2>Lucas Blanco</h2>
                     <h3>mais 8</h3>
-                  </div></button></a>
+                  </div></div></a>
                   <div class="thirdRow"></div>
-                  <a href="#modal-funcionarios" id="info"><button value="Lilian Chwartzmann/Andrômeda/Creativity"  id="content-func" class="thirdRow content-func"><div>
+                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Creativity"  id="content-func" class="thirdRow content-func"><div>
                     <h2>Joviano Quatrin</h2>
                     <h3>mais 10</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Media-->
@@ -1533,10 +1598,10 @@
       
               <!--Tribe-->
               <div class="column">
-                <a href="#modal-tribo" id="info-claudia" value="Claudia Gonçalves"><button value="Claudia Gonçalves" class="rowFull" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" id="info" value="Claudia Gonçalves"><div value="Claudia Gonçalves" class="rowFull"  id="title"><div>
                   <h2>Claudia Gonçalves</h2>
                   <h3>Key Account Director</h3>
-                </div></button></a>
+                </div></div></a>
                 <!-- Heads -->
                 <div class="brokenRow">
                   <div class="rowHeadHalf">
@@ -1561,16 +1626,16 @@
       
                 <!--Clientes-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Columbia/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Clientes"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Fundacred</h2>
                     <h2 style="line-height: 6px">Previsul</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Clientes"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Governo RS</h2>
                     <h2 style="line-height: 6px">Corsan</h2>
                     <h3 style="line-height: 4px">mais 2</h3>
-                  </div></button></a>
+                  </div></div></a>
                   <div class="thirdRow">
                     <h2 style="line-height: 12px">Abradif</h2>
                     <h2 style="line-height: 0px">Oi</h2>
@@ -1579,17 +1644,17 @@
       
                 <!--Client Service-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Columbia/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Client Service"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 4px">Graziela</h2>
                     <h2 style="line-height: opx">Shardelotto</h2>
                     <h3 style="line-height: 0px">mais 1</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Client Service"  id="content-func" class="thirdRow content-func"><div >
                     <h2>Sandra Calçada</h2>
                     <h3>mais 3</h3>
-                  </div></button></a>
+                  </div></div></a>
                   <div class="thirdRow">
-                    <h2 style="line-height: 30px">Caroline Felipetto</h2>
+                    <h2 style="line-height: 15px">Caroline Felipetto</h2>
                     <h3></h3>
                   </div>
                 </div>
@@ -1598,10 +1663,10 @@
                 <div class="rowFull"></div>
       
                 <!--Strategy-->
-                <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Strategy" id="content-func" class="rowFull content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Strategy" id="content-func" class="rowFull content-func"><div >
                   <h2 style="line-height: 15px">Christiaan Van Hattem</h2>
                   <h3>mais 1</h3>
-                </div></button></a>
+                </div></div></a>
       
                 <!--Data Inteligence-->
                 <div class="rowFull"></div>
@@ -1614,15 +1679,15 @@
       
                 <!--Creativity-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Columbia/Creativity" id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Creativity" id="content-func" class="thirdRow content-func"><div >
                     <h2>Cecília Marques</h2>
                     <h3>mais 3</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/Laika/Creativity" id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Creativity" id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Matheus</h2>
                     <h2 style="line-height: 6px">Carvalho</h2>
                     <h3 style="line-height: 0px">mais 4</h3>
-                  </div></button></a>
+                  </div></div></a>
                   <div class="thirdRow">
                     <h2 style="line-height: 15px">Eduarda Figueiredo</h2>
                     <h3></h3>
@@ -1633,10 +1698,10 @@
                 <div class="brokenRow">
                   <div class="thirdRow"></div>
                   <div class="thirdRow"></div>
-                  <a href="#modal-funcionarios" id="info"><button value="Claudia Gonçalves/SuperNova/Media" id="content-func" class="thirdRow content-func"><div >
+                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/SuperNova/Media" id="content-func" class="thirdRow content-func"><div >
                     <h2>Karina Garcia</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Production-->
@@ -1658,10 +1723,10 @@
       
               <!--QUARTA COLUNA-->
               <div class="column">
-                <a href="#modal-tribo" id="info"><button value="Ricardo Almeida" class="rowFull" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value="Ricardo Almeida"><div value="Ricardo Almeida" class="rowFull" id="title"><div >
                   <h2>Ricardo Almeida</h2>
                   <h3>Key Account Director</h3>
-                </div></button></a>
+                </div></div></a>
                 <!-- Heads -->
                 <div class="brokenRow">
                   <div class="rowHeadHalf">
@@ -1686,37 +1751,37 @@
       
                 <!--Clientes-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Clientes"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Tecnisa</h2>
                     <h2 style="line-height: 6px">Unipar</h2>
                     <h3 style="line-height: 4px">mais 3</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Clientes"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Ciser</h2>
                     <h2 style="line-height: 6px">Embraco</h2>
                     <h3 style="line-height: 4px">mais 4</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Clientes"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 6px">Ailos</h2>
                     <h2 style="line-height: 6px">Viacredi</h2>
                     <h3 style="line-height: 4px">mais 2</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Client Service-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Client Service"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 12px">Juliana Magalhães</h2>
                     <h3 style="line-height: 0px">mais 2</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Client Service"  id="content-func" class="thirdRow content-func"><div >
                     <h2 style="line-height: 12px">Tamara Gonçalves</h2>
                     <h3 style="line-height: 0px">mais 4</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Client Service"  id="content-func" class="thirdRow content-func"><div >
                     <h2>Aline Duarte</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Project Management-->
@@ -1733,14 +1798,14 @@
                 <!--Technology-->
                 <div class="brokenRow">
                     
-                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Technology"  id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Technology"  id="content-func" class="thirdRow content-func"><div >
                     <h2>Rodolfo Zattar</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Technology"  id="content-func" class="twoThirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Technology"  id="content-func" class="twoThirdRow content-func"><div >
                     <h2>Gustavo Merling</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Experience Design-->
@@ -1751,34 +1816,34 @@
       
                 <!--Creativity-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Creativity" id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Creativity" id="content-func" class="thirdRow content-func"><div >
                     <h2>Thâmara Ribeiro</h2>
                     <h3>mais 2</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Gaia/Creativity" id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Creativity" id="content-func" class="thirdRow content-func"><div >
                     <h2>Edson Hayashi</h2>
                     <h3>mais 9</h3>
-                  </div></button></a>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Creativity" id="content-func" class="thirdRow content-func"><div >
+                  </div></div></a>
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Creativity" id="content-func" class="thirdRow content-func"><div >
                     <h2>César Favero</h2>
                     <h3>mais 2</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Media-->
                 <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Sirius/Media" id="content-func" class="thirdRow content-func"><div >
+                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Media" id="content-func" class="thirdRow content-func"><div >
                     <h2>César de Brito</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
+                  </div></div></a>
                   <div class="thirdRow">
                     <h2 style="line-height: 30px">Larissa Niehues</h2>
                     <h3></h3>
                   </div>
-                  <a href="#modal-funcionarios" id="info"><button value="Ricardo Almeida/Apolo/Media" id="content-func" class="thirdRow content-func"><div >
+                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Media" id="content-func" class="thirdRow content-func"><div >
                     <h2>Rafael Castro</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
+                  </div></div></a>
                 </div>
       
                 <!--Production-->
@@ -1796,23 +1861,23 @@
       
               <!--QUARTA COLUNA-->
               <div class="column">
-                <a href="#modal-tribo" id="info"><button value="Eliel Allebrandt" class="rowFull" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value="Eliel Allebrandt"><div value="Eliel Allebrandt" class="rowFull" id="title"><div >
                   <h2>Eliel Allebrandt</h2>
                   <h3>Key Account Director</h3>
-                </div></button></a>
+                </div></div></a>
       
                 <!-- Heads -->
                 <div style="display: block" class="brokenRow">
                   <div class="brokenRow">
-                    <div style="height: 36px; margin-bottom: 4px" class="thirdRow">
+                    <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow">
                       <h2 style="line-height: 6px">Alex Coelho</h2>
                       <h3 style="line-height: 0px">Head of Creativity</h3>
                     </div>
-                    <div style="height: 36px; margin-bottom: 4px" class="thirdRow">
+                    <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow">
                       <h2 style="line-height: 6px">Daniel Gizo</h2>
                       <h3 style="line-height: 0px">Head of Strategy</h3>
                     </div>
-                    <div style="height: 36px; margin-bottom: 4px" class="thirdRow">
+                    <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow">
                       <h2 style="line-height: 6px">Luiz Paulo</h2>
                       <h3 style="line-height: 0px">Head of Operation</h3>
                     </div>
@@ -1843,10 +1908,10 @@
                 </div>
       
                 <!--Client Service-->
-                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Client Service"  id="content-func" class="rowFull content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Client Service"  id="content-func" class="rowFull content-func"><div >
                   <h2 style="line-height: 15px">Francisco Gill</h2>
                   <h3>mais 5</h3>
-                </div></button></a>
+                </div></div></a>
       
                 <!--Project Management-->
                 <div class="rowFull">
@@ -1855,10 +1920,10 @@
                 </div>
       
                 <!--Strategy-->
-                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Strategy" id="content-func" class="rowFull content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Strategy" id="content-func" class="rowFull content-func"><div >
                   <h2 style="line-height: 15px">Maria Thais Brussi</h2>
                   <h3>mais 2</h3>
-                </div></button></a>
+                </div></div></a>
       
                 <!--Data Inteligence-->
                 <div class="rowFull">
@@ -1875,10 +1940,10 @@
                 </div>
       
                 <!--Creativity-->
-                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Creativity" id="content-func" class="rowFull content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Creativity" id="content-func" class="rowFull content-func"><div >
                   <h2 style="line-height: 15px">Jefferson Damasceno</h2>
                   <h3>mais 9</h3>
-                </div></button></a>
+                </div></div></a>
       
                 <!--Media-->
                 <div class="rowFull"></div>
@@ -1893,10 +1958,10 @@
                 </div>
       
                 <!--Operation-->
-                <a href="#modal-funcionarios" id="info"><button value="Eliel Allebrandt/Júpiter/Operation" id="content-func" class="rowFull content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Operation" id="content-func" class="rowFull content-func"><div >
                   <h2>João Lucas</h2>
                   <h3>mais 1</h3>
-                </div></button></a>
+                </div></div></a>
       
                 <!--Agile Master-->
                 <div class="rowFull">
@@ -1905,16 +1970,16 @@
               </div>
       
               <!--QUINTA COLUNA-->
-              <div class="column">
-                <a href="#modal-tribo" id="info"><button value="Ernane Pinheiro" class="rowFull" id="title"><div >
+              <div  class="column">
+                <a href="#modal-tribo" class="info-tribo" value="Ernane Pinheiro"><div value="Ernane Pinheiro" class="lastRows" id="title"><div >
                   <h2>Ernane Pinheiro</h2>
                   <h3>Key Account Director</h3>
-                </div></button></a>
+                </div></div></a>
                 <div
                   style="margin-bottom: 7px; min-height: 81px"
                   class="rowHeadThird"
                 ></div>
-                <div style="margin-bottom: 9px" class="squadRow">
+                <div style="margin-bottom: 9px;" class="squadRow">
                   <h2>Squad</h2>
                   <h3></h3>
                 </div>
@@ -1934,14 +1999,14 @@
                   <h2></h2>
                   <h3></h3>
                 </div>
-                <a href="#modal-funcionarios" id="info"><button value="Ernane Pinheiro/Squad/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="Ernane Pinheiro/Squad/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
                     <h2>Felipe Ferazzi</h2>
                     <h3>mais 1</h3>
-                  </div></button></a>
-                <a href="#modal-funcionarios" id="info"><button value="Ernane Pinheiro/Squad/Technology"  id="content-func" class="lastRows content-func"><div >
+                  </div></div></a>
+                <a href="#modal-funcionarios" id="info"><div value="Ernane Pinheiro/Squad/Technology"  id="content-func" class="lastRows content-func"><div >
                   <h2>Davi Bauer</h2>
                   <h3>mais 2</h3>
-                </div></button></a>
+                </div></div></a>
                 <div class="lastRows">
                   <h2></h2>
                   <h3></h3>
@@ -1974,10 +2039,10 @@
       
               <!--SEXTA COLUNA-->
               <div class="column">
-                <a href="#modal-tribo" id="info"><button value="" class="rowFull" id="title"><div >
+                <a href="#modal-tribo" class="info-tribo" value=""><div value="" class="lastRows" id="title"><div >
                   <h2>Pool</h2>
                   <h3></h3>
-                </div></button></a>
+                </div></div></a>
                 <div
                   style="margin-bottom: 7px; min-height: 81px"
                   class="rowHeadThird"
@@ -1994,46 +2059,46 @@
                   <h2></h2>
                   <h3></h3>
                 </div>
-                <a href="#modal-funcionarios" id="info"><button value="/Pool/Project Management"  id="content-func" class="lastRows content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="/Pool/Project Management"  id="content-func" class="lastRows content-func"><div >
                   <h2>Fabiana Albuquerque</h2>
                   <h3>mais 3</h3>
-                </div></button></a>
+                </div></div></a>
                 <div class="lastRows">
                   <h2></h2>
                   <h3></h3>
                 </div>
-                <a href="#modal-funcionarios" id="info"><button value="/Pool/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="/Pool/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
                   <h2>Aletha da Silva</h2>
                   <h3>mais 8</h3>
-                </div></button></a>
-                <a href="#modal-funcionarios" id="info"><button value="/Pool/Technology"  id="content-func" class="lastRows content-func"><div >
+                </div></div></a>
+                <a href="#modal-funcionarios" id="info"><div value="/Pool/Technology"  id="content-func" class="lastRows content-func"><div >
                   <h2>Alexandre Veeck</h2>
                   <h3>mais 10</h3>
-                </div></button></a>
-                <a href="#modal-funcionarios" id="info"><button value="/Pool/Experience Design"  id="content-func" class="lastRows content-func"><div >
+                </div></div></a>
+                <a href="#modal-funcionarios" id="info"><div value="/Pool/Experience Design"  id="content-func" class="lastRows content-func"><div >
                   <h2>Pablo Jaeger</h2>
                   <h3>mais 2</h3>
-                </div></button></a>
+                </div></div></a>
                 <div class="lastRows">
                   <h2>Wagner Gomes</h2>
                   <h3></h3>
                 </div>
-                <a href="#modal-funcionarios" id="info"><button value="/Pool/Media"  id="content-func" class="lastRows content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="/Pool/Media"  id="content-func" class="lastRows content-func"><div >
                   <h2>Aline Feijó</h2>
                   <h3>mais 2</h3>
-                </div></button></a>
-                <a href="#modal-funcionarios" id="info"><button value="/Pool/Production"  id="content-func" class="lastRows content-func"><div >
+                </div></div></a>
+                <a href="#modal-funcionarios" id="info"><div value="/Pool/Production"  id="content-func" class="lastRows content-func"><div >
                   <h2>Bernardo Silva</h2>
                   <h3>mais 1</h3>
-                </div></button></a>
+                </div></div></a>
                 <div class="lastRows">
                   <h2></h2>
                   <h3></h3>
                 </div>
-                <a href="#modal-funcionarios" id="info"><button value="/Pool/Operation"  id="content-func" class="lastRows content-func"><div >
+                <a href="#modal-funcionarios" id="info"><div value="/Pool/Operation"  id="content-func" class="lastRows content-func"><div >
                   <h2>Janaina Spohr</h2>
                   <h3>mais 1</h3>
-                </div></button></a>
+                </div></div></a>
                 <div class="lastRows">
                   <h2></h2>
                   <h3></h3>
@@ -2046,8 +2111,8 @@
           <div id="modal-tribo" class="modal">
             <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
             <div class="modal-header">
-                <span id="title-modal">Chapter aq</span><br/>
-                <span id="sub-title-modal">Chapter</span>
+                <span id="title-modal-tribo"></span><br/>
+                
 
             </div>
             
@@ -2068,8 +2133,8 @@
         <div id="modal-funcionarios" class="modal">
             <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
             <div class="modal-header">
-                <span id="title-modal">Chapter aq</span><br/>
-                <span id="sub-title-modal">Chapter</span>
+                <span id="title-modal-funcionaros">Chapter aq</span><br/>
+                <span id="sub-title-modal-funcionarios">Chapter</span>
             </div>
             <div  class="content-result">
                 <div id="nome-result-funcionarios">
@@ -2081,8 +2146,23 @@
                 </div>
             </div>
         </div>
+      
         
         
-
+        <style>
+          button {
+           padding: 0;
+           max-width: 100px;
+           height: 52.99px;
+           margin-bottom: 8px;
+           margin-left: 4px;
+           background-color: transparent;
+           border: 1px solid transparent;
+           border-radius: 5px;
+           text-align: center;
+           font-family: 'Montserrat' sans-serif;
+          }
+       </style>
     </body>
+    
 </html>
