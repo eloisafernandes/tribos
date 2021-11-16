@@ -192,6 +192,7 @@
                   text-indent: 0.01px; 
                   text-overflow: "";  
               }
+              
               .div-select select option{
                   
                   font-size: 12px;
@@ -281,6 +282,7 @@
            
             
             $(function(){
+             
               
                 $('.fechar').click(function(){
                     document.getElementById('nome-result-tribo').innerHTML = "";
@@ -1261,7 +1263,7 @@
                 </select>
             </div>
             <div class="div-select">
-                <select name="Chapter" id="sel_chapter">
+                <select name="Chapter" class="sel" id="sel_chapter">
                     <option value="Clientes">Cliente</option>
                     <option value="Client Service" selected>Client Service</option>
                     <option value="Project Magnecgt">Project Magnecgt</option>
