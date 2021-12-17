@@ -1,333 +1,34 @@
 <html>
     <header>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- styles -->
-        <link rel="stylesheet" href="styles.css" />
-        <!-- fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap"
-        rel="stylesheet"
-        />
-        <title>Brivia | Tribos e Squads</title>
-        <style>
-            
-            .align-select{
-            
-              margin-top: 20px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .modal {
-                position: fixed;
-                
-                top: 10%;
-                right: 60%;
-                bottom: 20%;
-                left: 30%;
-                display: block;
-                font-family: 'Montserrat', sans-serif;
-                background: rgba(255, 254, 254, 0.993);
-                z-index: 99999;
-                opacity:0;
-                -webkit-transition: opacity 400ms ease-in;
-                -moz-transition: opacity 400ms ease-in;
-                transition: opacity 400ms ease-in;
-                pointer-events: none;
-            }
-            .modal:target {
-                opacity: 1;
-                pointer-events: auto;
-                
-            }
-            .modal > div {
-              
-                width: 420px;
-                position: relative;
-                /* margin: 2% auto; */
-                /* padding: 30px 20px; */
-                background: #fff;
-            }
-            .modal-header{
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-                width: 91% !important;
-                background: #E32328 !important;
-                padding: 30px 32px;
-               
-         
-
-            }
-            #fechar{
-                position: absolute;
-                bottom: 10px;
-                right: 5px;
-                text-align: center;
-                line-height: 30px;
-                margin-top: 0px;
-                background: #ffffff;
-                border: 1px solid #E2E2E2;
-                border-radius: 10px;
-                font-size: 16px;
-                color: black;
-                font-size: 14px;
-                font-weight: 800;
-                padding: 5px 30px;
-
-            }
-            
-            #title-modal, #title-modal-tribo, #title-modal-funcionaros{
-                font-family: Montserrat;
-                font-size: 28px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 28px;
-                letter-spacing: -0.02em;
-                text-align: left;
-                color: #ffffff;
-
-            }
-            .content-result{
-                width: 90% !important;
-                margin-top: 10px;
-                display: flex;
-                margin: 10px auto;
-                
-                background-color: #ffffff;
-                justify-content: space-between;
-                border: 1px solid #E2E2E2;
-                border-radius: 10px;
-                height: 220px;
-                overflow-y: auto;
-              
-                
-            }
-            
-            #sub-title-modal, #sub-title-modal-tribo, #sub-title-modal-funcionarios{
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 16px;
-                
-                font-style: normal;
-                font-weight: 300;
-                line-height: 20px;
-                letter-spacing: 0px;
-                text-align: left;
-                color: #ffffff;
-
-            }
-            .div-select {    
-                width:304px;/* Tamanho final do select */  
-                margin: 5px;
-               
-           
-                overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
-            .div-select select {      
-                /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
-                /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
-                /* background-position: 200px center;  Posição da imagem do background */
-                width: 304px; 
-                height:48px; 
-                font-family:Arial, Helvetica, sans-serif; 
-                font-size:14px; 
-                background-color: white;
-                padding:13px 20px 13px 12px; 
-                color:#8F8F8F; 
-                border-radius: 10px; 
-                border-color: #E2E2E2;   
-                text-indent: 0.01px; 
-                text-overflow: "";  }
-            .div-select select option{
-                font-size: 14px;
-                border-color: #E2E2E2;   
-            }
-            #nome-result, #nome-result-tribo, #nome-result-funcionarios{
-              font-size: 14px !important;
-              font-weight: bold;
-              padding-left: 20px;
-              font-family: Arial, Helvetica, sans-serif;
-            }
-            #tribo-result {
-              font-size: 14px;
-              color: #808080;
-              font-weight: 400;
-              font-family: Arial, Helvetica, sans-serif;
-
-            }
-            #chapter-result, #chapter-result-tribo, #chapter-result-funcionarios{
-              font-size: 14px;
-              padding-right: 20px;
-              color: black;
-              font-weight: 300;
-              font-family: Arial, Helvetica, sans-serif;
-
-            }
-            #tribo-result{
-                color: #808080;
-            }
-            
-            .button-tribo{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 200px;
-                font-size: 14px;
-                padding: 12px;
-                margin: 0px 5px;
-                border-bottom: 1px solid #e6e6e6;
-                border-top: 1px solid #e6e6e6;
-                border-right: 1px solid #e6e6e6;
-                border-left: 1px solid #e6e6e6;
-                border-radius: 10px;
-                border-color: #E2E2E2;
-                box-shadow: none;
-                outline: none;
-                cursor: pointer;
-            }
-            .button-tribo:focus{
-                outline:0;
-            }
-            @media only screen and (max-width: 1024px) {
-              
-              .content-result >  div > p{
-                font-size: 10px;
-             
-              }
-              .align-select{
-                display: block;
-                align-items: center;
-                justify-content: space-between;
-              }
-              .div-select {    
-                /* width: 80%;  Tamanho final do select     */
-                overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
-              .div-select select {      
-                  /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
-                  /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
-                  /* background-position: 200px center;  Posição da imagem do background */
-                  margin-top: 5px;
-                  width: 100%; 
-                  background-color: white;
-                  height:48px; 
-                  font-family:Arial, Helvetica, sans-serif; 
-                  font-size:14px; 
-                  padding:13px 20px 13px 12px; 
-                  color:#8F8F8F; 
-                  border-radius: 10px; 
-                  border-color: #E2E2E2;   
-                  text-indent: 0.01px; 
-                  text-overflow: "";  
-              }
-              
-              .div-select select option{
-                  font-size: 12px;
-                  border-color: #E2E2E2;   
-              }
-              .button-tribo{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-top: 5px;
-                font-size: 14px;
-                padding: 0px 150px;
-                border-bottom: 1px solid #e6e6e6;
-                border-top: 1px solid #e6e6e6;
-                border-right: 1px solid #e6e6e6;
-                border-left: 1px solid #e6e6e6;
-                border-radius: 10px;
-                border-color: #E2E2E2;
-                box-shadow: none;
-                outline: none;
-                cursor: pointer;
-                
-            }
-            .button-tribo>img{
-                  padding: 0px 30px 0px 0px;
-                  
-            }
-            .modal {
-                position: fixed;
-                top: 8%;
-                right: 0%;
-                bottom: 0%;
-                left: 0%;
-                width: 26%;
-                height: 420px;
-                display: block;
-                font-family: Arial, Helvetica, sans-serif;
-                background: rgba(255, 254, 254, 0.993);
-                z-index: 99999;
-                opacity:0;
-                -webkit-transition: opacity 400ms ease-in;
-                -moz-transition: opacity 400ms ease-in;
-                transition: opacity 400ms ease-in;
-                pointer-events: none;
-            }
-            .modal > div {
-                width: 90% !important;
-                position: relative;
-                /* margin: 5% auto;
-                padding: 5px 30px; */
-                background: #fff;
-            }
-            .modal-header{
-              width: 100%;
-              border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-            }
-            #nome-result{
-              font-size: 13px !important;
-              font-weight: bold;
-              padding-left: 2px !important;
-              font-family: Arial, Helvetica, sans-serif;
-            }
-            #tribo-result{
-              font-size: 14px;
-              color: #808080;
-              font-weight: 300;
-              padding-right: 2px !important;
-              font-family: Arial, Helvetica, sans-serif;
-
-            }
-            #fechar{
-                position: absolute;
-                bottom: 10px;
-                right: 30px;
-                text-align: center;
-                line-height: 30px;
-                margin-top: 50px;
-                background: #ffffff;
-                border: 1px solid #E2E2E2;
-                border-radius: 10px;
-                font-size: 16px;
-                color: black;
-                font-size: 14px;
-                font-weight: 800;
-                padding: 5px 30px;
-
-            }
-           
-           
-           
-            
-
-            }
-        </style>
-        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
+  
+
+	
         
             var resultadoAqui = document.getElementById('nome-result')
             var tribo = '';
             var squad = '';
             var chapter = '';
+$(document).ready(function(){
+  $('.nestapubli a[href^="#"]').on('click', function(e) {
+      e.preventDefault();
+      var id = $(this).attr('href'),
+              targetOffset = $(id).offset().top;
+
+      $('html, body').animate({ 
+          scrollTop: targetOffset - 100
+      }, 300);
+  });
+});
+			
+            $(document).ready(function(){
+    $('#comunicados-artigos .fusion-date-and-formats').remove();
+});
            
-            
+
             $(function(){
+              
                 $('.fechar').click(function(){
                     document.getElementById('nome-result-tribo').innerHTML = "";
                     document.getElementById('chapter-result-tribo').innerHTML = "";
@@ -1288,881 +989,2067 @@
             
             
         </script>
+        <style>
 
+            body {
+              position: relative;
+              padding: 0 !important;
+              margin: auto !important;
+              box-sizing: border-box !important;
+              font-family: 'Montserrat', sans-serif !important;
+            }
+            h2 {
+              padding-top: 7px;
+              font-size: 12px !important;
+              line-height: 9.6px !important;
+            }
+            h3 {
+              font-size: 8px !important;
+              line-height: 8px !important;
+              color: #808080 !important;
+              font-style: italic !important;
+           
+}
+h3.galogin-or{
+	display: none !important;
+	color: yellow !important;
+}
+
+.container ul {
+  list-style-type: circle;
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.container {
+  width: 100%;
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-icon {
+    margin-right: 10px;
+    margin-left: 3px;
+  color: #999999;
+  font-size: 1.5rem;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.number {
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #e02126;
+  border-radius: 100%;
+  min-width: 32px;
+  max-height: 32px;
+  margin-right: 1.5rem;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  align-self: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem 1.5rem;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+.accordion {
+  overflow-y: auto;
+  height: fit-content;
+}
+.accordionItem {
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-bottom: 1rem;
+  box-shadow: 0px 5px rgba(0, 0, 0, 10%);
+}
+
+.accordionLink {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+}
+.content {
+  padding: 1rem;
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.3s;
+}
+
+.showLess {
+  display: none;
+}
+
+.responsible {
+  font-family: 'Montserrat', sans-serif;
+  color: #999999;
+  display: flex;
+  padding: 0 1.3rem;
+  align-items: center;
+}
+
+.subTitle {
+  margin-left: 6px;
+}
+
+.divider {
+  width: 100%;
+  background-color: #cccccc;
+  height: 1px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.headTag {
+  font-size: 0.8rem;
+  margin-left: 1.3rem;
+  color: white;
+  background-color: #6087c5;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
+
+.kadTag {
+  font-size: 0.8rem;
+  margin-left: 1.3rem;
+  color: white;
+  background-color: #f2a221;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
+
+.operationTag {
+  font-size: 0.8rem;
+  margin-left: 1.3rem;
+  color: white;
+  background-color: #c361ff;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
+
+.legalTag {
+  font-size: 0.8rem;
+  margin-left: 1.3rem;
+  color: white;
+  background-color: #2eb897;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
+
+.thirdTag {
+  font-size: 0.8rem;
+  margin-left: 1.3rem;
+  color: white;
+  background-color: #d6c35c;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
+
+.accordionItem:target .content {
+  display: block;
+  max-height: 100rem;
+  overflow-y: auto;
+}
+.accordionItem:target .divider {
+  width: 100%;
+  height: 1px;
+}
+
+.accordionItem:target .showMore {
+  display: none;
+}
+
+.accordionItem:target .showLess {
+  display: flex;
+}
+
+.showLess:target .content {
+  max-height: 0;
+  display: none;
+}
+
+.spacer {
+  min-height: 1px;
+  padding: 1rem;
+}
+.button-icon-pdf{
+  margin-right: 10px;
+
+}
+.downloadButton {
+  color: #E32328;
+  background-color: whitesmoke !important;
+  font-size: 1rem !important;
+  padding: 10px 15px;
+	
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center;
+  width: 25vw;
+  justify-content: center !important;
+  border: 1px solid #cccccc !important;
+  border-radius: 5px !important;
+  transition: 0.3s !important;
+}
+
+.butonRevoke {
+  color: #e02126;
+  font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 600;
+
+line-height: 20px;
+  background-color: whitesmoke;
+  font-size: 1rem;
+  padding: 1rem;
+  width: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  /*box-shadow: 0px 5px rgba(0, 0, 0, 20%);*/
+  transition: 0.3s;
+}
+
+
+
+/*.butonRevoke:hover {
+  box-shadow: 0px 8px rgba(0, 0, 0, 40%);
+  background-color: white;
+}*/
+
+.grayBox {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+}
+
+.grayBoxHeader {
+  font-size: 14px;
+		
+  font-weight: 700;
+  
+  display: flex;
+  /*justify-content: start;
+  align-items: center;*/
+}
+
+.grayBoxText {
+  margin-left: 1.3rem;
+  
+}
+.butonContainer {
+  display: flex;
+}
+
+.butonContainer a {
+  text-decoration: none;
+  max-width: 200px;
+}
+
+.butonYes {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    max-width: 200px !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  background: white;
+  color: #2eb897;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.6rem 2.5rem;
+  outline: 1px solid #E2E2E2;
+  border-radius: 5px;
+  /*box-shadow: 0px 5px rgba(0, 0, 0, 20%);*/
+  transition: 0.3s;
+}
+/*.butonYes:hover {
+  color: white;
+  background-color: #2eb897;
+  box-shadow: 0px 8px rgba(0, 0, 0, 40%);
+}*/
+.butonNo {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    max-width: 200px !important;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+  color: #e02126;
+  padding: 0.6rem 2.5rem;
+  outline: 1px solid #E2E2E2;
+  border-radius: 5px;
+  /*box-shadow: 0px 5px rgba(0, 0, 0, 20%);*/
+  transition: 0.3s;
+}
+
+/*.butonNo:hover {
+  background-color: #e02126;
+  color: white;
+  box-shadow: 0px 8px rgba(0, 0, 0, 40%);
+}*/
+
+.dropdown-container p, ul, li{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.dropdown-container hr {
+    border: 1px solid black !important;
+}
+.dropdown-container b {
+    font-size: 14px;
+}
+.item-em-alta, .item-em-alta-2 {
+    background-color: white !important;
+}
+
+.item-contratacao {
+    background-color:#FFFFFF;
+    padding: 1rem 1rem 1rem 0rem;
+    border: 1px solid #E2E2E2;
+    border-radius: 6px;
+    max-width: 100vw !important;
+    margin-top: 10px;
+    position: relative;
+    box-shadow: 0px 5px 10px 1px #E2E2E2;
+}
+.fa-caret-down {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #E32328;
+}
+.align-content-info{
+              display: flex; align-items: center;
+            }
+            .info-style > div > span{
+              font-family: 'Montserrat', sans-serif;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 17px;
+              letter-spacing: 0em;
+              text-align: left;
+
+            }
+            .info-style{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              border-radius: 5px;
+              padding: 12px 16px 12px 16px;
+              border: 1px solid #E2E2E2;
+            }
+            .icon-button{
+              margin-right: 10px;
+            }
+            
+.conteudo-top-aling{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .conteudo-top{
+              display: block;
+              margin: 15px 0px 0px 10px;
+             
+            }
+           
+            .conteudo-top > span{
+              font-family: 'Montserrat', sans-serif;
+              font-size: 36px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 44px;
+              letter-spacing: 0em;
+              text-align: left;
+              color: #E32328;
+
+
+            }
+            .conteudo-top > p{
+              font-family: 'Playfair Display', sans-serif;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19px;
+              letter-spacing: 0em;
+              text-align: left;
+
+
+            }
+            .conteudo-top > strong{
+              font-family: 'Montserrat', sans-serif;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 24px;
+              letter-spacing: 0em;
+              text-align: left;
+
+
+            }
+
+.align-select{
+              
+                margin-top: 20px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+              }
+              
+              .modal {
+                  position: fixed;
+                  width: 60%;
+                height: auto;
+                  top: 20% ;
+                  right: 20%;
+                  bottom: 20%;
+                  left: 20%;
+                  display: block;
+                  font-family: 'Montserrat', sans-serif;
+                  background: rgba(255, 254, 254, 0.993);
+                  z-index: 99999;
+                  opacity:0;
+                	overflow: hidden;
+               							
+                  -webkit-transition: opacity 400ms ease-in;
+                  -moz-transition: opacity 400ms ease-in;
+                  transition: opacity 400ms ease-in;
+                  pointer-events: none;
+              }
+              .modal:target {
+                  opacity: 1;
+                  pointer-events: auto;
+                  
+              }
+              .modal> div {
+                
+                  width: 100%;
+                  position: relative;
+                  /* margin: 2% auto; */
+                  /* padding: 30px 20px; */
+                
+              }
+              .modal-header{
+                  border-top-left-radius: 10px;
+                  border-top-right-radius: 10px;
+                  width: 100%;
+                  background-color: #E32328;
+                  padding: 30px 32px;
+                
+          
+
+              }
+.modal-header-teste{
+                  border-top-left-radius: 10px;
+                  border-top-right-radius: 10px;
+                  width: 100%;
+                  background-color: #E32328;
+                  padding: 20px 32px;
+                
+          
+
+              }
+											              #fechar{
+                  position: absolute;
+                  bottom: 0px;
+                  right: 5px;
+                  text-align: center;
+                  line-height: 30px;
+                  margin-top: 0px;
+                  background: #ffffff;
+                  border: 1px solid #E2E2E2;
+                  border-radius: 10px;
+                  font-size: 16px;
+                  color: black;
+                  font-size: 14px;
+                  font-weight: 800;
+                  padding: 5px 30px;
+
+              }
+              #fechar-all{
+                  position: absolute;
+                  bottom: 0px;
+                  right: 5px;
+                  text-align: center;
+                  line-height: 30px;
+                  margin-top: 60px;
+                  background: #ffffff;
+                  border: 1px solid #E2E2E2;
+                  border-radius: 10px;
+                  font-size: 16px;
+                  color: black;
+                  font-size: 14px;
+                  font-weight: 800;
+                  padding: 5px 30px;
+
+               }
+              
+              #title-modal, #title-modal-tribo, #title-modal-funcionaros{
+                  font-family: Montserrat;
+                  font-size: 28px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: 28px;
+                  letter-spacing: -0.02em;
+                  text-align: left;
+                  color: #ffffff;
+
+              }
+              .content-result{
+                  width: 90% !important;
+                  margin-top: 10px;
+                  display: flex;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                 
+                  
+                  background-color: #ffffff;
+                  justify-content: space-between;
+                  border: 1px solid #E2E2E2;
+                  border-radius: 10px;
+                  height: 220px;
+                  overflow-y: scroll;
+                
+                  
+              }
+              
+              #sub-title-modal, #sub-title-modal-tribo, #sub-title-modal-funcionarios{
+                  font-family: Arial, Helvetica, sans-serif;
+                  font-size: 16px;
+                  
+                  font-style: normal;
+                  font-weight: 300;
+                  line-height: 20px;
+                  letter-spacing: 0px;
+                  text-align: left;
+                  color: #ffffff;
+
+              }
+              .div-select {    
+                  width:304px;/* Tamanho final do select */  
+                  margin: 5px;
+                
+            
+                  overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
+              .div-select select {      
+                  /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
+                  /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
+                  /* background-position: 200px center;  Posição da imagem do background */
+                  width: 304px; 
+                  height:48px; 
+                  font-family:Arial, Helvetica, sans-serif; 
+                  font-size:14px; 
+                  background-color: white;
+                  padding:13px 20px 13px 12px; 
+                  color:#8F8F8F; 
+                  border-radius: 10px; 
+                  border-color: #E2E2E2;   
+                  text-indent: 0.01px; 
+                  text-overflow: "";  }
+              .div-select select option{
+                  font-size: 14px;
+                  border-color: #E2E2E2;   
+              }
+              #nome-result, #nome-result-tribo, #nome-result-funcionarios{
+                font-size: 14px ;
+                font-weight: bold;
+                padding-left: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+              }
+              #tribo-result {
+                font-size: 14px;
+                color: #808080;
+                font-weight: 400;
+                font-family: Arial, Helvetica, sans-serif;
+
+              }
+              #chapter-result, #chapter-result-tribo, #chapter-result-funcionarios{
+                font-size: 14px;
+                padding-right: 20px;
+                color: black;
+                font-weight: 300;
+                font-family: Arial, Helvetica, sans-serif;
+
+              }
+              #tribo-result{
+                  color: #808080;
+              }
+              
+              .button-tribo{
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  width: 200px;
+                  font-size: 14px;
+                  padding: 12px;
+                  margin: 0px 5px;
+                  border-bottom: 1px solid #e6e6e6;
+                  border-top: 1px solid #e6e6e6;
+                  border-right: 1px solid #e6e6e6;
+                  border-left: 1px solid #e6e6e6;
+                  border-radius: 10px;
+                  border-color: #E2E2E2;
+                  box-shadow: none;
+                  outline: none;
+                  cursor: pointer;
+              }
+              .button-tribo:focus{
+                  outline:0;
+              }
+              @media only screen and (max-width: 600px) {
+                
+                .wrapper {
+                max-width: 400px ;
+                padding-left: 0 ;
+                padding-top: 10px;
+                padding-right: 0px;
+                }
+  
+                .container {
+                max-width: 375px;
+                margin: 0pc ;
+                }
+                
+                .content-result >  div > p{
+                  font-size: 10px;
+              
+                }
+                
+                .align-select{
+                  display: block;
+                  align-items: center;
+                  justify-content: space-between;
+                }
+                .div-select {    
+                  /* width: 80%;  Tamanho final do select     */
+                  overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */} 
+                .div-select select {      
+                    /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif)  */
+                    /* no-repeat #E2E2E2;  Imagem de fundo (Seta)       */
+                    /* background-position: 200px center;  Posição da imagem do background */
+                    margin-top: 5px;
+                    width: 100%; 
+                    background-color: white;
+                    height:48px; 
+                    font-family:Arial, Helvetica, sans-serif; 
+                    font-size:14px; 
+                    padding:13px 20px 13px 12px; 
+                    color:#8F8F8F; 
+                    border-radius: 10px; 
+                    border-color: #E2E2E2;   
+                    text-indent: 0.01px; 
+                    
+                }
+                
+                .div-select select option{
+                    font-size: 12px;
+                    border-color: #E2E2E2;   
+                }
+                .button-tribo{
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-top: 5px;
+                  font-size: 14px;
+                  padding: 0px 150px;
+                  border-bottom: 1px solid #e6e6e6;
+                  border-top: 1px solid #e6e6e6;
+                  border-right: 1px solid #e6e6e6;
+                  border-left: 1px solid #e6e6e6;
+                  border-radius: 10px;
+                  border-color: #E2E2E2;
+                  box-shadow: none;
+                  outline: none;
+                  cursor: pointer;
+                  
+              }
+              .button-tribo>img{
+                    padding: 0px 30px 0px 0px;
+                    
+              }
+              .modal {
+                  position: fixed;
+                  top: 8%;
+                  right: 0%;
+                  bottom: 0%;
+                  left: 0%;
+                  width: 26%;
+                  height: 420px;
+                  display: block;
+                  font-family: Arial, Helvetica, sans-serif;
+                  background: rgba(255, 254, 254, 0.993);
+                  z-index: 99999;
+                  opacity:0;
+                  -webkit-transition: opacity 400ms ease-in;
+                  -moz-transition: opacity 400ms ease-in;
+                  transition: opacity 400ms ease-in;
+                  pointer-events: none;
+              }
+              .modal > div {
+                  width: 90%;
+                  position: relative;
+                  /* margin: 5% auto;
+                  padding: 5px 30px; */
+                  background: #fff;
+              }
+              .modal-header{
+                width: 100%;
+                border-top-left-radius: 10px;
+                  border-top-right-radius: 10px;
+              }
+              #nome-result{
+                font-size: 13px;
+                font-weight: bold;
+                padding-left: 2px;
+                font-family: Arial, Helvetica, sans-serif;
+              }
+              #tribo-result{
+                font-size: 14px;
+                color: #808080;
+                font-weight: 300;
+                padding-right: 2px;
+                font-family: Arial, Helvetica, sans-serif;
+
+              }
+              #fechar{
+                  position: absolute;
+                  bottom: 10px;
+                  right: 30px;
+                  text-align: center;
+                  line-height: 30px;
+                  margin-top: 50px;
+                  background: #ffffff;
+                  border: 1px solid #E2E2E2;
+                  border-radius: 10px;
+                  font-size: 16px;
+                  color: black;
+              
+                  font-weight: 800;
+                  padding: 5px 30px;
+
+              }
+                .conteudo-top{
+                    display: block;
+                    margin: 10px;
+                   
+                  
+              }
+            
+            
+            
+              
+
+              }
+.announcementsBlog article {
+    padding-top: 1rem;
+    padding-right: 1rem !important;
+    border: 1px solid #E2E2E2;
+    border-radius: 6px;
+    background-color: white;
+    position: relative;
+}
+
+.annoucementsBlog .fusion-blog-layout-medium .fusion-meta-info .fusion-alignleft {
+    position: absolute !important;
+    top: 20px !important;
+    left: 347px !important;
+    border: 0px !important;
+}
+
+.login form {
+    position: relative !important;
+    height: 30vh !important;
+}
+
+form#loginform p.galogin {
+        position: absolute;
+    bottom: 0;
+    left: 19%;
+}
+
+            
+            .container {
+              left: 0 !important;
+              right: 0 !important;
+              margin: auto !important;
+              justify-content: center !important;
+              background-color: #f5f5f5 !important;
+              font-family: 'Montserrat' !important;
+              min-width: 1120px !important;
+              max-width: 1120px !important;
+            }
+            
+            /* DIV QUE ENGLOBA A TABLE */
+            .wrapper {
+              background-color: #f5f5f5 !important;
+              height: fit-content !important;
+              width: 1120px !important;
+              display: flex !important;
+              overflow-x: auto !important;
+              padding-left: 63x !important;
+              padding-top: 78px !important;
+              padding-right: 63px !important;
+              padding-bottom: 78px !important;
+            }
+            
+            /* DIVISÃO EM COLUNAS */
+            .wrapper .column {
+              display: block !important;
+              margin-left: 4px !important;
+              max-width: fit-content !important;
+              justify-content: space-around !important;
+            }
+            
+            /* LINHAS FULL SIZE | 342x50 px */
+            .wrapper .rowFull {
+              line-height: 9.6px !important;
+              letter-spacing: -2% !important;
+              text-align: center !important;
+              border: 1px solid #e2e2e2 !important;
+              background-color: white !important;
+              min-width: 345.99px !important;
+              height: 50px !important;
+              margin-bottom: 8px !important;
+              margin-left: 4px !important;
+              border-radius: 5px !important;
+              transition: 0.3s !important;
+            }
+            
+            .rowFull:hover {
+              border-color: #e32328 !important;
+              cursor: pointer !important;
+            }
+            
+            /* LINHAS DIVIDIDAS EM MAIS DE UM ITEM */
+            .wrapper .brokenRow {
+              display: flex !important;
+              width: 348px !important;
+              color: black !important;
+              height: fit-content !important;
+              margin-bottom: 1px !important;
+            }
+            
+            /* PRIMEIRA E ÚLTIMA COLUNA */
+            .wrapper .rowThin {
+              line-height: 50px !important;
+              text-align: center !important;
+              background-color: #e2e2e2 !important;
+              min-width: 96px !important;
+              height: 50px !important;
+              margin-bottom: 8px !important;
+              margin-left: 4px !important;
+              border-radius: 5px !important;
+              transition: 0.3s !important;
+            }
+            
+            /* CÉLULAS DA LINHA DE HEADS COM 1/3 e 1/2 DA LARGURA FULL */
+            .wrapper .rowHeadThird {
+              position: relative !important;
+              text-align: center !important;
+              background-color: white !important;
+              min-width: 111.13px !important;
+              height: 80px !important;
+              margin-left: 4px !important;
+              margin-bottom: 8px !important;
+              border: 1px solid #e2e2e2 !important;
+              border-radius: 5px !important;
+              transition: 0.3s !important;
+            }
+            
+            .wrapper .rowHeadThird:hover {
+              border-color: #e32328 !important;
+              cursor: default !important;
+            }
+            
+            .rowHeadHalf {
+              position: relative !important;
+              text-align: center !important;
+              min-width: 170px !important;
+              height: 80px !important;
+              background-color: white !important;
+              border: 1px solid #e2e2e2 !important;
+              margin-left: 4px !important;
+              margin-bottom: 8px !important;
+              border-radius: 5px !important;
+              text-align: center !important;
+              transition: 0.3s !important;
+            }
+            
+            .rowHeadHalf2 {
+              position: relative !important;
+              text-align: center !important;
+              min-width: 170px !important;
+              height: 37px !important;
+              background-color: white !important;
+              border: 1px solid #e2e2e2 !important;
+              margin-left: 4px !important;
+              margin-bottom: 8px !important;
+              border-radius: 5px !important;
+              text-align: center !important;
+              transition: 0.3s !important;
+            }
+            
+            .text {
+              position: absolute !important;
+              top: 25px !important;
+              bottom: 0 !important;
+              left: 0 !important;
+              right: 0 !important;
+              margin: auto !important;
+            }
+            
+            /* PRIMEIRA LINHA DA TABLE | TRIBOS */
+            #title {
+              border: 1px solid #e32328 !important;
+              color: #e32328 !important;
+              background-color: transparent !important;
+            
+              transition: 0.3s !important;
+            }
+            #title h2 {
+              color: #e32328 !important;
+              font-size: 12px !important;
+              line-height: 10px !important;
+            }
+            
+            #title h3 {
+              color: #e32328 !important;
+              font-size: 8px !important;
+              line-height: 5px !important;
+            }
+            
+            .wrapper #title:hover {
+              cursor: pointer !important;
+              background-color: white !important;
+            }
+            
+            /* PRIMEIRA COLUNA DA TABLE */
+            .wrapper .space {
+              background-color: transparent !important;
+            }
+            .wrapper .space h2 {
+              color: black !important;
+            }
+            .wrapper .space:hover {
+              background-color: transparent !important;
+              border-color: transparent !important;
+            }
+            
+            .wrapper .column .rowThinFirstColumn {
+              border: 1px solid #e32328 !important;
+              color: red !important;
+              line-height: 80px !important;
+              text-align: center !important;
+              background-color: transparent !important;
+              min-width: 96px !important;
+              height: 50px !important;
+              margin-bottom: 8px !important;
+              margin-left: 4px !important;
+              border-radius: 5px !important;
+              transition: 0.3s !important;
+            }
+            .rowThinFirstColumn h2 {
+              color: #e32328 !important;
+                }
+            .rowThinFirstColumn h3 {
+              color: #e32328 !important;
+            }
+            .wrapper .column .rowThinFirstColumn:hover {
+              cursor: pointer !important;
+              background-color: white !important;
+            }
+            
+            /* SQUADS */
+            .wrapper .squadRow {
+              position: relative !important;
+              line-height: 28px !important;
+              text-align: center !important;
+              background-color: #e32328 !important;
+              min-width: 111.33px !important;
+              height: 28px !important;
+              margin-left: 4px !important;
+              margin-bottom: 8px !important;
+              border: 1px solid #e2e2e2 !important;
+              border-radius: 5px !important;
+              color: white !important;
+              transition: 0.3s !important;
+              font-size: 11px !important;
+              letter-spacing: -100% !important;
+            }
+            .squadRow h2 {
+              color: white;
+              font-size: 12px;
+            }
+            .squadRow2 {
+              position: relative !important;
+              line-height: 28px !important;
+              text-align: center !important;
+              background-color: #e32328 !important;
+              min-width: 348.5px !important;
+              height: 28px !important;
+              margin-left: 4px !important;
+              margin-bottom: 8px !important;
+              border: 1px solid #e2e2e2 !important;
+              border-radius: 5px !important;
+              color: white !important;
+              transition: 0.3s !important;
+              font-size: 11px !important;
+              letter-spacing: -100% !important;
+            }
+            
+            .wrapper .squadRow:hover {
+              background-color: rgb(255, 71, 71) !important;
+              cursor: pointer !important;
+            }
+            
+            .wrapper .squadRow2:hover {
+              background-color: rgb(255, 71, 71) !important;
+              cursor: pointer !important;
+            }
+            /* PRIMEIRA COLUNA DA TABLE */
+            .wrapper .space {
+              background-color: transparent !important;
+              border-color: transparent !important;
+            }
+            
+            .wrapper .space:hover {
+              background-color: transparent !important;
+              border-color: transparent !important;
+            }
+            
+            /*ROW DE 1 TERÇO DA LARGURA */
+            .thirdRow {
+              padding:0px !important;
+              min-width: 110px !important;
+              height: 50px !important;
+              background-color: white !important;
+              border: 1px solid #e2e2e2 !important;
+              margin-left: 6px !important;
+              margin-bottom: 7px !important;
+              border-radius: 5px !important;
+              text-align: center !important;
+              transition: 0.3s !important;
+            }
+            
+            .thirdRow2 {
+              padding:0px !important;
+              min-width: 110px !important;
+              height: 35px !important;
+              background-color: white !important;
+              border: 1px solid #e2e2e2 !important;
+              margin-left: 6px !important;
+              margin-bottom: 7px !important;
+              border-radius: 5px !important;
+              text-align: center !important;
+              transition: 0.3s !important;
+            }
+            .thirdRow:hover {
+              border-color: #e32328 !important;
+              cursor: pointer !important;
+            }
+            
+            .thirdRow2:hover {
+              border-color: #e32328 !important;
+              cursor: pointer !important;
+            }
+            /* ELEMENTO DE ESPAÇO NA PRIMEIRA COLUNA */
+            #rowThinSpace {
+              min-height: 52px !important;
+              margin-bottom: 8px !important;
+            }
+            
+            /* CÉLULA DE DOIS TERÇOS DE LARGURA */
+            
+            .twoThirdRow {
+              min-width: 226.67px !important;
+              height: 50px !important;
+              background-color: white !important;
+              border: 1px solid #e2e2e2 !important;
+              margin-left: 4px !important;
+              margin-bottom: 7px !important;
+              border-radius: 5px !important;
+              text-align: center !important;
+              transition: 0.3s !important;
+            }
+            
+            .twoThirdRow:hover {
+              border-color: #e32328 !important;
+              cursor: pointer !important;
+            }
+            
+            /* CÉLULA DE METADE DA LARGURA */
+            
+            .rowHeadHalf {
+              min-width: 169ppx !important;
+              height: 80px !important;
+              background-color: white !important;
+              border: 1px solid #e2e2e2 !important;
+              margin-left: 4px !important;
+              margin-bottom: 7px !important;
+              border-radius: 5px !important;
+              text-align: center !important;
+              transition: 0.3s !important;
+            }
+            
+            
+            .rowHeadHalf:hover {
+              border-color: #e32328 !important;
+              cursor: pointer !important;
+            }
+            
+            .lastRows {
+              min-width: 100px !important;
+              min-height: 50px !important;
+              margin-bottom: 8px !important;
+              margin-left: 4px !important;
+              background-color: white !important;
+              border: 1px solid #e2e2e2 !important;
+              border-radius: 5px !important;
+              text-align: center !important;
+              transition: 0.3s !important;
+            }
+            .lastRows:hover {
+              border-color:rgb(255, 71, 71) !important;
+            }
+            
+            a {
+              text-decoration: none !important;
+              color: inherit !important;
+            }
+            
+            @media only screen and (max-width: 600px) {
+              .wrapper {
+                max-width: 400px !important;
+                padding-left: 0 !important;
+                padding-top: 10px!important;
+                padding-right: 0px !important;
+              }
+              
+              .container {
+                max-width: 375px !important;
+              }  
+            }
+            </style>
+        
     </header>
     <body>
-        
-        <div class="align-select">
-            <div class="div-select">
+        <div class="conteudo-top-aling">
+            <div class="conteudo-top">
+              <span>Espelho de Tribos e Squads</span><br/><br/>
+              <strong>Introdução</strong><br/><br/>
+              <p>Para aumentar nossa eficiência com as entregas que fizemos e levar o máximo de valor ao cliente, nossa forma de trabalho ágil está organizada por squads, tribos e chapters. Os squads são times multidisciplinares, com know-how específico e complementares. Já as tribos são uma união de squads que compartilham a mesma missão corporativa. Por fim, os chapters se organizam por áreas de competência em comum. Saiba mais sobre nossa estrutura <a href="https://homolog-kb.brivia.com.br/estrutura/">aqui</a>.</p>
+              <p>Abaixo você pode consultar como essa organização de pessoas está definida na Brivia. Preencha os campos com as informações de quem deseja consultar e clique na busca.</p>
               
-                <select  name="Tribo" id="sel_tribo" >
-                    <option disabled selected style="display: none">Tribo</option>
-                    <option value="Lilian Chwartzmann">Lilian Chwartzmann</option>
-                    <option value="Claudia Gonçalves">Claudia Gonçalves</option>
-                    <option value="Ricardo Almeida">Ricardo Almeida</option>
-                    <option value="Eliel Allebrandt">Eliel Allebrandt</option>
-                    <option value="Ernane Pinheiro">Ernane Pinheiro</option>
-                    <option value="Pool">Pool</option>
-                </select>
-            </div>
-            <div class="div-select">
-                <select name="Squard" id="sel_squad">
-                    <option disabled selected style="display: none">Squad</option>
-                    <option value="Vostok">Vostok</option>
-                    <option value="Discovery">Discovery</option>
-                    <option value="Andromeda">Andromeda</option>
-                    <option value="Columbia">Columbia</option>
-                    <option value="Laika">Laika</option>
-                    <option value="Supernova">Supernova</option>
-                    <option value="Sirius">Sirius</option>
-                    <option value="Gaia">Gaia</option>
-                    <option value="Apolo">Apolo</option>
-                    <option value="Jupiter">Jupiter</option>
-                    <option value="Squad">Squad</option>
-                    <option value="Pool">Pool</option>
-                </select>
-            </div>
-            <div class="div-select">
-<<<<<<< HEAD
-                <select name="Chapter" class="sel" id="sel_chapter">
-=======
-                <select name="Chapter" id="sel_chapter">
-                    <option disabled selected style="display: none">Chapter</option>
->>>>>>> a60217a2ec0883a83f02ce85c58248f530e2a960
-                    <option value="Clientes">Cliente</option>
-                    <option value="Client Service">Client Service</option>
-                    <option value="Project Magnecgt">Project Magnecgt</option>
-                    <option value="Strategy">Strategy</option>
-                    <option value="Data Intelligence">Data Intelligence</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Experience Design">Experience Design</option>
-                    <option value="Growth">Growth</option>
-                    <option value="Creativity">Creativity</option>
-                    <option value="Media">Media</option>
-                    <option value="Production">Production</option>
-                    <option value="Content">Content</option>
-                    <option value="Platform">Platform</option>
-                    <option value="Operation">Operation</option>
-                    <option value="Agile Master">Agile Master</option>
-                </select>
-            </div>
-            <div>
-                <a id="buscar" style="text-decoration: none;" href="#abrirModal"><button class="button-tribo"><img src="search.png"/>Buscar</button></a>
-
-            </div>
-            <div>
-                <a id="limpar" style="text-decoration: none;" ><button class="button-tribo"><img src="clear.png" alt="">Limpar</button></a>
-            </div>
-
-        </div>
-        <div id="abrirModal" class="modal">
-            <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
-            <div class="modal-header">
-                <span id="title-modal">Undefined</span><br/>
-                <span id="sub-title-modal">Chapter</span>
-
-            </div>
-            
-            <div  class="content-result">
-                <div id="nome-result">
-                    <p></p>
-                </div>
-                <div id="tribo-result">
-                    <p></p>
-                </div>
-                <div id="chapter-result">
-                    <p></p>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <!-- TABELA COM SIDESCROLL -->
-            <div class="wrapper">
-              <!--PRIMEIRA COLUNA-->
-              <div class="column">
-                <div id="rowThinSpace"></div>
-                <div class="rowHeadThird , space"></div>
-                <div class="squadRow , space">
-                  <h2>Chapters</h2>
-                  <h3>Heads</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2 style="line-height: 30px">Clientes</h2>
-                  <h3></h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2 style="line-height: 30px">Client Service</h2>
-                  <h3></h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2>Project Management</h2>
-                  <h3>Felipe Seibert</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2>Strategy</h2>
-                  <h3>Guilherme Bello</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2>Data Intelligence</h2>
-                  <h3>Wagner Cambruzzi</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2>Technology</h2>
-                  <h3>Jonathas Coelho</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2 style="line-height: 12px">Experience Design</h2>
-                  <h3 style="line-height: 0px">Fabiano Nodler</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2 style="line-height: 30px">Creativity</h2>
-                  <h3></h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2>Media</h2>
-                  <h3>Marlise Nunes</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2>Production</h2>
-                  <h3>Josiane Toniolo</h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2 style="line-height: 30px">Content</h2>
-                  <h3></h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2 style="line-height: 30px">Operation</h2>
-                  <h3></h3>
-                </div>
-                <div class="rowThinFirstColumn">
-                  <h2 style="line-height: 30px">Agile Master</h2>
-                  <h3></h3>
-                </div>
-              </div>
-      
-              <!-- SEGUNDA COLUNA -->
-              <div class="column">
-                <!-- Tribe -->
-                <a href="#modal-tribo" class="info-tribo" value="Lilian Chwartzmann"><div value="Lilian Chwartzmann" class="rowFull"  id="title"><div>
-                  <h2>Lilian Chwartzmann</h2> 
-                  <h3>Key Account Director</h3>
-                </div></div></a>
-                <!-- Heads -->
-                <div class="brokenRow">
-                  <div class="rowHeadThird">
-                    <div class="text">
-                      <h2>Paola Muller</h2>
-                      <h3>Strategy Head</h3>
-                    </div>
-                  </div>
-                  <div class="rowHeadThird">
-                    <div class="text">
-                      <h2>Luciana Martins</h2>
-                      <h3>Head of Client Service</h3>
-                    </div>
-                  </div>
-                  <div class="rowHeadThird">
-                    <div class="text">
-                      <h2>David Levy</h2>
-                      <h3>Head of Creativity</h3>
-                    </div>
-                  </div>
-                </div>
-                <!-- Squads -->
-                <div class="brokenRow">
-                  <div class="squadRow">Squad Vostok</div>
-                  <div class="squadRow">Squad Discovery</div>
-                  <div class="squadRow">Squad Andrômeda</div>
-                </div>
-      
-                <!--Clientes-->
-                <div class="brokenRow">
-                  <div class="thirdRow">
-                    <h2 style="line-height: 12px">Carrefour</h2>
-                    <h2 style="line-height: 6px">Atacadão</h2>
-                  </div>
-                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Clientes"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Vivo</h2>
-                    <h2 style="line-height: 6px">Vibra</h2>
-                    <h3 style="line-height: 4px">mais 1</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Clientes"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">KPMG</h2>
-                    <h2 style="line-height: 6px">BMG</h2>
-                    <h3 style="line-height: 4px">mais 4</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Client Service-->
-                <div class="brokenRow">
-                  <div class="thirdRow">
-                    <h2 style="line-height: 30px">Rafaela Corner</h2>
-                    <h3></h3>
-                  </div>
-                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Client Service"  id="content-func" class="thirdRow content-func"><div >
-                    <h2>Rafaella Garcia</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Client Service"  id="content-func" class="thirdRow content-func"><div >
-                    <h2>Ariane Herrero</h2>
-                    <h3>mais 3</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Project Management-->
-                <div class="rowFull"></div>
-      
-                <!--Strategy-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Strategy"  id="content-func" class="thirdRow content-func"><div >
-                    <h2>Camila Trevisan</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                  <div class="thirdRow">
-                    <h2 style="line-height: 30px">Breno Azevedo</h2>
-                    <h3></h3>
-                  </div>
-                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Strategy"  id="content-func" class="thirdRow content-func"><div >
-                    <h2>Carolina Porcher</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Data Inteligence-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Data Intelligence"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Fernando</h2>
-                    <h2 style="line-height: 6px">Ebeling</h2>
-                    <h3 style="line-height: 2px">mais 2</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Data Intelligence"  id="content-func" class="twoThirdRow content-func"><div >
-                    <h2>Gabriele Possebon</h2>
-                    <h3>mais 3</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Technology-->
-                <div class="brokenRow">
-                  <div class="thirdRow">
-                    <h2 style="line-height: 30px">Riciel de Melo</h2>
-                    <h3></h3>
-                  </div>
-                  <div class="twoThirdRow">
-                    <h2 style="line-height: 30px">Vinicius Benedito</h2>
-                    <h3></h3>
-                  </div>
-                </div>
-      
-                <!--Experience Design-->
-                <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Experience Design"  id="content-func" class="rowFull content-func"><div >
-                  <h2>Giuliana Galvão</h2>
-                  <h3>mais 1</h3>
-                </div></div></a>
-      
-                <!--Creativity-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Creativity"  id="content-func" class="thirdRow content-func"><div>
-                    <h2>Lucas Blanco</h2>
-                    <h3>mais 8</h3>
-                  </div></div></a>
-                  <div class="thirdRow"></div>
-                  <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Creativity"  id="content-func" class="thirdRow content-func"><div>
-                    <h2>Joviano Quatrin</h2>
-                    <h3>mais 10</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Media-->
-                <div class="rowFull"></div>
-      
-                <!--Production-->
-                <div class="rowFull"></div>
-      
-                <!--Content-->
-                <div class="brokenRow">
-                  <div class="thirdRow"></div>
-                  <div class="thirdRow"></div>
-                  <div class="thirdRow">
-                    <h2 style="line-height: 30px">Claudia Mayara</h2>
-                  </div>
-                </div>
-      
-                <!--Operation-->
-                <div class="rowFull"></div>
-      
-                <!--Agile Master-->
-                <div class="rowFull"></div>
-              </div>
-      
-              <!--TERCEIRA COLUNA-->
-      
-              <!--Tribe-->
-              <div class="column">
-                <a href="#modal-tribo" class="info-tribo" id="info" value="Claudia Gonçalves"><div value="Claudia Gonçalves" class="rowFull"  id="title"><div>
-                  <h2>Claudia Gonçalves</h2>
-                  <h3>Key Account Director</h3>
-                </div></div></a>
-                <!-- Heads -->
-                <div class="brokenRow">
-                  <div class="rowHeadHalf">
-                    <div class="text">
-                      <h2>Magali Moraes</h2>
-                      <h3>Creative Head</h3>
-                    </div>
-                  </div>
-                  <div class="rowHeadHalf">
-                    <div class="text">
-                      <h2>Luana Mello</h2>
-                      <h3>Head of Client Service</h3>
-                    </div>
-                  </div>
-                </div>
-                <!-- Squads -->
-                <div class="brokenRow">
-                  <div class="squadRow">Squad Columbia</div>
-                  <div class="squadRow">Squad Laika</div>
-                  <div class="squadRow">Squad Supernova</div>
-                </div>
-      
-                <!--Clientes-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Clientes"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Fundacred</h2>
-                    <h2 style="line-height: 6px">Previsul</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Clientes"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Governo RS</h2>
-                    <h2 style="line-height: 6px">Corsan</h2>
-                    <h3 style="line-height: 4px">mais 2</h3>
-                  </div></div></a>
-                  <div class="thirdRow">
-                    <h2 style="line-height: 12px">Abradif</h2>
-                    <h2 style="line-height: 0px">Oi</h2>
-                  </div>
-                </div>
-      
-                <!--Client Service-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Client Service"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 4px">Graziela</h2>
-                    <h2 style="line-height: opx">Shardelotto</h2>
-                    <h3 style="line-height: 0px">mais 1</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Client Service"  id="content-func" class="thirdRow content-func"><div >
-                    <h2>Sandra Calçada</h2>
-                    <h3>mais 3</h3>
-                  </div></div></a>
-                  <div class="thirdRow">
-                    <h2 style="line-height: 15px">Caroline Felipetto</h2>
-                    <h3></h3>
-                  </div>
-                </div>
-      
-                <!--Project Management-->
-                <div class="rowFull"></div>
-      
-                <!--Strategy-->
-                <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Strategy" id="content-func" class="rowFull content-func"><div >
-                  <h2 style="line-height: 15px">Christiaan Van Hattem</h2>
-                  <h3>mais 1</h3>
-                </div></div></a>
-      
-                <!--Data Inteligence-->
-                <div class="rowFull"></div>
-      
-                <!--Technology-->
-                <div class="rowFull"></div>
-      
-                <!--Experience Design-->
-                <div class="rowFull"></div>
-      
-                <!--Creativity-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Creativity" id="content-func" class="thirdRow content-func"><div >
-                    <h2>Cecília Marques</h2>
-                    <h3>mais 3</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Creativity" id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Matheus</h2>
-                    <h2 style="line-height: 6px">Carvalho</h2>
-                    <h3 style="line-height: 0px">mais 4</h3>
-                  </div></div></a>
-                  <div class="thirdRow">
-                    <h2 style="line-height: 15px">Eduarda Figueiredo</h2>
-                    <h3></h3>
-                  </div>
-                </div>
-      
-                <!--Media-->
-                <div class="brokenRow">
-                  <div class="thirdRow"></div>
-                  <div class="thirdRow"></div>
-                  <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/SuperNova/Media" id="content-func" class="thirdRow content-func"><div >
-                    <h2>Karina Garcia</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Production-->
-                <div class="rowFull">
-                  <h2 style="line-height: 30px">Ramine Baigorra</h2>
-                </div>
-      
-                <!--Content-->
-                <div class="rowFull"></div>
-      
-                <!--Operation-->
-                <div class="rowFull"></div>
-      
-                <!--Agile Master-->
-                <div class="rowFull">
-                  <h2 style="line-height: 30px">Tomaz Macedo</h2>
-                </div>
-              </div>
-      
-              <!--QUARTA COLUNA-->
-              <div class="column">
-                <a href="#modal-tribo" class="info-tribo" value="Ricardo Almeida"><div value="Ricardo Almeida" class="rowFull" id="title"><div >
-                  <h2>Ricardo Almeida</h2>
-                  <h3>Key Account Director</h3>
-                </div></div></a>
-                <!-- Heads -->
-                <div class="brokenRow">
-                  <div class="rowHeadHalf">
-                    <div class="text">
-                      <h2>Cintia Galvan</h2>
-                      <h3>Head of Client Service</h3>
-                    </div>
-                  </div>
-                  <div class="rowHeadHalf">
-                    <div class="text">
-                      <h2>Rodrigo Telles</h2>
-                      <h3>Creative Head</h3>
-                    </div>
-                  </div>
-                </div>
-                <!-- Squads -->
-                <div class="brokenRow">
-                  <div class="squadRow">Squad Sirius</div>
-                  <div class="squadRow">Squad Gaia</div>
-                  <div class="squadRow">Squad Apolo</div>
-                </div>
-      
-                <!--Clientes-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Clientes"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Tecnisa</h2>
-                    <h2 style="line-height: 6px">Unipar</h2>
-                    <h3 style="line-height: 4px">mais 3</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Clientes"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Ciser</h2>
-                    <h2 style="line-height: 6px">Embraco</h2>
-                    <h3 style="line-height: 4px">mais 4</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Clientes"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 6px">Ailos</h2>
-                    <h2 style="line-height: 6px">Viacredi</h2>
-                    <h3 style="line-height: 4px">mais 2</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Client Service-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Client Service"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 12px">Juliana Magalhães</h2>
-                    <h3 style="line-height: 0px">mais 2</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Client Service"  id="content-func" class="thirdRow content-func"><div >
-                    <h2 style="line-height: 12px">Tamara Gonçalves</h2>
-                    <h3 style="line-height: 0px">mais 4</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Client Service"  id="content-func" class="thirdRow content-func"><div >
-                    <h2>Aline Duarte</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Project Management-->
-                <div class="rowFull"></div>
-      
-                <!--Strategy-->
-                <div class="rowFull">
-                  <h2 style="line-height: 26px">Nathalia Andrade</h2>
-                </div>
-      
-                <!--Data Inteligence-->
-                <div class="rowFull"></div>
-      
-                <!--Technology-->
-                <div class="brokenRow">
-                    
-                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Technology"  id="content-func" class="thirdRow content-func"><div >
-                    <h2>Rodolfo Zattar</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Technology"  id="content-func" class="twoThirdRow content-func"><div >
-                    <h2>Gustavo Merling</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Experience Design-->
-                <div class="rowFull">
-                  <h2 style="line-height: 30px">André Lázaro</h2>
-                  <h3></h3>
-                </div>
-      
-                <!--Creativity-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Creativity" id="content-func" class="thirdRow content-func"><div >
-                    <h2>Thâmara Ribeiro</h2>
-                    <h3>mais 2</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Creativity" id="content-func" class="thirdRow content-func"><div >
-                    <h2>Edson Hayashi</h2>
-                    <h3>mais 9</h3>
-                  </div></div></a>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Creativity" id="content-func" class="thirdRow content-func"><div >
-                    <h2>César Favero</h2>
-                    <h3>mais 2</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Media-->
-                <div class="brokenRow">
-                    <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Media" id="content-func" class="thirdRow content-func"><div >
-                    <h2>César de Brito</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                  <div class="thirdRow">
-                    <h2 style="line-height: 30px">Larissa Niehues</h2>
-                    <h3></h3>
-                  </div>
-                  <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Media" id="content-func" class="thirdRow content-func"><div >
-                    <h2>Rafael Castro</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                </div>
-      
-                <!--Production-->
-                <div class="rowFull"></div>
-      
-                <!--Content-->
-                <div class="rowFull"></div>
-      
-                <!--Operation-->
-                <div class="rowFull"></div>
-      
-                <!--Agile Master-->
-                <div class="rowFull"></div>
-              </div>
-      
-              <!--QUARTA COLUNA-->
-              <div class="column">
-                <a href="#modal-tribo" class="info-tribo" value="Eliel Allebrandt"><div value="Eliel Allebrandt" class="rowFull" id="title"><div >
-                  <h2>Eliel Allebrandt</h2>
-                  <h3>Key Account Director</h3>
-                </div></div></a>
-      
-                <!-- Heads -->
-                <div style="display: block" class="brokenRow">
-                  <div class="brokenRow">
-                    <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow">
-                      <h2 style="line-height: 6px">Alex Coelho</h2>
-                      <h3 style="line-height: 0px">Head of Creativity</h3>
-                    </div>
-                    <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow">
-                      <h2 style="line-height: 6px">Daniel Gizo</h2>
-                      <h3 style="line-height: 0px">Head of Strategy</h3>
-                    </div>
-                    <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow">
-                      <h2 style="line-height: 6px">Luiz Paulo</h2>
-                      <h3 style="line-height: 0px">Head of Operation</h3>
-                    </div>
-                  </div>
-                  <div class="brokenRow">
-                    <div
-                      style="height: 37px; max-width: 226, 67px"
-                      class="rowHeadHalf"
-                    >
-                      <h2 style="line-height: 6px">Tatiana Lobão</h2>
-                      <h3 style="line-height: 0px">Head of Data Intelligence</h3>
-                    </div>
-                    <div style="height: 37px" class="rowHeadHalf">
-                      <h2 style="line-height: 6px">Thiago Furtado</h2>
-                      <h3 style="line-height: 0px">Head of Client Service</h3>
-                    </div>
-                  </div>
-                </div>
-      
-                <!-- Squads -->
-                <div class="brokenRow">
-                  <div style="min-width: 346px" class="squadRow">Squad Jupiter</div>
-                </div>
-      
-                <!--Clientes-->
-                <div class="rowFull">
-                  <h2 style="line-height: 26px">Banco do Brasil</h2>
-                </div>
-      
-                <!--Client Service-->
-                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Client Service"  id="content-func" class="rowFull content-func"><div >
-                  <h2 style="line-height: 15px">Francisco Gill</h2>
-                  <h3>mais 5</h3>
-                </div></div></a>
-      
-                <!--Project Management-->
-                <div class="rowFull">
-                  <h2 style="line-height: 15px">Felipe Canto</h2>
-                  <h3>mais 1</h3>
-                </div>
-      
-                <!--Strategy-->
-                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Strategy" id="content-func" class="rowFull content-func"><div >
-                  <h2 style="line-height: 15px">Maria Thais Brussi</h2>
-                  <h3>mais 2</h3>
-                </div></div></a>
-      
-                <!--Data Inteligence-->
-                <div class="rowFull">
-                  <h2 style="line-height: 26px">Marcos Cunha</h2>
-                </div>
-      
-                <!--Technology-->
-                <div class="rowFull"></div>
-      
-                <!--Experience Design-->
-                <div class="rowFull">
-                  <h2 style="line-height: 26px">Marcelo Morales Arevalos</h2>
-                  <h3></h3>
-                </div>
-      
-                <!--Creativity-->
-                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Creativity" id="content-func" class="rowFull content-func"><div >
-                  <h2 style="line-height: 15px">Jefferson Damasceno</h2>
-                  <h3>mais 9</h3>
-                </div></div></a>
-      
-                <!--Media-->
-                <div class="rowFull"></div>
-      
-                <!--Production-->
-                <div class="rowFull"></div>
-      
-                <!--Content-->
-                <div class="rowFull">
-                  <h2 style="line-height: 26px">Soraya Coelho</h2>
-                  <h3></h3>
-                </div>
-      
-                <!--Operation-->
-                <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Operation" id="content-func" class="rowFull content-func"><div >
-                  <h2>João Lucas</h2>
-                  <h3>mais 1</h3>
-                </div></div></a>
-      
-                <!--Agile Master-->
-                <div class="rowFull">
-                  <h2 style="line-height: 26px">Clayton Paiva</h2>
-                </div>
-              </div>
-      
-              <!--QUINTA COLUNA-->
-              <div  class="column">
-                <a href="#modal-tribo" class="info-tribo" value="Ernane Pinheiro"><div value="Ernane Pinheiro" class="lastRows" id="title"><div >
-                  <h2>Ernane Pinheiro</h2>
-                  <h3>Key Account Director</h3>
-                </div></div></a>
-                <div
-                  style="margin-bottom: 7px; min-height: 81px"
-                  class="rowHeadThird"
-                ></div>
-                <div style="margin-bottom: 9px;" class="squadRow">
-                  <h2>Squad</h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2>AES</h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <a href="#modal-funcionarios" id="info"><div value="Ernane Pinheiro/Squad/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
-                    <h2>Felipe Ferazzi</h2>
-                    <h3>mais 1</h3>
-                  </div></div></a>
-                <a href="#modal-funcionarios" id="info"><div value="Ernane Pinheiro/Squad/Technology"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Davi Bauer</h2>
-                  <h3>mais 2</h3>
-                </div></div></a>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-              </div>
-      
-              <!--SEXTA COLUNA-->
-              <div class="column">
-                <a href="#modal-tribo" class="info-tribo" value=""><div value="" class="lastRows" id="title"><div >
-                  <h2>Pool</h2>
-                  <h3></h3>
-                </div></div></a>
-                <div
-                  style="margin-bottom: 7px; min-height: 81px"
-                  class="rowHeadThird"
-                ></div>
-                <div style="margin-bottom: 9px" class="squadRow">
-                  <h2>Pool</h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2>Floripa Airport</h2>
-                  <h3></h3>
-                </div>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <a href="#modal-funcionarios" id="info"><div value="/Pool/Project Management"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Fabiana Albuquerque</h2>
-                  <h3>mais 3</h3>
-                </div></div></a>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <a href="#modal-funcionarios" id="info"><div value="/Pool/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Aletha da Silva</h2>
-                  <h3>mais 8</h3>
-                </div></div></a>
-                <a href="#modal-funcionarios" id="info"><div value="/Pool/Technology"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Alexandre Veeck</h2>
-                  <h3>mais 10</h3>
-                </div></div></a>
-                <a href="#modal-funcionarios" id="info"><div value="/Pool/Experience Design"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Pablo Jaeger</h2>
-                  <h3>mais 2</h3>
-                </div></div></a>
-                <div class="lastRows">
-                  <h2>Wagner Gomes</h2>
-                  <h3></h3>
-                </div>
-                <a href="#modal-funcionarios" id="info"><div value="/Pool/Media"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Aline Feijó</h2>
-                  <h3>mais 2</h3>
-                </div></div></a>
-                <a href="#modal-funcionarios" id="info"><div value="/Pool/Production"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Bernardo Silva</h2>
-                  <h3>mais 1</h3>
-                </div></div></a>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-                <a href="#modal-funcionarios" id="info"><div value="/Pool/Operation"  id="content-func" class="lastRows content-func"><div >
-                  <h2>Janaina Spohr</h2>
-                  <h3>mais 1</h3>
-                </div></div></a>
-                <div class="lastRows">
-                  <h2></h2>
-                  <h3></h3>
-                </div>
-              </div>
             </div>
           </div>
-
-          <!--Modais-->
-          <div id="modal-tribo" class="modal">
-            <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
-            <div class="modal-header">
-                <span id="title-modal-tribo"></span><br/>
-                
-
-            </div>
+      <div class="info-style">
             
-        
-
-            <div  class="content-result">
-                <div id="nome-result-tribo">
-                  
-                    <p></p>
-                </div>
-                
-                <div id="chapter-result-tribo">
-                    <p></p>
-                </div>
+              <div class="align-content-info"><img  class="icon-button" src="https://i.ibb.co/P9fs1JQ/Vector.png" alt=""><span>Clique nas células para conferir a lista completa dos integrantes</span></div>
+              <div></div>
+              <div style="display:flex;"><img src="https://i.ibb.co/T4VRXcx/clear.png" alt=""></div>
             </div>
-         
-        </div>
-        <div id="modal-funcionarios" class="modal">
-            <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
-            <div class="modal-header">
-                <span id="title-modal-funcionaros">Chapter aq</span><br/>
-                <span id="sub-title-modal-funcionarios">Chapter</span>
-            </div>
-            <div  class="content-result">
-                <div id="nome-result-funcionarios">
-                    <p></p>
-                </div>
-                
-                <div id="chapter-result-funcionarios">
-                    <p></p>
-                </div>
-            </div>
-        </div>
+      <div class="align-select">
+                  <div class="div-select">
+                      <select  name="Tribo" id="sel_tribo" >
+                          <option disabled selected style="display: none">Tribo</option>
+                          <option value="Lilian Chwartzmann">Lilian Chwartzmann</option>
+                          <option value="Claudia Gonçalves">Claudia Gonçalves</option>
+                          <option value="Ricardo Almeida">Ricardo Almeida</option>
+                          <option value="Eliel Allebrandt">Eliel Allebrandt</option>
+                          <option value="Ernane Pinheiro">Ernane Pinheiro</option>
+                          <option value="Pool">Pool</option>
+                      </select>
+                  </div>
+                  <div class="div-select">
+                      <select name="Squard" id="sel_squad">
+                          <option disabled selected style="display: none">Squad</option>
+                          <option value="Vostok">Vostok</option>
+                          <option value="Discovery">Discovery</option>
+                          <option value="Andromeda">Andromeda</option>
+                          <option value="Columbia">Columbia</option>
+                          <option value="Laika">Laika</option>
+                          <option value="Supernova">Supernova</option>
+                          <option value="Sirius">Sirius</option>
+                          <option value="Gaia">Gaia</option>
+                          <option value="Apolo">Apolo</option>
+                          <option value="Jupiter">Jupiter</option>
+                          <option value="Squad">Squad</option>
+                          <option value="Pool">Pool</option>
+                      </select>
+                  </div>
+                  <div class="div-select">
+                      <select name="Chapter" id="sel_chapter">
+                          <option disabled selected style="display: none">Chapter</option>
+                          <option value="Clientes">Cliente</option>
+                          <option value="Client Service">Client Service</option>
+                          <option value="Project Magnecgt">Project Magnecgt</option>
+                          <option value="Strategy">Strategy</option>
+                          <option value="Data Intelligence">Data Intelligence</option>
+                          <option value="Technology">Technology</option>
+                          <option value="Experience Design">Experience Design</option>
+                          <option value="Growth">Growth</option>
+                          <option value="Creativity">Creativity</option>
+                          <option value="Media">Media</option>
+                          <option value="Production">Production</option>
+                          <option value="Content">Content</option>
+                          <option value="Platform">Platform</option>
+                          <option value="Operation">Operation</option>
+                          <option value="Agile Master">Agile Master</option>
+                      </select>
+                  </div>
       
-        
-        
-        <style>
-          button {
-           padding: 0;
-           max-width: 100px;
-           height: 52.99px;
-           margin-bottom: 8px;
-           margin-left: 4px;
-           background-color: transparent;
-           border: 1px solid transparent;
-           border-radius: 5px;
-           text-align: center;
-           font-family: 'Montserrat' sans-serif;
-          }
-       </style>
+                  <div>
+                      <a id="buscar" style="text-decoration: none;" href="#abrirModal"><button class="button-tribo"><img src="https://i.ibb.co/KzDtdfQ/search.png"/>Buscar</button></a>
+      
+                  </div>
+                  <div>
+                      <a id="limpar" style="text-decoration: none;" ><button class="button-tribo"><img src="https://i.ibb.co/T4VRXcx/clear.png" alt="">Limpar</button></a>
+                  </div>
+      
+      
+              </div>
+              <div id="abrirModal" class="modal">
+                  <a href="#fechar" title="Fechar" class="fechar"><button id="fechar-all" class="fechar">Fechar</button></a>
+                  <div class="modal-header-teste">
+                      <span id="title-modal">Undefined</span><br/>
+                      <span id="sub-title-modal">Chapter</span>
+      
+                  </div>
+                  
+                  <div  class="content-result">
+                      <div id="nome-result">
+                          <p></p>
+                      </div>
+                      <div id="tribo-result">
+                          <p></p>
+                      </div>
+                      <div id="chapter-result">
+                          <p></p>
+                      </div>
+                  </div>
+              </div>
+              <div class="container">
+                  <!-- TABELA COM SIDESCROLL -->
+                  <div class="wrapper">
+                    <!--PRIMEIRA COLUNA-->
+                    <div class="column">
+                      <div id="rowThinSpace"></div>
+                      <div class="rowHeadThird , space"></div>
+                      <div class="squadRow , space">
+                        <h2>Chapters</h2>
+                        <h3>Heads</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2 style="line-height: 30px">Clientes</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2 style="line-height: 30px">Client Service</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2>Project Management</h2>
+                        <h3>Felipe Seibert</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2>Strategy</h2>
+                        <h3>Guilherme Bello</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2>Data Intelligence</h2>
+                        <h3>Wagner Cambruzzi</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2>Technology</h2>
+                        <h3>Jonathas Coelho</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2 style="line-height: 12px">Experience Design</h2>
+                        <h3 style="line-height: 0px">Fabiano Nodler</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2 style="line-height: 30px">Creativity</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2>Media</h2>
+                        <h3>Marlise Nunes</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2>Production</h2>
+                        <h3>Josiane Toniolo</h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2 style="line-height: 30px">Content</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2 style="line-height: 30px">Operation</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="rowThinFirstColumn">
+                        <h2 style="line-height: 30px">Agile Master</h2>
+                        <h3></h3>
+                      </div>
+                    </div>
+            
+                    <!-- SEGUNDA COLUNA -->
+                    <div class="column">
+                      <!-- Tribe -->
+                      <a href="#modal-tribo" class="info-tribo" value="Lilian Chwartzmann"><div value="Lilian Chwartzmann" class="rowFull"  id="title"><div>
+                        <h2>Lilian Chwartzmann</h2> 
+                        <h3>Key Account Director</h3>
+                      </div></div></a>
+                      <!-- Heads -->
+                      <div class="brokenRow">
+                        <div class="rowHeadThird">
+                          <div class="text">
+                            <h2>Paola Muller</h2>
+                            <h3>Strategy Head</h3>
+                          </div>
+                        </div>
+                        <div class="rowHeadThird">
+                          <div class="text">
+                            <h2>Luciana Martins</h2>
+                            <h3>Head of Client Service</h3>
+                          </div>
+                        </div>
+                        <div class="rowHeadThird">
+                          <div class="text">
+                            <h2>David Levy</h2>
+                            <h3>Head of Creativity</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Squads -->
+                      <div class="brokenRow">
+                        <div class="squadRow">Squad Vostok</div>
+                        <div class="squadRow">Squad Discovery</div>
+                        <div class="squadRow">Squad Andrômeda</div>
+                      </div>
+            
+                      <!--Clientes-->
+                      <div class="brokenRow">
+                        <div class="thirdRow">
+                          <h2 style="line-height: 12px">Carrefour</h2>
+                          <h2 style="line-height: 6px">Atacadão</h2>
+                        </div>
+                        <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Vivo</h2>
+                          <h2 style="line-height: 6px">Vibra</h2>
+                          <h3 style="line-height: 4px">mais 1</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">KPMG</h2>
+                          <h2 style="line-height: 6px">BMG</h2>
+                          <h3 style="line-height: 4px">mais 4</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Client Service-->
+                      <div class="brokenRow">
+                        <div class="thirdRow">
+                          <h2 style="line-height: 30px">Rafaela Corner</h2>
+                          <h3></h3>
+                        </div>
+                        <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                          <h2>Rafaella Garcia</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                          <h2>Ariane Herrero</h2>
+                          <h3>mais 3</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Project Management-->
+                      <div class="rowFull"></div>
+            
+                      <!--Strategy-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Strategy"  id="content-func" class="thirdRow content-func"><div >
+                          <h2>Camila Trevisan</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                        <div class="thirdRow">
+                          <h2 style="line-height: 30px">Breno Azevedo</h2>
+                          <h3></h3>
+                        </div>
+                        <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Strategy"  id="content-func" class="thirdRow content-func"><div >
+                          <h2>Carolina Porcher</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Data Inteligence-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Data Intelligence"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Fernando</h2>
+                          <h2 style="line-height: 6px">Ebeling</h2>
+                          <h3 style="line-height: 2px">mais 2</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Data Intelligence"  id="content-func" class="twoThirdRow content-func"><div >
+                          <h2>Gabriele Possebon</h2>
+                          <h3>mais 3</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Technology-->
+                      <div class="brokenRow">
+                        <div class="thirdRow">
+                          <h2 style="line-height: 30px">Riciel de Melo</h2>
+                          <h3></h3>
+                        </div>
+                        <div class="twoThirdRow">
+                          <h2 style="line-height: 30px">Vinicius Benedito</h2>
+                          <h3></h3>
+                        </div>
+                      </div>
+            
+                      <!--Experience Design-->
+                      <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Discovery/Experience Design"  id="content-func" class="rowFull content-func"><div >
+                        <h2>Giuliana Galvão</h2>
+                        <h3>mais 1</h3>
+                      </div></div></a>
+            
+                      <!--Creativity-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Vostok/Creativity"  id="content-func" class="thirdRow content-func"><div>
+                          <h2>Lucas Blanco</h2>
+                          <h3>mais 8</h3>
+                        </div></div></a>
+                        <div class="thirdRow"></div>
+                        <a href="#modal-funcionarios" id="info"><div value="Lilian Chwartzmann/Andrômeda/Creativity"  id="content-func" class="thirdRow content-func"><div>
+                          <h2>Joviano Quatrin</h2>
+                          <h3>mais 10</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Media-->
+                      <div class="rowFull"></div>
+            
+                      <!--Production-->
+                      <div class="rowFull"></div>
+            
+                      <!--Content-->
+                      <div class="brokenRow">
+                        <div class="thirdRow"></div>
+                        <div class="thirdRow"></div>
+                        <div class="thirdRow">
+                          <h2 style="line-height: 30px">Claudia Mayara</h2>
+                        </div>
+                      </div>
+            
+                      <!--Operation-->
+                      <div class="rowFull"></div>
+            
+                      <!--Agile Master-->
+                      <div class="rowFull"></div>
+                    </div>
+            
+                    <!--TERCEIRA COLUNA-->
+            
+                    <!--Tribe-->
+                    <div class="column">
+                      <a href="#modal-tribo" class="info-tribo" id="info" value="Claudia Gonçalves"><div value="Claudia Gonçalves" class="rowFull"  id="title"><div>
+                        <h2>Claudia Gonçalves</h2>
+                        <h3>Key Account Director</h3>
+                      </div></div></a>
+                      <!-- Heads -->
+                      <div class="brokenRow">
+                        <div class="rowHeadHalf">
+                          <div class="text">
+                            <h2>Magali Moraes</h2>
+                            <h3>Creative Head</h3>
+                          </div>
+                        </div>
+                        <div class="rowHeadHalf">
+                          <div class="text">
+                            <h2>Luana Mello</h2>
+                            <h3>Head of Client Service</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Squads -->
+                      <div class="brokenRow">
+                        <div class="squadRow">Squad Columbia</div>
+                        <div class="squadRow">Squad Laika</div>
+                        <div class="squadRow">Squad Supernova</div>
+                      </div>
+            
+                      <!--Clientes-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Fundacred</h2>
+                          <h2 style="line-height: 6px">Previsul</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Governo RS</h2>
+                          <h2 style="line-height: 6px">Corsan</h2>
+                          <h3 style="line-height: 4px">mais 2</h3>
+                        </div></div></a>
+                        <div class="thirdRow">
+                          <h2 style="line-height: 12px">Abradif</h2>
+                          <h2 style="line-height: 0px">Oi</h2>
+                        </div>
+                      </div>
+            
+                      <!--Client Service-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 4px">Graziela</h2>
+                          <h2 style="line-height: opx">Shardelotto</h2>
+                          <h3 style="line-height: 0px">mais 1</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                          <h2>Sandra Calçada</h2>
+                          <h3>mais 3</h3>
+                        </div></div></a>
+                        <div class="thirdRow">
+                          <h2 style="line-height: 15px">Caroline Felipetto</h2>
+                          <h3></h3>
+                        </div>
+                      </div>
+            
+                      <!--Project Management-->
+                      <div class="rowFull"></div>
+            
+                      <!--Strategy-->
+                      <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Strategy" id="content-func" class="rowFull content-func"><div >
+                        <h2 style="line-height: 15px">Christiaan Van Hattem</h2>
+                        <h3>mais 1</h3>
+                      </div></div></a>
+            
+                      <!--Data Inteligence-->
+                      <div class="rowFull"></div>
+            
+                      <!--Technology-->
+                      <div class="rowFull"></div>
+            
+                      <!--Experience Design-->
+                      <div class="rowFull"></div>
+            
+                      <!--Creativity-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Columbia/Creativity" id="content-func" class="thirdRow content-func"><div >
+                          <h2>Cecília Marques</h2>
+                          <h3>mais 3</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/Laika/Creativity" id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Matheus</h2>
+                          <h2 style="line-height: 6px">Carvalho</h2>
+                          <h3 style="line-height: 0px">mais 4</h3>
+                        </div></div></a>
+                        <div class="thirdRow">
+                          <h2 style="line-height: 15px">Eduarda Figueiredo</h2>
+                          <h3></h3>
+                        </div>
+                      </div>
+            
+                      <!--Media-->
+                      <div class="brokenRow">
+                        <div class="thirdRow"></div>
+                        <div class="thirdRow"></div>
+                        <a href="#modal-funcionarios" id="info"><div value="Claudia Gonçalves/SuperNova/Media" id="content-func" class="thirdRow content-func"><div >
+                          <h2>Karina Garcia</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Production-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 30px">Ramine Baigorra</h2>
+                      </div>
+            
+                      <!--Content-->
+                      <div class="rowFull"></div>
+            
+                      <!--Operation-->
+                      <div class="rowFull"></div>
+            
+                      <!--Agile Master-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 30px">Tomaz Macedo</h2>
+                      </div>
+                    </div>
+            
+                    <!--QUARTA COLUNA-->
+                    <div class="column">
+                      <a href="#modal-tribo" class="info-tribo" value="Ricardo Almeida"><div value="Ricardo Almeida" class="rowFull" id="title"><div >
+                        <h2>Ricardo Almeida</h2>
+                        <h3>Key Account Director</h3>
+                      </div></div></a>
+                      <!-- Heads -->
+                      <div class="brokenRow">
+                        <div class="rowHeadHalf">
+                          <div class="text">
+                            <h2>Cintia Galvan</h2>
+                            <h3>Head of Client Service</h3>
+                          </div>
+                        </div>
+                        <div class="rowHeadHalf">
+                          <div class="text">
+                            <h2>Rodrigo Telles</h2>
+                            <h3>Creative Head</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Squads -->
+                      <div class="brokenRow">
+                        <div class="squadRow">Squad Sirius</div>
+                        <div class="squadRow">Squad Gaia</div>
+                        <div class="squadRow">Squad Apolo</div>
+                      </div>
+            
+                      <!--Clientes-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Tecnisa</h2>
+                          <h2 style="line-height: 6px">Unipar</h2>
+                          <h3 style="line-height: 4px">mais 3</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Ciser</h2>
+                          <h2 style="line-height: 6px">Embraco</h2>
+                          <h3 style="line-height: 4px">mais 4</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Clientes"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 6px">Ailos</h2>
+                          <h2 style="line-height: 6px">Viacredi</h2>
+                          <h3 style="line-height: 4px">mais 2</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Client Service-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 12px">Juliana Magalhães</h2>
+                          <h3 style="line-height: 0px">mais 2</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                          <h2 style="line-height: 12px">Tamara Gonçalves</h2>
+                          <h3 style="line-height: 0px">mais 4</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Client Service"  id="content-func" class="thirdRow content-func"><div >
+                          <h2>Aline Duarte</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Project Management-->
+                      <div class="rowFull"></div>
+            
+                      <!--Strategy-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 26px">Nathalia Andrade</h2>
+                      </div>
+            
+                      <!--Data Inteligence-->
+                      <div class="rowFull"></div>
+            
+                      <!--Technology-->
+                      <div class="brokenRow">
+                          
+                          <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Technology"  id="content-func" class="thirdRow content-func"><div >
+                          <h2>Rodolfo Zattar</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Technology"  id="content-func" class="twoThirdRow content-func"><div >
+                          <h2>Gustavo Merling</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Experience Design-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 30px">André Lázaro</h2>
+                        <h3></h3>
+                      </div>
+            
+                      <!--Creativity-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Creativity" id="content-func" class="thirdRow content-func"><div >
+                          <h2>Thâmara Ribeiro</h2>
+                          <h3>mais 2</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Gaia/Creativity" id="content-func" class="thirdRow content-func"><div >
+                          <h2>Edson Hayashi</h2>
+                          <h3>mais 9</h3>
+                        </div></div></a>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Creativity" id="content-func" class="thirdRow content-func"><div >
+                          <h2>César Favero</h2>
+                          <h3>mais 2</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Media-->
+                      <div class="brokenRow">
+                          <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Sirius/Media" id="content-func" class="thirdRow content-func"><div >
+                          <h2>César de Brito</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                        <div class="thirdRow">
+                          <h2 style="line-height: 30px">Larissa Niehues</h2>
+                          <h3></h3>
+                        </div>
+                        <a href="#modal-funcionarios" id="info"><div value="Ricardo Almeida/Apolo/Media" id="content-func" class="thirdRow content-func"><div >
+                          <h2>Rafael Castro</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                      </div>
+            
+                      <!--Production-->
+                      <div class="rowFull"></div>
+            
+                      <!--Content-->
+                      <div class="rowFull"></div>
+            
+                      <!--Operation-->
+                      <div class="rowFull"></div>
+            
+                      <!--Agile Master-->
+                      <div class="rowFull"></div>
+                    </div>
+            
+                    <!--QUARTA COLUNA-->
+                    <div class="column">
+                      <a href="#modal-tribo" class="info-tribo" value="Eliel Allebrandt"><div value="Eliel Allebrandt" class="rowFull" id="title"><div >
+                        <h2>Eliel Allebrandt</h2>
+                        <h3>Key Account Director</h3>
+                      </div></div></a>
+            
+                      <!-- Heads -->
+                      <div style="display: block">
+                        <div class="brokenRow">
+                          <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow2">
+                            <h2 style="line-height: 6px">Alex Coelho</h2>
+                            <h3 style="line-height: 0px">Head of Creativity</h3>
+                          </div>
+                          <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow2">
+                            <h2 style="line-height: 6px">Daniel Gizo</h2>
+                            <h3 style="line-height: 0px">Head of Strategy</h3>
+                          </div>
+                          <div style="height: 36px; margin-bottom: 4px; max-width: 100px;" class="thirdRow2">
+                            <h2 style="line-height: 6px">Luiz Paulo</h2>
+                            <h3 style="line-height: 0px">Head of Operation</h3>
+                          </div>
+                        </div>
+                        <div class="brokenRow">
+                          <div class="rowHeadHalf2"
+                          >
+                            <h2 style="line-height: 6px">Tatiana Lobão</h2>
+                            <h3 style="line-height: 0px">Head of Data Intelligence</h3>
+                          </div>
+                          <div style="height: 37px" class="rowHeadHalf2">
+                            <h2 style="line-height: 6px">Thiago Furtado</h2>
+                            <h3 style="line-height: 0px">Head of Client Service</h3>
+                          </div>
+                        </div>
+                      </div>
+            
+                      <!-- Squads -->
+                      <div class="brokenRow">
+                        <div style="min-width: 346px" class="squadRow2">Squad Jupiter</div>
+                      </div>
+            
+                      <!--Clientes-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 26px">Banco do Brasil</h2>
+                      </div>
+            
+                      <!--Client Service-->
+                      <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Client Service"  id="content-func" class="rowFull content-func"><div >
+                        <h2 style="line-height: 15px">Francisco Gill</h2>
+                        <h3>mais 5</h3>
+                      </div></div></a>
+            
+                      <!--Project Management-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 15px">Felipe Canto</h2>
+                        <h3>mais 1</h3>
+                      </div>
+            
+                      <!--Strategy-->
+                      <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Strategy" id="content-func" class="rowFull content-func"><div >
+                        <h2 style="line-height: 15px">Maria Thais Brussi</h2>
+                        <h3>mais 2</h3>
+                      </div></div></a>
+            
+                      <!--Data Inteligence-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 26px">Marcos Cunha</h2>
+                      </div>
+            
+                      <!--Technology-->
+                      <div class="rowFull"></div>
+            
+                      <!--Experience Design-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 26px">Marcelo Morales Arevalos</h2>
+                        <h3></h3>
+                      </div>
+            
+                      <!--Creativity-->
+                      <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Creativity" id="content-func" class="rowFull content-func"><div >
+                        <h2 style="line-height: 15px">Jefferson Damasceno</h2>
+                        <h3>mais 9</h3>
+                      </div></div></a>
+            
+                      <!--Media-->
+                      <div class="rowFull"></div>
+            
+                      <!--Production-->
+                      <div class="rowFull"></div>
+            
+                      <!--Content-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 26px">Soraya Coelho</h2>
+                        <h3></h3>
+                      </div>
+            
+                      <!--Operation-->
+                      <a href="#modal-funcionarios" id="info"><div value="Eliel Allebrandt/Júpiter/Operation" id="content-func" class="rowFull content-func"><div >
+                        <h2>João Lucas</h2>
+                        <h3>mais 1</h3>
+                      </div></div></a>
+            
+                      <!--Agile Master-->
+                      <div class="rowFull">
+                        <h2 style="line-height: 26px">Clayton Paiva</h2>
+                      </div>
+                    </div>
+            
+                    <!--QUINTA COLUNA-->
+                    <div  class="column">
+                      <a href="#modal-tribo" class="info-tribo" value="Ernane Pinheiro"><div value="Ernane Pinheiro" class="lastRows" id="title"><div >
+                        <h2>Ernane Pinheiro</h2>
+                        <h3>Key Account Director</h3>
+                      </div></div></a>
+                      <div
+                        style="margin-bottom: 7px; min-height: 81px"
+                        class="rowHeadThird"
+                      ></div>
+                      <div style="margin-bottom: 9px;" class="squadRow">
+                        <h2>Squad</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2>AES</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <a href="#modal-funcionarios" id="info"><div value="Ernane Pinheiro/Squad/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
+                          <h2>Felipe Ferazzi</h2>
+                          <h3>mais 1</h3>
+                        </div></div></a>
+                      <a href="#modal-funcionarios" id="info"><div value="Ernane Pinheiro/Squad/Technology"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Davi Bauer</h2>
+                        <h3>mais 2</h3>
+                      </div></div></a>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                    </div>
+            
+                    <!--SEXTA COLUNA-->
+                    <div class="column">
+                      <a href="#modal-tribo" class="info-tribo" value=""><div value="" class="lastRows" id="title"><div >
+                        <h2>Pool</h2>
+                        <h3></h3>
+                      </div></div></a>
+                      <div
+                        style="margin-bottom: 7px; min-height: 81px"
+                        class="rowHeadThird"
+                      ></div>
+                      <div style="margin-bottom: 9px" class="squadRow">
+                        <h2>Pool</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2>Floripa Airport</h2>
+                        <h3></h3>
+                      </div>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <a href="#modal-funcionarios" id="info"><div value="/Pool/Project Management"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Fabiana Albuquerque</h2>
+                        <h3>mais 3</h3>
+                      </div></div></a>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <a href="#modal-funcionarios" id="info"><div value="/Pool/Data Intelligence"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Aletha da Silva</h2>
+                        <h3>mais 8</h3>
+                      </div></div></a>
+                      <a href="#modal-funcionarios" id="info"><div value="/Pool/Technology"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Alexandre Veeck</h2>
+                        <h3>mais 10</h3>
+                      </div></div></a>
+                      <a href="#modal-funcionarios" id="info"><div value="/Pool/Experience Design"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Pablo Jaeger</h2>
+                        <h3>mais 2</h3>
+                      </div></div></a>
+                      <div class="lastRows">
+                        <h2>Wagner Gomes</h2>
+                        <h3></h3>
+                      </div>
+                      <a href="#modal-funcionarios" id="info"><div value="/Pool/Media"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Aline Feijó</h2>
+                        <h3>mais 2</h3>
+                      </div></div></a>
+                      <a href="#modal-funcionarios" id="info"><div value="/Pool/Production"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Bernardo Silva</h2>
+                        <h3>mais 1</h3>
+                      </div></div></a>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                      <a href="#modal-funcionarios" id="info"><div value="/Pool/Operation"  id="content-func" class="lastRows content-func"><div >
+                        <h2>Janaina Spohr</h2>
+                        <h3>mais 1</h3>
+                      </div></div></a>
+                      <div class="lastRows">
+                        <h2></h2>
+                        <h3></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      
+                <!--Modais-->
+                <div id="modal-tribo" class="modal">
+                  <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
+                  <div class="modal-header">
+                      <span id="title-modal-tribo"></span><br/>
+                      
+      
+                  </div>
+                  
+              
+      
+                  <div  class="content-result">
+                      <div id="nome-result-tribo">
+                        
+                          <p></p>
+                      </div>
+                      
+                      <div id="chapter-result-tribo">
+                          <p></p>
+                      </div>
+                  </div>
+               
+              </div>
+              <div id="modal-funcionarios" class="modal">
+                  <a href="#fechar" title="Fechar" class="fechar"><button id="fechar" class="fechar">Fechar</button></a>
+                  <div class="modal-header-teste">
+                      <span id="title-modal-funcionaros">Chapter aq</span><br/>
+                      <span id="sub-title-modal-funcionarios">Chapter</span>
+                  </div>
+                  <div  class="content-result">
+                      <div id="nome-result-funcionarios">
+                          <p></p>
+                      </div>
+                      
+                      <div id="chapter-result-funcionarios">
+                          <p></p>
+                      </div>
+                  </div>
+              </div>
+              
+              <style>
+                button {
+                 padding: 0;
+                 max-width: 100px;
+                 height: 52.99px;
+                 margin-bottom: 8px;
+                 margin-left: 4px;
+                 background-color: transparent;
+                 border: 1px solid transparent;
+                 border-radius: 5px;
+                 text-align: center;
+                 font-family: 'Montserrat' sans-serif;
+                }
+             </style>
+
     </body>
-    
 </html>
